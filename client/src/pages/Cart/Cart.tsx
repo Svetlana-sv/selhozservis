@@ -13,9 +13,9 @@ const Cart = () => {
       <h3>Продукты: </h3>
 
       {cart
-          .filter(product => product.name.startsWith('a'))
+          .filter(product => product.title.startsWith('a'))
           .map(product => <CartItem
-              name={product.name}/>)}
+            title={product.title} id={0} image={''} description={''}/>)}
     </div>
 
 

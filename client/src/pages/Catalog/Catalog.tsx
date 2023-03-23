@@ -4,20 +4,29 @@ import Product from "../../components/Product/Product";
 import useAppSelector from "../../hooks/use-app-selector";
 import {selectCart} from "../../store/reducer/cart";
 import CatalogFilter from "../../components/Catalog/CatalogFilter";
-import CatalogList from "../../components/Catalog/CatalogList";
+import { useGetAllProductsQuery, useGetProductQuery } from '../../api/productApi';
+import CatalogItem from "../../components/Catalog/CatalogItem"
 
 const Catalog = () => {
-
-
+    const {data: products, isError, isFetching} = useGetAllProductsQuery();
+    console.log(products);
+    
     return <React.Fragment>
 
 
         <Search/>
         <div>
-            <div><CatalogFilter/></div>
-            <div><CatalogList/></div>
+            <CatalogFilter/>
 
+            
+            
         </div>
+        products:
+        {
+            products?.data.map(
+                product => <CatalogItem product={product}/>)
+            }
+        end;
         <Product/>
 
     </React.Fragment>

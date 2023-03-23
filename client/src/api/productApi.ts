@@ -1,9 +1,10 @@
 import {Product} from "./types/product";
 import {api} from './rtkConfig';
+import { ApiArrayResponse } from "./types/apiResponse";
 
 const productApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getAllProducts: builder.query<Product[], string>({
+    getAllProducts: builder.query<ApiArrayResponse<Product>, void>({
       query: () => '/products',
     }),
     getProduct: builder.query<Product, string>({
@@ -20,4 +21,4 @@ const productApi = api.injectEndpoints({
   }),
 })
 
-export const {useGetProductQuery, useLazyGetProductQuery} = productApi
+export const {useGetAllProductsQuery, useGetProductQuery, useLazyGetProductQuery} = productApi

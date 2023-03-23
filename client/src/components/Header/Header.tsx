@@ -23,10 +23,10 @@ const Header = () => {
                 <nav>
                     <ul>
                     <li>
-                        <div>
+                        <button>
                             <IoGridOutline size={22}/>
-                            <a>Каталог</a>
-                        </div>
+                            <Link to={"/catalog"}>Каталог</Link>
+                        </button>
                     </li>
 
                     <li>
