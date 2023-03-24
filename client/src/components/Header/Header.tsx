@@ -11,65 +11,45 @@ import {
     IoPersonOutline, IoPricetagsOutline, IoReaderOutline,
     IoSearchOutline
 } from "react-icons/io5";
+import {Button, Dropdown, Menu, MenuProps} from "antd";
+import {LockOutlined, SmileOutlined, SolutionOutlined, PoweroffOutlined, TranslationOutlined} from "@ant-design/icons";
+
 
 
 
 const Header = () => {
 
-
     return <>
         <div className={style.header}>
             <div className={style.headerItem}>
-                <nav>
-                    <ul>
-                    <li>
-                        <button>
-                            <IoGridOutline size={22}/>
-                            <Link to={"/catalog"}>Каталог</Link>
-                        </button>
-                    </li>
+                <button>
+                    <Link to={"/catalog"}><IoGridOutline size={22}/>Каталог</Link>
+                </button>
+                <button>
 
-                    <li>
-                        <div>
-
-                            <IoPricetagsOutline size={22}/>
-                            <Link to={"/"}>Акции</Link>
-                        </div>
-                    </li>
-
-                    {/*<li>*/}
-                    {/*    <IoReaderOutline/>*/}
-                    {/*    <Link to={"/"}>Справочник</Link>*/}
-                    {/*</li>*/}
-                    </ul>
-                </nav>
+                    <Link to={"/"}><IoPricetagsOutline size={22}/>Акции</Link>
+                </button>
+                {/*<button>*/}
+                {/*    <Link to={"/"}><IoReaderOutline size={22}/>Справочник</Link>*/}
+                {/*</button>*/}
             </div>
             <div className={style.headerItem}>
                 <img src={logo} className={style.logo}/>
             </div>
             <div className={style.headerItem}>
-                <nav className={style.headerItemRight}>
 
-                    <ul>
-                    <li>
-                    <IoHeartOutline size={28}/>
-
-                    </li>
-                        <li>
-                        <IoPersonOutline size={28}/>
-
-                        </li>
-                        <li>
-                        <IoCartOutline size={28}/>
-
-                        </li>
-                    </ul>
-                </nav>
+                    <button>
+                        <Link to={"/cart"}><IoHeartOutline size={28}/></Link>
+                    </button>
 
 
-
+                <button>
+                    <Link to={"/cart"}><IoPersonOutline size={28}/></Link>
+                </button>
+                <button>
+                    <Link to={"/cart"}><IoCartOutline size={28}/></Link>
+                </button>
             </div>
-
         </div>
     </>
 }

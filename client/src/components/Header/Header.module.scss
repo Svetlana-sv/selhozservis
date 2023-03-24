@@ -1,15 +1,16 @@
 .header{
-  min-height: 50px;
   display: grid;
   width: 100%;
+  margin: auto;
   margin: 20px;
-  align-items: center;
   grid-template-columns: 3fr 1fr 3fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
   grid-template-areas:
     ". . .";
 
+  align-items: center;
+  text-align: center;
   font-size: 1.2em;
   color: #2d2d2d;
 
@@ -19,23 +20,32 @@
 
   }
   .headerItem{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    text-align: center;
 
-    ul {
-      margin: 0; /* Обнуляем значение отступов */
-      padding: 4px; /* Значение полей */
+    @media screen and (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
 
-      li {
-        display: inline-block;
-        list-style: none;
-        padding: 10px;
+    }
 
-        div{
-          display: grid;
-          grid-template-columns: 1fr 3fr;
-          grid-column-gap: 7px;
-          align-items: center;
-        }
-      }}
+    button{
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+      a{
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+  }
     .logo {
       width: 100px;
       @media screen and (max-width: 500px) {
@@ -44,21 +54,5 @@
       }
     }
 
-    .headerItemRight{
 
-        ul {
-          margin: 0; /* Обнуляем значение отступов */
-          padding: 4px; /* Значение полей */
-
-          li {
-            display: inline-block;
-            list-style: none;
-            padding: 10px;
-          }
-
-
-        }
-
-    }
-  }
 }

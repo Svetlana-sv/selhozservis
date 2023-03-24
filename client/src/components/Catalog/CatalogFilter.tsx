@@ -1,5 +1,6 @@
 const CatalogFilter = () => {
     return <>
+        <p>Фильтр:</p>
     </>
 }
 

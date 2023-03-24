@@ -3,7 +3,7 @@ import ProductActionButtons from "./ProductActionButtons";
 import {useGetProductQuery} from "../../api/productApi";
 import {skipToken} from "@reduxjs/toolkit/query";
 
-const Product = () => {
+const Card = () => {
   // const {data: product, isFetching, isError: isProductError, error} = useGetProductQuery('1' ?? skipToken);
   const [name, setName] = useState('Пояс Ловчий'); // todo убрать, тут будут данные с бэка
   // console.log(error)
@@ -18,4 +18,4 @@ const Product = () => {
   </div>
 }
 
-export default Product;
+export default Card;

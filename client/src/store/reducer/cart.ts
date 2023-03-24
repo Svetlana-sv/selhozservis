@@ -2,10 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 import { Product } from "../../api/types/product";
 import {RootState} from "../store";
 
-// type Product = {
-//   title: string
-// }
-
 const initialState: Product[] = [];
 
 const cart = createSlice({
@@ -16,6 +12,9 @@ const cart = createSlice({
     addProduct: (state: Product[], {payload}: { payload: Product }) => {
       state.push(payload);
     },
+    deleteProduct: (state: Product[], {payload}: { payload: Product }) => {
+      // state.shift(payload); // todo delete of index
+    }
   }
 });
 

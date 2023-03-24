@@ -6,6 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
+        // target: 'http://localhost:8000',
         target: 'http://localhost:1337',
         // target: 'http://localhost:{PORT}',
         changeOrigin: true,
@@ -13,7 +14,7 @@ export default defineConfig({
         headers: {
           Connection: 'keep-alive',
           // Тестовый токен (полный доступ ко всем функциям)
-          Authorization: 'Bearer 966f62047366c43c73834904a77cfd615c87030a2ffd0949fe566875800e27b2617cd1ecd1396197222114d866353e8602b6ad2a7c80ec05bc3b14f27a8fd14266103f4ac08e1295c12520dcfcb49c4c439254c1a9e65f1315ea0493299a122b3f82fa818e453d3c9587c778b77e999f63ebeb54980c88f1ce850efe28499771'
+          Authorization: 'Bearer 0a0ccaa8efb35d7103803f7b21d63f4f4e884013ea61c9fdf742435afc9cd58a99f8376720004556aef5e7a36ef02b2bc017c49c68e0841a4773db93660b1318a3f9d18f726f4b81d4c6cfda8533f534314139a5a701c5eed56e6906af68547a99725d2004aa76f717024ea46cef794381af99f4fe6da43a45235546ab3f6e92'
         },
       },
     }

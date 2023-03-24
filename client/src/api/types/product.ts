@@ -3,7 +3,10 @@ export type Product = {
   attributes: {
     title: string
     image: string
-    description: string
+    // description: string
+    price: number
+    // publishedAt: string
+
   }
   // category_id: number // category: number || string ??
   // price: number

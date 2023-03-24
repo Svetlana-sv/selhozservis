@@ -12,7 +12,7 @@ const ProductActionButtons = (props: ProductActionButtonsProps) => {
   const dispatch = useAppDispatch();
 
   const handleAddProductClick = () => {
-    dispatch(addProduct({name: shortName}))
+    // dispatch(addProduct({title: shortName}))
   }
 
   return <div>

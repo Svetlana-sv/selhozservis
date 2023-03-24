@@ -1,0 +1,14 @@
+.card{
+  border: 1px solid #848485;
+  border-radius: 25px;
+  width: 240px;
+
+  img{
+    height: 50px;
+    width: 50px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 200px;
+  }
+}
