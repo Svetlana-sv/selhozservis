@@ -14,12 +14,6 @@
   "attributes": {
     "title": {
       "type": "string"
-    },
-    "crop": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::crop-classification.crop-classification",
-      "inversedBy": "crops_classification"
     }
   }
 }
