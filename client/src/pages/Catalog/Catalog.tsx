@@ -5,8 +5,8 @@ import style from './Catalog.module.scss'
 import CatalogFilter from "../../components/Catalog/CatalogFilter";
 import {useGetAllProductsQuery, useGetProductQuery} from '../../api/productApi';
 import CatalogItem from "../../components/Catalog/CatalogItem"
-import {Input} from "../../components/Input/Input";
-import {Typography} from "../../components/Typography/Typography";
+import {Input} from "../../components/lib/Input/Input";
+import {Typography} from "../../components/lib/Typography/Typography";
 
 const Catalog = () => {
     const {data: products, isError, isFetching} = useGetAllProductsQuery();

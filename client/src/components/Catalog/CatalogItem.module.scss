@@ -1,11 +1,10 @@
 .card{
   border: 1px solid #848485;
-  border-radius: 25px;
-  width: 240px;
+  border-radius: 25px 0px 25px 0px;
+  width: 220px;
 
   img{
-    height: 50px;
-    width: 50px;
+    height: 200px;
   }
 
   @media screen and (max-width: 500px) {

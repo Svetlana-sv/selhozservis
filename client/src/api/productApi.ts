@@ -5,10 +5,10 @@ import { ApiArrayResponse } from "./types/apiResponse";
 const productApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query<ApiArrayResponse<Product>, void>({
-      query: () => '/products',
+      query: () => '/products?populate=*',
     }),
     getProduct: builder.query<Product, string>({
-      query: productId => `/products/${productId}`
+      query: productId => `/products/${productId}/?populate=*`
     }),
     addNewProduct: builder.mutation({
       query: newProduct => ({

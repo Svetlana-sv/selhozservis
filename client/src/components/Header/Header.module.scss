@@ -11,8 +11,10 @@
 
   align-items: center;
   text-align: center;
-  font-size: 1.2em;
-  color: #2d2d2d;
+  
+  font-size: var(--header--FontSize);
+  background-color: var(--header--BackgoundColor);
+  color: var(--header--FontColor);
 
   @media screen and (max-width: 500px) {
     display: flex;

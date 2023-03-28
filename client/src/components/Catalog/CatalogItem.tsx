@@ -11,15 +11,14 @@ const CatalogItem = (props: {product: Product}) => {
         dispatch(addProduct(props.product))
     }
 
+
     return <div className={style.card}>
     <h2>{props.product.attributes.title}</h2>
-    {/*<img src={props.product.attributes.image} alt="" />*/}
-    {/*<img src="../../assets/16.jpg" alt={props.product.attributes.title}/>*/}
-        <Image width={200}
-               preview={false}
-            src="client/src/assets/16.jpg"/>
+        <img
+            // @ts-ignore
+            src={`http://localhost:1337${props.product.attributes.image.data.attributes.url}`} />
         <p>{props.product.attributes.price} ₽</p>
-        <button onClick={handleAddProductClick}>Добавить</button>
+        <button>Добавить</button>
     </div>
 }
 
