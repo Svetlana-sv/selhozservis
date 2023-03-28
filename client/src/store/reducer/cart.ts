@@ -13,11 +13,11 @@ const cart = createSlice({
       state.push(payload);
     },
     deleteProduct: (state: Product[], {payload}: { payload: Product }) => {
-      // state.shift(payload); // todo delete of index
+      return state.filter(p => p.id !== payload.id);
     }
   }
 });
 
-export const {addProduct, reset} = cart.actions;
+export const {addProduct,deleteProduct, reset} = cart.actions;
 export const selectCart = (state: RootState) => state.cart;
 export default cart.reducer;

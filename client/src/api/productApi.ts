@@ -10,6 +10,9 @@ const productApi = api.injectEndpoints({
     getProduct: builder.query<Product, string>({
       query: productId => `/products/${productId}/?populate=*`
     }),
+    getFilter: builder.query({
+      query: () => `/categories?populate=*`
+    }),
     addNewProduct: builder.mutation({
       query: newProduct => ({
         url: `/products`,
@@ -21,4 +24,4 @@ const productApi = api.injectEndpoints({
   }),
 })
 
-export const {useGetAllProductsQuery, useGetProductQuery, useLazyGetProductQuery} = productApi
+export const {useGetAllProductsQuery, useGetProductQuery, useLazyGetProductQuery, useGetFilterQuery} = productApi

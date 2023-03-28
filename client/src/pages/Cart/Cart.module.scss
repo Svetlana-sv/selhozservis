@@ -1,0 +1,20 @@
+.wrapper{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+
+  .cartItems{
+    background: #FFFFFF;
+    border: 2px solid #F5F5F5;
+    box-shadow: 0px 4px 4px 1px rgba(211, 211, 211, 0.25);
+    border-radius: 20px;
+  }
+
+  .cartBlockInfo{
+    background: #FFFFFF;
+    border: 2px solid #F5F5F5;
+    box-shadow: 0px 4px 4px 1px rgba(211, 211, 211, 0.25);
+    border-radius: 20px;
+    height: 250px;
+  }
+}

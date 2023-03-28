@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Ubuntu:wght@300;400;500;700&display=swap');
 
 :root {
   //font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-family: Nunito;
+  font-family: 'Ubuntu', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   
@@ -12,10 +12,13 @@
   --footer--FontColor: #fff;
 
   --header--BackgoundColor: #fff;
-  --header--FontSize: 18px;
+  --header--FontSize: 20px;
   --header--FontColor: #333333;
-  
-  --color: #848485;
+
+  --Philosopher--FontFamily:  'Philosopher';
+  --Ubuntu--FontFamily:  'Ubuntu';
+
+  --color: #303030;
   --color-footer: #ffffff;
   --color-input-light-grey: #e0e0e0;
   --color-input-grey: #9a9a9a;
@@ -40,9 +43,11 @@ a {
 a:hover {
   color: #b7b7b7;
 }
-
+html,
 body {
-  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   background-color: #ffffff;
@@ -52,6 +57,11 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+h2{
+  font-family: 'Philosopher', sans-serif;
+}
+
 ul{
   padding: 0;
 }
@@ -60,35 +70,31 @@ li{
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  margin: 10px;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  outline: none;
+  border: none;
+  background: none;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  -webkit-tap-highlight-color: transparent;
-}
-button:hover {
-  border-color: #848485;
-}
-button:focus,
-button:focus-visible {
-  outline: none;
-
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    border-color: #848485;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+p{
+  padding: 0;
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
 }
+
+
+
+
+//@media (prefers-color-scheme: light) {
+//  :root {
+//    color: #213547;
+//    background-color: #ffffff;
+//  }
+//  a:hover {
+//    border-color: #848485;
+//  }
+//  button {
+//    background-color: #f9f9f9;
+//  }
+//}

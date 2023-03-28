@@ -1,6 +1,9 @@
-.breadcrumb{
-  p{
-  text-align: left;
+.breadcrumb {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
+  a {
+    font-family: var(--Philosopher--FontFamily);
   }
 }

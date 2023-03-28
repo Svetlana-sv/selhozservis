@@ -14,9 +14,7 @@ const Catalog = () => {
 
     return <div className={style.catalog}>
         <div>
-            {/*<Search/>*/}
-            <Input/>
-            <Typography>Vbrf</Typography>
+            <Search/>
         </div>
 
         <div>
@@ -25,7 +23,7 @@ const Catalog = () => {
 
         <div className={style.catalogList}>
             {products?.data.map(
-                product => <CatalogItem product={product}/>)
+                product => <CatalogItem key={product.id} product={product}/>)
             }
         </div>
     </div>

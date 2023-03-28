@@ -1,20 +1,18 @@
 .header{
   display: grid;
   width: 100%;
-  margin: auto;
   margin: 20px;
   grid-template-columns: 3fr 1fr 3fr;
   grid-template-rows: 1fr;
-  gap: 0px 0px;
   grid-template-areas:
     ". . .";
 
   align-items: center;
   text-align: center;
-  
-  font-size: var(--header--FontSize);
+
+
   background-color: var(--header--BackgoundColor);
-  color: var(--header--FontColor);
+
 
   @media screen and (max-width: 500px) {
     display: flex;
@@ -39,11 +37,16 @@
       display: flex;
       align-items: center;
       text-align: center;
+      margin-right: 43px;
 
       a{
         display: flex;
         align-items: center;
         text-align: center;
+        font-size: var(--header--FontSize);
+        color: var(--header--FontColor);
+        font-family: var(--Philosopher--FontFamily);
+
       }
     }
 

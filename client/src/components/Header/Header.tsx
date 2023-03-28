@@ -23,11 +23,11 @@ const Header = () => {
         <div className={style.header}>
             <div className={style.headerItem}>
                 <button>
-                    <Link to={"/catalog"}><IoGridOutline size={22}/>Каталог</Link>
+                    <Link to={"/catalog"}><IoGridOutline size={22} style={{marginRight: '10px'}}/>Каталог</Link>
                 </button>
                 <button>
 
-                    <Link to={"/"}><IoPricetagsOutline size={22}/>Акции</Link>
+                    <Link to={"/"}><IoPricetagsOutline size={22} style={{marginRight: '10px'}}/>Акции</Link>
                 </button>
                 {/*<button>*/}
                 {/*    <Link to={"/"}><IoReaderOutline size={22}/>Справочник</Link>*/}

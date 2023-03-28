@@ -3,22 +3,31 @@ import Card from "../../components/Card/Card";
 import useAppSelector from "../../hooks/use-app-selector";
 import cart, {selectCart} from "../../store/reducer/cart";
 import CartItem from "./CartItem";
+import style from "./Cart.module.scss"
+import {Button} from '../../components/lib/Button/Button'
 
 const Cart = () => {
   const cart = useAppSelector(selectCart);
-  return <React.Fragment>
-    <h1>Корзина</h1>
-    <div>
-      <h3>Продукты: </h3>
+  return <div>
+    <h2 style={{textAlign: 'left'}}>Корзина</h2>
+    <div className={style.wrapper}>
+      <div className={style.cartItems}>
+        {cart
+            // .filter(product => product.attributes.title.startsWith('a'))
+            .map(product => <CartItem
+                product={product}/>)}
+      </div>
+      <div className={style.cartBlockInfo}>
+        <h2>У вас 4 товара</h2>
+        <p>Доставка: бесплатно</p>
+        <h2>Итого: ***</h2>
+        <Button>Оформить заказ</Button>
+      </div>
 
-      {cart
-          // .filter(product => product.attributes.title.startsWith('a'))
-          .map(product => <CartItem
-            product={product}/>)}
     </div>
 
 
-  </React.Fragment>
+  </div>
 }
 
 export default Cart;

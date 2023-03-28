@@ -28,6 +28,8 @@ const Home = () => {
       </div>
     </Carousel>
 
+    <h2>Рекомендуем</h2>
+
 
   </React.Fragment>
 }
