@@ -8,6 +8,9 @@ const routes = [
     { path: '/', breadcrumb: 'Главная' },
     { path: '/catalog', breadcrumb: 'Каталог' },
     { path: '/contacts', breadcrumb: 'Контакты' },
+    { path: '/about', breadcrumb: 'О компании' },
+    { path: '/contacts', breadcrumb: 'Контакты' },
+    { path: '/card', breadcrumb: 'Карточка' },
     ];
 
 const Breadcrumb = () => {

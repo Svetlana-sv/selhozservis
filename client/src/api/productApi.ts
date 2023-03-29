@@ -7,8 +7,8 @@ const productApi = api.injectEndpoints({
     getAllProducts: builder.query<ApiArrayResponse<Product>, void>({
       query: () => '/products?populate=*',
     }),
-    getProduct: builder.query<Product, string>({
-      query: productId => `/products/${productId}/?populate=*`
+    getProduct: builder.query<ApiArrayResponse<Product>, string>({
+      query: id => `/products/${id}?populate=*`
     }),
     getFilter: builder.query({
       query: () => `/categories?populate=*`

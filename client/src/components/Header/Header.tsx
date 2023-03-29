@@ -11,11 +11,8 @@ import {
     IoPersonOutline, IoPricetagsOutline, IoReaderOutline,
     IoSearchOutline
 } from "react-icons/io5";
-import {Button, Dropdown, Menu, MenuProps} from "antd";
+import {Badge} from "antd";
 import {LockOutlined, SmileOutlined, SolutionOutlined, PoweroffOutlined, TranslationOutlined} from "@ant-design/icons";
-
-
-
 
 const Header = () => {
 
@@ -47,7 +44,8 @@ const Header = () => {
                     <Link to={"/cart"}><IoPersonOutline size={28}/></Link>
                 </button>
                 <button>
-                    <Link to={"/cart"}><IoCartOutline size={28}/></Link>
+                    <Badge count={5}>
+                        <Link to={"/cart"}><IoCartOutline size={28}/></Link></Badge>
                 </button>
             </div>
         </div>

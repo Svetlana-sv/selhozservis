@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import { Product } from "../../api/types/product";
 import {RootState} from "../store";
 
+// const initialState: Product[] = [];
 const initialState: Product[] = [];
 
 const cart = createSlice({

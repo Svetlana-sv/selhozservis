@@ -1,17 +1,13 @@
 import React from 'react';
 import Search from "../../components/Search/Search";
-import Product from "../../components/Card/Card";
 import style from './Catalog.module.scss'
 import CatalogFilter from "../../components/Catalog/CatalogFilter";
-import {useGetAllProductsQuery, useGetProductQuery} from '../../api/productApi';
-import CatalogItem from "../../components/Catalog/CatalogItem"
-import {Input} from "../../components/lib/Input/Input";
-import {Typography} from "../../components/lib/Typography/Typography";
+import {useGetAllProductsQuery} from '../../api/productApi';
+import CardVertical from "../../components/Card/CardVertical/CardVertical";
+import {useLocation} from "react-router-dom";
 
 const Catalog = () => {
     const {data: products, isError, isFetching} = useGetAllProductsQuery();
-    console.log(products);
-
     return <div className={style.catalog}>
         <div>
             <Search/>
@@ -23,7 +19,7 @@ const Catalog = () => {
 
         <div className={style.catalogList}>
             {products?.data.map(
-                product => <CatalogItem key={product.id} product={product}/>)
+                product => <CardVertical key={product.id} product={product}/>)
             }
         </div>
     </div>

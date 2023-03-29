@@ -1,22 +1,26 @@
-import {Product} from "../../api/types/product";
-import style from './CatalogItem.module.scss';
+import {Product} from "../../../api/types/product";
+import style from '../Card.module.scss';
 import {Image, message} from 'antd'
-import useAppDispatch from "../../hooks/use-app-dispatch";
-import {addProduct} from "../../store/reducer/cart";
-import {Button} from '../lib/Button/Button';
-import {Typography} from '../lib/Typography/Typography';
+import useAppDispatch from "../../../hooks/use-app-dispatch";
+import {addProduct} from "../../../store/reducer/cart";
+import {Button} from '../../lib/Button/Button';
+import {Typography} from '../../lib/Typography/Typography';
 import {IoAddOutline} from "react-icons/all";
 import {IoHeartOutline} from "react-icons/io5";
 import React from "react";
+import {navigate} from "ionicons/icons";
+import {useNavigate} from "react-router-dom";
 
-const CatalogItem = (props: {product: Product}) => {
+const CardVertical = (props: {product: Product}) => {
     const [messageApi, contextHolder] = message.useMessage();
+
     const addToCart = () => {
         messageApi.open({
             type: 'info',
             content: `"${props.product.attributes.title}" добавлено в корзину`,
         });
     };
+
     const addToFavourite = () => {
         messageApi.open({
             type: 'info',
@@ -35,7 +39,14 @@ const CatalogItem = (props: {product: Product}) => {
         // todo добавление в избранное
     }
 
-    return <div className={style.card}>
+    const navigate = useNavigate();
+
+    const handleCardClick = () => {
+        console.log('2')
+        navigate(`/card/${props.product.id}`)
+    }
+
+    return <div className={style.card} onClick={handleCardClick}>
         {contextHolder}
         <div className={style.info}>Топ продаж</div>
         <button className={style.heart} onClick={handleAddProductFavouriteClick}><IoHeartOutline size={28}/></button>
@@ -58,4 +69,4 @@ const CatalogItem = (props: {product: Product}) => {
     </div>
 }
 
-export default CatalogItem;
+export default CardVertical;
