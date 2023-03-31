@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * crop router
+ * order router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::crop.crop');
+module.exports = createCoreRouter('api::order.order');

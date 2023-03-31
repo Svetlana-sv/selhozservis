@@ -16,7 +16,7 @@ function AppRouter() {
             <Route path='/cart' element={<Cart/>}/>
             <Route path='/catalog' element={<Catalog/>}/>
             <Route path='/about' element={<About/>}/>
-            <Route path='/card/:id' element={<Card/>}/>
+            <Route path='/catalog/:id' element={<Card/>}/>
             <Route path='/contacts' element={<Contacts/>}/>
         </Routes>
     )

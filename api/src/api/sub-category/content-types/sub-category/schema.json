@@ -4,7 +4,8 @@
   "info": {
     "singularName": "sub-category",
     "pluralName": "sub-categories",
-    "displayName": "SubCategory"
+    "displayName": "Подкатегории",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

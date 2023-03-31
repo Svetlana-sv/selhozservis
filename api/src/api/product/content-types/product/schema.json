@@ -28,6 +28,36 @@
     },
     "price": {
       "type": "decimal"
+    },
+    "price_old": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "text"
+    },
+    "composition": {
+      "type": "string"
+    },
+    "expiration_date": {
+      "type": "string"
+    },
+    "period_storage": {
+      "type": "string"
+    },
+    "danger_class": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "richtext"
+    },
+    "application": {
+      "type": "richtext"
+    },
+    "order_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "product_id"
     }
   }
 }

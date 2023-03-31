@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import style from "./Header.module.scss"
 import logo from "../../assets/logo/logo-temp.png"
+import type { MenuProps } from 'antd'
+import { Dropdown, Space, Typography } from 'antd';
 
 import {
     IoCartOutline,
@@ -15,6 +17,32 @@ import {Badge} from "antd";
 import {LockOutlined, SmileOutlined, SolutionOutlined, PoweroffOutlined, TranslationOutlined} from "@ant-design/icons";
 
 const Header = () => {
+    const items: MenuProps['items'] = [
+        {
+            label: (
+                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                    1st menu item
+                </a>
+            ),
+            key: '0',
+        },
+        {
+            label: (
+                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                    2nd menu item
+                </a>
+            ),
+            key: '1',
+        },
+        {
+            type: 'divider',
+        },
+        {
+            label: '3rd menu item（disabled）',
+            key: '3',
+            disabled: true,
+        },
+    ];
 
     return <>
         <div className={style.header}>
@@ -35,19 +63,39 @@ const Header = () => {
             </div>
             <div className={style.headerItem}>
 
-                    <button>
+                <div className={style.heartMenu}>
+                    <div className={style.content}>
+                        fefefef
+                        frrrr
+                        freeeee
+                        rfeeeee
+                    </div>
+
+                </div>
+
+                    <button className={style.heart}>
                         <Link to={"/cart"}><IoHeartOutline size={28}/></Link>
                     </button>
-
-
-                <button>
+                <button >
                     <Link to={"/cart"}><IoPersonOutline size={28}/></Link>
                 </button>
+
+
                 <button>
                     <Badge count={5}>
                         <Link to={"/cart"}><IoCartOutline size={28}/></Link></Badge>
                 </button>
+
+                <Dropdown menu={{ items }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                        <Space>
+                            Hover me
+                        </Space>
+                    </a>
+                </Dropdown>
             </div>
+
+
         </div>
     </>
 }

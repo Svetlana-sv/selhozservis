@@ -13,7 +13,6 @@ import {useNavigate} from "react-router-dom";
 
 const CardVertical = (props: {product: Product}) => {
     const [messageApi, contextHolder] = message.useMessage();
-
     const addToCart = () => {
         messageApi.open({
             type: 'info',
@@ -42,8 +41,7 @@ const CardVertical = (props: {product: Product}) => {
     const navigate = useNavigate();
 
     const handleCardClick = () => {
-        console.log('2')
-        navigate(`/card/${props.product.id}`)
+        navigate(`/catalog/${props.product.id}`)
     }
 
     return <div className={style.card} onClick={handleCardClick}>

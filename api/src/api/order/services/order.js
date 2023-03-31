@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * crop service
+ * order service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::crop.crop');
+module.exports = createCoreService('api::order.order');
