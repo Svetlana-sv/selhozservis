@@ -4,28 +4,16 @@ import {Image, message} from 'antd'
 import useAppDispatch from "../../../hooks/use-app-dispatch";
 import {addProduct} from "../../../store/reducer/cart";
 import {Button} from '../../lib/Button/Button';
-import {Typography} from '../../lib/Typography/Typography';
 import {IoAddOutline} from "react-icons/all";
 import {IoHeartOutline} from "react-icons/io5";
 import React from "react";
-import {navigate} from "ionicons/icons";
 import {useNavigate} from "react-router-dom";
+import {useCardVertical} from "../../../hooks/use-card-vertical";
+import {useGetAllProductsQuery} from "../../../api/productApi";
 
 const CardVertical = (props: {product: Product}) => {
-    const [messageApi, contextHolder] = message.useMessage();
-    const addToCart = () => {
-        messageApi.open({
-            type: 'info',
-            content: `"${props.product.attributes.title}" добавлено в корзину`,
-        });
-    };
-
-    const addToFavourite = () => {
-        messageApi.open({
-            type: 'info',
-            content: `"${props.product.attributes.title}" добавлено в избранное`,
-        });
-    };
+    const {addToCart, addToFavourite, contextHolder} = useCardVertical(props);
+    const {data: product, isFetching, isError: isProductError, error} = useGetAllProductsQuery();
     const dispatch = useAppDispatch();
 
     const handleAddProductClick = () => {
@@ -44,7 +32,7 @@ const CardVertical = (props: {product: Product}) => {
         navigate(`/catalog/${props.product.id}`)
     }
 
-    return <div className={style.card} onClick={handleCardClick}>
+    return <div className={style.card} >
         {contextHolder}
         <div className={style.info}>Топ продаж</div>
         <button className={style.heart} onClick={handleAddProductFavouriteClick}><IoHeartOutline size={28}/></button>

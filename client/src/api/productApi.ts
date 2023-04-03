@@ -1,13 +1,13 @@
 import {Product} from "./types/product";
 import {api} from './rtkConfig';
-import { ApiArrayResponse } from "./types/apiResponse";
+import {ApiArrayResponse, ApiObjectResponse} from "./types/apiResponse";
 
 const productApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query<ApiArrayResponse<Product>, void>({
       query: () => '/products?populate=*',
     }),
-    getProduct: builder.query<ApiArrayResponse<Product>, string>({
+    getProduct: builder.query<ApiObjectResponse<Product>, string>({
       query: id => `/products/${id}?populate=*`
     }),
     getFilter: builder.query({
