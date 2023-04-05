@@ -26,7 +26,7 @@ const Header = () => {
     });
 
     const cart = useAppSelector(selectCart);
- 
+
     function handleFoodChange() {
 
     }
