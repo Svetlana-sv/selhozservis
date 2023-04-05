@@ -13,7 +13,6 @@ import {useGetAllProductsQuery} from "../../../api/productApi";
 
 const CardVertical = (props: {product: Product}) => {
     const {addToCart, addToFavourite, contextHolder} = useCardVertical(props);
-    const {data: product, isFetching, isError: isProductError, error} = useGetAllProductsQuery();
     const dispatch = useAppDispatch();
 
     const handleAddProductClick = () => {

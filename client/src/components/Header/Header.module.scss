@@ -1,7 +1,7 @@
 .header{
   display: grid;
   width: 100%;
-  margin: 20px;
+  margin: 10px;
   grid-template-columns: 3fr 1fr 3fr;
   grid-template-rows: 1fr;
   grid-template-areas:
@@ -31,30 +31,11 @@
 
     }
   .heart{
-    &:hover + .heartMenu{
-      cursor: pointer;
-      display: block;
-      color: #151516;
-      position: absolute;
-      font-size: 18px;
-      overflow: inherit;
-      text-overflow: inherit;
-      white-space: inherit;
+    &:hover{
+      //
     }
   }
 
-    .heartMenu{
-      display: none;
-      position: absolute;
-      overflow-wrap: break-word;
-      max-width: 220px;
-      box-shadow: 1px 4px 4px 2px rgba(0, 0, 0, 0.25);
-      border-radius: 5px;
-      background-color: #834e4e;
-
-      .content{
-      }
-    }
 
 
     button{

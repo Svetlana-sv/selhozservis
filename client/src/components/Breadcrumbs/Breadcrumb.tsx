@@ -15,7 +15,6 @@ const CatalogBreadcrumb: BreadcrumbComponentType<'id'> = ({match}) => {
 }
 
 const routes = [
-  {path: '/products/:id', breadcrumb: 'Example 1'},
   {path: '/', breadcrumb: 'Главная'},
   {path: '/catalog', breadcrumb: 'Каталог'},
   {path: '/contacts', breadcrumb: 'Контакты'},
@@ -23,6 +22,7 @@ const routes = [
   {path: '/about', breadcrumb: 'О компании'},
   {path: '/contacts', breadcrumb: 'Контакты'},
   {path: '/card', breadcrumb: 'Карточка'},
+  {path: '/cart', breadcrumb: 'Корзина'},
 ];
 
 const Breadcrumb = () => {

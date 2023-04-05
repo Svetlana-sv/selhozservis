@@ -1,9 +1,9 @@
 import {useGetFilterQuery} from "../../api/productApi";
-import CatalogItem from "./CatalogItem";
+// import CatalogItem from "./CatalogItem";
 import React from "react";
 
 const CatalogFilter = () => {
-    const {data, isError, isFetching} = useGetFilterQuery();
+    // const {data, isError, isFetching} = useGetFilterQuery();
     // console.log(categories)
     return <>
         <p>Фильтр:</p>

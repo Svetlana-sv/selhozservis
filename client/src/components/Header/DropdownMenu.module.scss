@@ -1,0 +1,33 @@
+.dropdown{
+  position: relative;
+  display: inline-block;
+
+}
+
+.btn{
+  display: inline-block;
+}
+
+.dropdown_content {
+  padding: 0px 5px;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 150px;
+  border-radius: 13px;
+  box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown_content a {
+  align-items: center;
+  font-size: var(--header--FontSize);
+  color: var(--header--FontColor);
+  font-family: var(--Ubuntu--FontFamily);
+  display: block;
+  padding: 2px;
+  text-align: left;
+}
+.dropdown:hover .dropdown_content {
+  display: block;
+}

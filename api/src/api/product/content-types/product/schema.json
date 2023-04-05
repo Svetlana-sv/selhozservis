@@ -52,12 +52,6 @@
     },
     "application": {
       "type": "richtext"
-    },
-    "order_id": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::order.order",
-      "inversedBy": "product_id"
     }
   }
 }
