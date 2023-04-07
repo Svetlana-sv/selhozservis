@@ -1,23 +1,22 @@
 import React from "react";
-import {Product} from "../../api/types/product";
+import {CountMapProduct, Product} from "../../api/types/product";
 import {Image, InputNumber} from "antd";
-import {Button} from '../../components/lib/Button/Button'
+import {ButtonClick} from '../../components/lib/Button/Button'
+import Button from '../../components/Buttons/Button'
 import style from './CartItem.module.scss'
-import {deleteProduct} from "../../store/reducer/cart";
+import {addProduct, deleteProduct} from "../../store/reducer/cart";
 import useAppDispatch from "../../hooks/use-app-dispatch";
-const CartItem = (props: {product: Product}) => {
+import {IoHeartOutline} from "react-icons/io5";
+import {message} from "../../message/message";
+const CartItem = (props: {product: CountMapProduct}) => {
     const dispatch = useAppDispatch();
 
     const handleDeleteProductClick = () => {
-        dispatch(deleteProduct(props.product))
+        dispatch(deleteProduct(props.product.product))
     };
 
     const handleAddProductFavouriteClick = () => {
        // todo добавление в избранное
-    };
-
-    const onChange = () => {
-        // todo изменение кол-ва товаров
     };
 
     return <div className={style.cartItem}>
@@ -25,15 +24,30 @@ const CartItem = (props: {product: Product}) => {
             <Image loading={'lazy'}
                    height={150}
                 // @ts-ignore
-                   src={`http://localhost:1337${props.product.attributes.image.data.attributes.url}`} />
+                   src={`http://localhost:1337${props.product.product.attributes.image.data.attributes.url}`} />
         </div>
-        <div className={style.blockInfo}>
-            <h2>{props.product.attributes.title}</h2>
-            <p>{props.product.attributes.price} ₽</p>
-            <InputNumber min={1} max={10} defaultValue={3} onChange={onChange} />
-            <button onClick={handleAddProductFavouriteClick}>В избранное</button>
-            <Button onClick={handleDeleteProductClick}>Удалить</Button>
-        </div>
+        <div className={style.blockMain}>
+
+                <div className={style.blockInfo}>
+                    <h2>{props.product.product.attributes.title}</h2>
+                    <div>
+                    <button onClick={(e) => {
+                        dispatch(deleteProduct(props.product.product))
+                    }}>-</button>
+                    <input value={props.product.count} />
+                    <button onClick={(e) => {
+                        dispatch(addProduct(props.product.product))
+                    }}>+</button>
+                </div>
+                    <p>Цена: {props.product.product.attributes.price} ₽ за штуку</p>
+                </div>
+
+        <div className={style.blockButtons}>
+            {/*todo как добавить:*/}
+            {/*onClick={() => message({text: `${product?.data.attributes.title} добавлено в избранное`, type: 'info'})}*/}
+                <Button title={''} link={'cart'} icon={IoHeartOutline} />
+                <ButtonClick onClick={handleDeleteProductClick}>Удалить</ButtonClick>
+            </div></div>
     </div>
 }
 

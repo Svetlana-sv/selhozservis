@@ -1,57 +1,90 @@
 import {useRegisterUserMutation} from "../../api/authApi";
-import {FieldValues, SubmitHandler, useForm} from 'react-hook-form'
 import useAppDispatch from "../../hooks/use-app-dispatch";
 import {useState} from "react";
-import {settingsSharp} from "ionicons/icons";
-// import useAppDispatch from "../../../hooks/use-app-dispatch";
+import React from "react";
+import {message} from "../../message/message";
+import style from './Account.module.scss'
+import {Button, Form, Input} from "antd";
 
 const Account = () => {
     const [register, {isLoading, isSuccess, error, isError}] =
         useRegisterUserMutation();
-    const dispatch = useAppDispatch()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUserName] = useState('');
 
-    // const submitForm : SubmitHandler<RegisterInput> = (values) => {
-    //   data.
-    //   register(data).unwrap().then((response) => {
-    //     if (response.s)
-    //   }).
-    //   console.log(data.email)
-    //   useRegisterUserMutation(data)
-    // }
-    //
-
-    const submitForm = (event: React.FormEvent) => {
-        event.preventDefault();
+    const submitForm = () => {
         if (email.length > 0 && password.length > 0){
             register({email, password, username})
                 .unwrap()
                 .then(reponse => {
                     if (reponse.token) {
-                        // OK
+                        message({text: `Вы зарегистрированы!`, type: 'success'})
                     } else {
-                        // ERROR
+                        message({text: `Ошибка!`, type: 'error'})
                     }
                 })
         }
     }
 
+    const onFinishFailed = (errorInfo: any) => {
+        message({text: `Ошибка!`, type: 'error'})
+    };
 
-    return <>
-        <form onSubmit={submitForm}>
-            <p>UserName</p>
-            <input type="text" onChange={(e) => setUserName(e.target.value)} required/>
-            <p>Login</p>
-            <input type="email" onChange={(e) => setEmail(e.target.value)} required/>
-            <p>Password</p>
-            <input type='password'
-                   onChange={(e) => setPassword(e.target.value)}
-                   required/>
-            <button type='submit'>Зарегистрироваться</button>
-        </form>
-    </>
+    return <div className={style.wpapper}>
+
+    <div className={style.form}>
+
+        <Form
+            name="basic"
+            labelCol={{ span: 8 }}
+            wrapperCol={{ span: 16 }}
+            style={{ maxWidth: 600 }}
+            initialValues={{ remember: true }}
+            onFinish={submitForm}
+            onFinishFailed={onFinishFailed }
+            autoComplete="off"
+        >
+            <Form.Item
+                label="Логин"
+                name="username"
+                rules={[{ required: true, message: 'Пожалуйста введите логин!' }]}
+            >
+                <Input onChange={(e) => setUserName(e.target.value)}/>
+            </Form.Item>
+
+            <Form.Item
+                label="E-mail"
+                name="email"
+                rules={[{ required: true, message: 'Пожалуйста введите e-mail!' }]}
+            >
+                <Input onChange={(e) => setEmail(e.target.value)}/>
+            </Form.Item>
+
+            <Form.Item
+                label="Пароль"
+                name="password"
+                rules={[{ required: true, message: 'Пожалуйста введите пароль!' }]}
+            >
+                <Input.Password onChange={(e) => setPassword(e.target.value)}/>
+            </Form.Item>
+
+
+            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Button type="primary" htmlType="submit">
+                    Submit
+                </Button>
+            </Form.Item>
+        </Form>
+    </div>
+
+        <h2>Личный кабинет</h2>
+        <div>
+            Личная информация
+            Избранное
+            История заказов
+        </div>
+    </div>
 }
 
 export default Account;

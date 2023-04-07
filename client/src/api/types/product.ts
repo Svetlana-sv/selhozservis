@@ -20,3 +20,8 @@ export type Product = {
   // count: number
   // packing_id: number // packing: number || string ??
 }
+
+export type CountMapProduct = {
+  product: Product;
+  count: number;
+};

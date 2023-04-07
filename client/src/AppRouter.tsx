@@ -8,6 +8,7 @@ import About from "./pages/About/About";
 import Card from "./pages/Card/Card";
 import Contacts from "./pages/Contacts/Contacts";
 import Account from "./pages/Account/Account";
+import Order from "./pages/Order/Order";
 
 function AppRouter() {
 
@@ -20,6 +21,7 @@ function AppRouter() {
             <Route path='/catalog/:id' element={<Card/>}/>
             <Route path='/contacts' element={<Contacts/>}/>
             <Route path='/account' element={<Account/>}/>
+            <Route path='/order' element={<Order/>}/>
         </Routes>
     )
 }

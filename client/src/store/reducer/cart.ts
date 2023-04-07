@@ -3,10 +3,6 @@ import { Product } from "../../api/types/product";
 import {RootState} from "../store";
 
 const initialState: Product[] = [];
-// const initialState = {
-//   Product : {},
-//       CartCount : 0
-// };
 
 const cart = createSlice({
   name: 'cart',
@@ -17,7 +13,7 @@ const cart = createSlice({
       state.push(payload);
     },
     deleteProduct: (state: Product[], {payload}: { payload: Product }) => {
-      return state.filter(p => p.id !== payload.id);
+      return void(state.splice(state.findIndex(p => p.id === payload.id),1));
     }
   }
 });

@@ -33,28 +33,44 @@
 }
 * {
   box-sizing:border-box;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   font-weight: 500;
   color: #545353;
   text-decoration: none;
+  cursor: pointer;
 }
 a:hover {
   color: #b7b7b7;
 }
+
 html,
 body {
-  min-height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
+  height: 100%;
   background-color: #ffffff;
+
+  ::-webkit-scrollbar{
+    width: 6px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background-color: #3a3b3d;
+    height: 200px;
+    width: 2px;
+    border-radius: 10px;
+    background-clip: padding-box;
+  }
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2em;
+  font-family: 'Philosopher', sans-serif;
   line-height: 1.1;
 }
 
@@ -83,7 +99,10 @@ p{
   font-family: 'Ubuntu', sans-serif;
 }
 
-
+hr{
+  margin: 10px;
+  color: #9a9a9a;
+}
 
 
 //@media (prefers-color-scheme: light) {

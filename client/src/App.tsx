@@ -7,19 +7,39 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import styles from './App.module.scss';
 import Breadcrumb from "./components/Breadcrumbs/Breadcrumb";
+import {ToastContainer} from "react-toastify";
+import React from "react";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 
     return (
         <ReduxProvider store={store}>
             <BrowserRouter>
+
                 <div className={styles.app}>
                     <Header/>
+
                     <div className={styles.content}>
+                        <div className={styles.breadcrumb}>
                         <Breadcrumb/>
+                        </div>
                         <AppRouter/>
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={1000}
+                            hideProgressBar
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"/>
+
                     </div>
                     <Footer/>
+
                 </div>
             </BrowserRouter>
         </ReduxProvider>

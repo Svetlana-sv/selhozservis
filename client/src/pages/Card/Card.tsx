@@ -1,53 +1,68 @@
 import React from 'react';
 import style from './Card.module.scss'
-import {Button} from "../../components/lib/Button/Button";
+import {ButtonClick} from "../../components/lib/Button/Button";
 import {Collapse, Image} from "antd";
 import {useGetAllProductsQuery, useGetProductQuery} from "../../api/productApi";
 import {useLocation, useParams} from "react-router-dom";
 import {Product} from "../../api/types/product";
+import {IoHeartOutline} from "react-icons/io5";
+import {toast, ToastContainer} from "react-toastify";
+import {message} from "../../message/message";
+import {addProduct} from "../../store/reducer/cart";
+import useAppDispatch from "../../hooks/use-app-dispatch";
 const { Panel } = Collapse;
 const Card = () => {
-    // todo считывание id
     const params = useParams();
     const {data: product, isError, isFetching} = useGetProductQuery(params.id || '');
-    console.log(product)
+    const dispatch = useAppDispatch();
+    console.log(product?.data)
+    function handleClickAddProduct() {
+        dispatch(addProduct(product?.data!))
+    }
+
     return <div className={style.wrapper}>
-        <div>
-            <div>
-                <Image
-                    // @ts-ignore
-                    // src={`http://localhost:1337${product.data.attributes.image.data.attributes.url}`}
-                ></Image>
-            </div>
-            <div>
-                {/*<p>{product?.data.attributes.title}</p>*/}
-                <p>Доп инфа (фасовка и тд)</p>
-                <p>Описание</p>
-                <p>Цена</p>
-                <Button>Добававить в корзину</Button>
-            </div>
-        </div>
+        <div className={style.container}>
 
 
-        <div>
+            <div className={style.card}>
+
+                    <Image
+                        // @ts-ignore
+                        src={`http://localhost:1337${product?.data.attributes.image.data.attributes.url}`}
+                        height={300}
+                    ></Image>
+
+            </div>
+            <div className={style.description}>
+                <h1>{product?.data.attributes.title}</h1>
+                {/*<p>Доп инфа (фасовка и тд)</p>*/}
+                <h3>{product?.data.attributes.description}</h3>
+                <h3>{product?.data.attributes.price}</h3>
+                <ButtonClick onClick={handleClickAddProduct}>Добававить в корзину</ButtonClick>
+                <button className={style.heart} onClick={() => message({text: `${product?.data.attributes.title} добавлено в избранное`, type: 'info'})}><IoHeartOutline size={28}/>м</button>
+
+            </div>
+
+
+        <div className={style.information}>
             <Collapse ghost>
                 <Panel header="Сфера применения" key="1">
-                    {/*<p>{product?.data.attributes.application}</p>*/}
+                    <p>{product?.data.attributes.application}</p>
                 </Panel>
                 <Panel header="Состав" key="2">
-                    {/*<p>{product?.data.attributes.composition}</p>*/}
+                    <p>{product?.data.attributes.composition}</p>
                 </Panel>
                 <Panel header="Класс опасности" key="3">
-                    {/*<p>{product?.data.attributes.danger_class}</p>*/}
+                    <p>{product?.data.attributes.danger_class}</p>
                 </Panel>
                 <Panel header="Рекомендации по применению" key="4">
-                    {/*<p>{product?.data.attributes.destination}</p>*/}
+                    <p>{product?.data.attributes.destination}</p>
                 </Panel>
                 <Panel header="Дополнительная информация" key="5">
                     <p>eyteytyeryer</p>
                 </Panel>
             </Collapse>
-        </div>
+        </div> </div>
     </div>
 }
 

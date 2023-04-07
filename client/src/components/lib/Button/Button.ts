@@ -9,7 +9,7 @@ interface Props {
     height?: string;
 }
 
-export const Button = styled.button<Props>`
+export const ButtonClick = styled.button<Props>`
   width: ${p => p.width ? p.width : '170px'};
   height: ${p => p.height ? p.height : '40px'};
   background-color: #994C4C;

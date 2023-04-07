@@ -3,7 +3,7 @@ import style from '../Card.module.scss';
 import {Image, message} from 'antd'
 import useAppDispatch from "../../../hooks/use-app-dispatch";
 import {addProduct} from "../../../store/reducer/cart";
-import {Button} from '../../lib/Button/Button';
+import {ButtonClick} from '../../lib/Button/Button';
 import {IoAddOutline} from "react-icons/all";
 import {IoHeartOutline} from "react-icons/io5";
 import React from "react";
@@ -32,7 +32,6 @@ const CardVertical = (props: {product: Product}) => {
     }
 
     return <div className={style.card} >
-        {contextHolder}
         <div className={style.info}>Топ продаж</div>
         <button className={style.heart} onClick={handleAddProductFavouriteClick}><IoHeartOutline size={28}/></button>
         <div style={{marginTop: '25px'}}>
@@ -42,12 +41,12 @@ const CardVertical = (props: {product: Product}) => {
                    src={`http://localhost:1337${props.product.attributes.image.data.attributes.url}`} />
         </div>
         <div style={{marginLeft: '13px', textAlign: 'left',marginTop: '7px'}}>
-            <p className={style.title}>{props.product.attributes.title}</p>
+            <a className={style.title} onClick={handleCardClick}>{props.product.attributes.title}</a>
             <p className={style.description}>100x14 см, Фасовка: 60 шт в коробке</p>
 
             <div className={style.priceBlock} >
                 <p className={style.price} >Цена {props.product.attributes.price} ₽</p>
-                <Button width={'40px'} onClick={handleAddProductClick}><IoAddOutline size={28}/></Button>
+                <ButtonClick width={'40px'} onClick={handleAddProductClick}><IoAddOutline size={28}/></ButtonClick>
             </div>
         </div>
 

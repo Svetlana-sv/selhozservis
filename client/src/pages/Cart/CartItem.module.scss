@@ -12,8 +12,24 @@
 
   }
 
-  .blockInfo{
-    text-align: left;
+  .blockMain{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+    .blockInfo{
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .blockButtons{
+      align-items: flex-end;
+      display: flex;
+      flex-direction: column;
+
+      margin: 10px;
+    }
   }
 
 }
