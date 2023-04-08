@@ -9,7 +9,7 @@ import styles from './App.module.scss';
 import Breadcrumb from "./components/Breadcrumbs/Breadcrumb";
 
 function App() {
-
+	const a =0;
     return (
         <ReduxProvider store={store}>
             <BrowserRouter>
