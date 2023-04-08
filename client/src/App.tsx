@@ -12,7 +12,7 @@ import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-
+	const a =0;
     return (
         <ReduxProvider store={store}>
             <BrowserRouter>
