@@ -1,28 +1,27 @@
-.wrapper{
-  width: 90%;
+.container {
   margin-top: 20px;
-
-  .container{
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 20px 40px;
-    grid-template-areas:
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px 40px;
+  grid-template-areas:
     ". ."
     "f f";
 
 
-    .description{
+  .description {
     text-align: left;
 
-    button{
+    button {
       width: 200px;
     }
   }
-  .information { grid-area: f; }
 
-  .card{
+  .information {
+    grid-area: f;
+  }
+
+  .card {
     background: #FFFFFF;
     border: 2px solid #F5F5F5;
     box-shadow: 0px 4px 4px 1px rgba(211, 211, 211, 0.25);
@@ -34,5 +33,4 @@
     justify-content: center;
 
   }
-}}
-
+}

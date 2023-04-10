@@ -9,7 +9,7 @@ interface Props {
     height?: string;
 }
 
-export const ButtonClick = styled.button<Props>`
+export const Button = styled.button<Props>`
   width: ${p => p.width ? p.width : '170px'};
   height: ${p => p.height ? p.height : '40px'};
   background-color: #994C4C;
@@ -22,8 +22,6 @@ export const ButtonClick = styled.button<Props>`
   //box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
   box-shadow: none;
   height: 40px;
-
-
 
   &:hover {
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);

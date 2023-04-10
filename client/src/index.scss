@@ -52,6 +52,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
   background-color: #ffffff;
 
   ::-webkit-scrollbar{
@@ -98,10 +99,17 @@ p{
   margin: 0;
   font-family: 'Ubuntu', sans-serif;
 }
+input{
+  font-family: 'Ubuntu', sans-serif;
+}
 
 hr{
   margin: 10px;
   color: #9a9a9a;
+}
+
+#root {
+  height: 100%;
 }
 
 

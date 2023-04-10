@@ -6,11 +6,17 @@ import {useGetAllProductsQuery} from '../../api/productApi';
 import CardVertical from "../../components/Card/CardVertical/CardVertical";
 import {IoMenuOutline, IoReorderThreeOutline} from "react-icons/all";
 import {IoGridOutline} from "react-icons/io5";
+import Wrapper from '../../components/lib/Wrapper/Wrapper';
+import Card from '../../components/Card/Card';
+import ButtonIcon from '../../components/lib/Button/ButtonIcon';
+import { Skeleton } from 'antd';
 
 const Catalog = () => {
     const [search, setSearch] = useState('');
     const {data: products, isError, isFetching} = useGetAllProductsQuery();
-    return <div className={style.wpapper}>
+    const [sortingType, setSortingType] = useState('vertical');
+
+    return <Wrapper>
     <div className={style.catalog}>
         <div>
             <Search searchText={search} setSearchText={setSearch}/>
@@ -22,20 +28,24 @@ const Catalog = () => {
             <div className={style.sorting}>
                 <p>Сортировать: по возрастанию цены</p>
                 <div className={style.sortingCard}>
-                    <IoMenuOutline size={20}/>
-                    <IoGridOutline size={20}/>
+                    <ButtonIcon icon={IoMenuOutline} onClick={() => setSortingType('horizontal')} />
+                    <ButtonIcon icon={IoGridOutline} onClick={() => setSortingType('vertical')}/>
                 </div>
             </div>
             <div className={style.catalogList}>
-                {products?.data
+                { isFetching? 
+                <Skeleton active/>
+                :           
+                products?.data
                     .filter(product => product.attributes.title.toLowerCase().includes(search))
-                    .map(
-                        product => <CardVertical key={product.id} product={product}/>)
+                    .map(    
+                        product => <Card key={product.id} product={product} type={sortingType}/>
+                        )
                 }
             </div>
         </div>
 
-    </div></div>
+    </div></Wrapper>
 }
 
 export default Catalog;

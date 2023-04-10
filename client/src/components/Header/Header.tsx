@@ -13,7 +13,8 @@ import {
 import {Badge} from "antd";
 import {selectCart} from "../../store/reducer/cart";
 import useAppSelector from "../../hooks/use-app-selector";
-import Button from "../Buttons/Button";
+import ButtonIcon from "../lib/Button/ButtonIcon";
+import ButtonToFavorite from "../lib/Button/ButtonToFavorite/ButtonToFavorite";
 
 const Header = () => {
     const data = [{title: 'aaa'}, {title: 'bbb'}];
@@ -30,22 +31,22 @@ const Header = () => {
 
     }
 
-    return <>
+    return <div className={style.wrapper}>
         <div className={style.header}>
-            <div className={style.headerItem}>
-                <Button title={'Каталог'} link={'catalog'} icon={IoGridOutline}/>
-                <Button title={'Акции'} icon={IoPricetagsOutline}/>
-                <Button title={'Справочник'} icon={IoReaderOutline}/>
+            <div className={`${style.headerItem} ${style.headerLeftItem}`}>
+                <ButtonIcon title={'Каталог'} link={'catalog'} icon={IoGridOutline}/>
+                <ButtonIcon title={'Акции'} icon={IoPricetagsOutline}/>
+                <ButtonIcon title={'Справочник'} icon={IoReaderOutline}/>
             </div>
+
             <div className={style.headerItem}>
                 <img src={logo} className={style.logo}/>
             </div>
 
-            <div className={style.headerItem}>
-
+            <div className={`${style.headerItem} ${style.headerRightItem}`}>
                 <div className={style.dropdown}>
                     <div className={style.btn}>
-                        <Button title={'Избранное'} link={'cart'} icon={IoHeartOutline}/>
+                        <ButtonToFavorite type='link' title="Избранное"/>
                     </div>
                     <div className={style.dropdown_content}>
                         <a href="">cdcdcd</a>
@@ -56,7 +57,7 @@ const Header = () => {
 
                 <div className={style.dropdown}>
                     <div className={style.btn}>
-                        <Button title={'Аккаунт'} link={'account'} icon={IoPersonOutline}/>
+                        <ButtonIcon title={'Аккаунт'} link={'account'} icon={IoPersonOutline}/>
                     </div>
                     <div className={style.dropdown_content}>
                         <a href="">cdcdcd</a>
@@ -74,7 +75,7 @@ const Header = () => {
 
             </div>
         </div>
-    </>
+    </div>
 }
 
 export default Header;

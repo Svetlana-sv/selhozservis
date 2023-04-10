@@ -5,6 +5,7 @@ import {IoChevronForwardOutline} from "react-icons/all";
 import {useGetProductQuery} from "../../api/productApi";
 import {Typography} from "antd";
 import {TypographyProps} from "antd/es/typography";
+import Wrapper from "../lib/Wrapper/Wrapper";
 
 const CatalogBreadcrumb: BreadcrumbComponentType<'id'> = ({match}) => {
   const {data: product} = useGetProductQuery(match.params.id || '');
@@ -30,13 +31,15 @@ const routes = [
 const Breadcrumb = () => {
   const breadcrumbs = useBreadcrumbs(routes);
 
-  return <div className={style.breadcrumb}>
+  return <Wrapper>
+  <div className={style.breadcrumb}>
     {breadcrumbs.map(({match, breadcrumb}) => (
       <Link key={match.pathname} to={match.pathname}>
         {breadcrumb}<IoChevronForwardOutline/>
       </Link>
     ))}
-  </div>
+  </div> 
+   </Wrapper>
 }
 
 export default Breadcrumb;

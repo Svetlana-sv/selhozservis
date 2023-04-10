@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Card.module.scss'
-import {ButtonClick} from "../../components/lib/Button/Button";
+import {Button} from "../../components/lib/Button/Button";
 import {Collapse, Image} from "antd";
 import {useGetAllProductsQuery, useGetProductQuery} from "../../api/productApi";
 import {useLocation, useParams} from "react-router-dom";
@@ -10,17 +10,24 @@ import {toast, ToastContainer} from "react-toastify";
 import {message} from "../../message/message";
 import {addProduct} from "../../store/reducer/cart";
 import useAppDispatch from "../../hooks/use-app-dispatch";
+import Wrapper from '../../components/lib/Wrapper/Wrapper';
+import ToCartButton from '../../components/lib/Button/ButtonToCart/ButtonToCart';
+import ButtonToFavorite from '../../components/lib/Button/ButtonToFavorite/ButtonToFavorite';
 const { Panel } = Collapse;
 const Card = () => {
     const params = useParams();
     const {data: product, isError, isFetching} = useGetProductQuery(params.id || '');
     const dispatch = useAppDispatch();
-    console.log(product?.data)
+
     function handleClickAddProduct() {
         dispatch(addProduct(product?.data!))
     }
 
-    return <div className={style.wrapper}>
+    // кнопки удалить, в избранное, добавить (двух видов)
+
+    // про карточку
+
+    return <Wrapper>
         <div className={style.container}>
 
 
@@ -38,9 +45,9 @@ const Card = () => {
                 {/*<p>Доп инфа (фасовка и тд)</p>*/}
                 <h3>{product?.data.attributes.description}</h3>
                 <h3>{product?.data.attributes.price}</h3>
-                <ButtonClick onClick={handleClickAddProduct}>Добававить в корзину</ButtonClick>
-                <button className={style.heart} onClick={() => message({text: `${product?.data.attributes.title} добавлено в избранное`, type: 'info'})}><IoHeartOutline size={28}/>м</button>
-
+                <ToCartButton product={product?.data as Product} type='button'/>
+                <ToCartButton product={product?.data as Product} type='icon'/>
+                <ButtonToFavorite product={product?.data as Product} type='button'/>
             </div>
 
 
@@ -63,7 +70,7 @@ const Card = () => {
                 </Panel>
             </Collapse>
         </div> </div>
-    </div>
+    </Wrapper>
 }
 
 export default Card;

@@ -12,18 +12,18 @@ import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-	const a =0;
+
     return (
         <ReduxProvider store={store}>
             <BrowserRouter>
 
                 <div className={styles.app}>
                     <Header/>
-
+                    
                     <div className={styles.content}>
-                        <div className={styles.breadcrumb}>
+                     
                         <Breadcrumb/>
-                        </div>
+
                         <AppRouter/>
                         <ToastContainer
                             position="top-right"
@@ -36,7 +36,6 @@ function App() {
                             draggable
                             pauseOnHover
                             theme="light"/>
-
                     </div>
                     <Footer/>
 

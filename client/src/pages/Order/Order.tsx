@@ -6,6 +6,7 @@ import {selectCart} from "../../store/reducer/cart";
 import {CountMapProduct} from "../../api/types/product";
 import CartItem from "../Cart/CartItem";
 import React from "react";
+import Wrapper from "../../components/lib/Wrapper/Wrapper";
 
 const Order = () => {
   const cart = useAppSelector(selectCart);
@@ -29,7 +30,7 @@ const Order = () => {
             += product.attributes.price
       })
 
-  return <div className={style.wpapper}>
+  return <Wrapper>
     <div className={style.container}>
       <div>
 
@@ -98,7 +99,7 @@ const Order = () => {
       </div>
 
 
-  </div></div>
+  </div></Wrapper>
 }
 
 export default Order

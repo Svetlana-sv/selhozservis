@@ -1,7 +1,7 @@
 import {toast, TypeOptions} from "react-toastify";
+import React from "react";
 
 export const message = (props: {text: string, type: TypeOptions}) => toast(`${props.text}`, {
-    // position: toast.POSITION.TOP_RIGHT,
     type: props.type,
     position: "top-right",
     autoClose: 1000,

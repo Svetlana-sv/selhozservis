@@ -2,6 +2,7 @@ import React from 'react';
 import styles from "./Home.module.scss"
 import {Carousel} from "antd";
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
+import Wrapper from '../../components/lib/Wrapper/Wrapper';
 
 const contentStyle: React.CSSProperties = {
     height: '40vh',
@@ -13,7 +14,7 @@ const contentStyle: React.CSSProperties = {
 };
 const Home = () => {
 
-    return <React.Fragment>
+    return <Wrapper>
         <Carousel autoplay>
             <div>
                 <h3 style={contentStyle}>Качественные средства для роста растений по выгодным ценам</h3>
@@ -52,7 +53,7 @@ const Home = () => {
             </ul>
         </div>
 
-    </React.Fragment>
+    </Wrapper>
 }
 
 export default Home;

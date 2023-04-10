@@ -1,54 +1,55 @@
 import React from "react";
 import {CountMapProduct, Product} from "../../api/types/product";
 import {Image, InputNumber} from "antd";
-import {ButtonClick} from '../../components/lib/Button/Button'
-import Button from '../../components/Buttons/Button'
+import {Button} from '../../components/lib/Button/Button'
+import ButtonIcon from '../../components/lib/Button/ButtonIcon'
 import style from './CartItem.module.scss'
 import {addProduct, deleteProduct} from "../../store/reducer/cart";
 import useAppDispatch from "../../hooks/use-app-dispatch";
-import {IoHeartOutline} from "react-icons/io5";
+import {IoAddOutline, IoHeartOutline, IoRemoveOutline} from "react-icons/io5";
 import {message} from "../../message/message";
+import ButtonToFavorite from "../../components/lib/Button/ButtonToFavorite/ButtonToFavorite";
+import ButtonDelete from "../../components/lib/Button/ButtonDelete/ButtonDelete";
 const CartItem = (props: {product: CountMapProduct}) => {
-    const dispatch = useAppDispatch();
+const dispatch = useAppDispatch();
 
-    const handleDeleteProductClick = () => {
-        dispatch(deleteProduct(props.product.product))
-    };
+const handleDeleteProductClick = () => {
+dispatch(deleteProduct(props.product.product))
+};
 
-    const handleAddProductFavouriteClick = () => {
-       // todo добавление в избранное
-    };
+const handleAddProductFavouriteClick = () => {
+// todo добавление в избранное
+};
 
-    return <div className={style.cartItem}>
-        <div className={style.blockImage}>
-            <Image loading={'lazy'}
-                   height={150}
-                // @ts-ignore
-                   src={`http://localhost:1337${props.product.product.attributes.image.data.attributes.url}`} />
-        </div>
-        <div className={style.blockMain}>
+return <div className={style.cartItem}>
+    <div className={style.blockImage}>
+        <Image loading={'lazy'} height={150} // @ts-ignore
+            src={`http://localhost:1337${props.product.product.attributes.image.data.attributes.url}`} />
+    </div>
+    <div className={style.blockMain}>
 
-                <div className={style.blockInfo}>
-                    <h2>{props.product.product.attributes.title}</h2>
-                    <div>
-                    <button onClick={(e) => {
-                        dispatch(deleteProduct(props.product.product))
-                    }}>-</button>
-                    <input value={props.product.count} />
-                    <button onClick={(e) => {
+        <div className={style.blockInfo}>
+            <h2>{props.product.product.attributes.title}</h2>
+            <div className={style.blockInput}>
+                <ButtonIcon icon={IoRemoveOutline} onClick={()=> {
+                    dispatch(deleteProduct(props.product.product))
+                    }}/>
+                    <input value={props.product.count} placeholder="Search products" onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        const newValue = e.target.value;
+                    }}/>
+                    <ButtonIcon icon={IoAddOutline} onClick={()=> {
                         dispatch(addProduct(props.product.product))
-                    }}>+</button>
-                </div>
-                    <p>Цена: {props.product.product.attributes.price} ₽ за штуку</p>
-                </div>
+                        }}/>
+            </div>
+            <p className={style.price}>Цена: {props.product.product.attributes.price} ₽ за штуку</p>
+        </div>
 
         <div className={style.blockButtons}>
-            {/*todo как добавить:*/}
-            {/*onClick={() => message({text: `${product?.data.attributes.title} добавлено в избранное`, type: 'info'})}*/}
-                <Button title={''} link={'cart'} icon={IoHeartOutline} />
-                <ButtonClick onClick={handleDeleteProductClick}>Удалить</ButtonClick>
-            </div></div>
+            <ButtonToFavorite product={props.product.product} />
+            <ButtonDelete product={props.product.product} />
+        </div>
     </div>
+</div>
 }
 
 export default CartItem

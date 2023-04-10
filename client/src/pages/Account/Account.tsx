@@ -5,6 +5,7 @@ import React from "react";
 import {message} from "../../message/message";
 import style from './Account.module.scss'
 import {Button, Form, Input} from "antd";
+import Wrapper from "../../components/lib/Wrapper/Wrapper";
 
 const Account = () => {
     const [register, {isLoading, isSuccess, error, isError}] =
@@ -31,7 +32,7 @@ const Account = () => {
         message({text: `Ошибка!`, type: 'error'})
     };
 
-    return <div className={style.wpapper}>
+    return <Wrapper>
 
     <div className={style.form}>
 
@@ -84,7 +85,7 @@ const Account = () => {
             Избранное
             История заказов
         </div>
-    </div>
+    </Wrapper>
 }
 
 export default Account;

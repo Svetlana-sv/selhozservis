@@ -1,30 +1,12 @@
 import {Product} from "../../../api/types/product";
-import style from '../Card.module.scss';
-import {Image, message} from 'antd'
-import useAppDispatch from "../../../hooks/use-app-dispatch";
-import {addProduct} from "../../../store/reducer/cart";
-import {ButtonClick} from '../../lib/Button/Button';
-import {IoAddOutline} from "react-icons/all";
-import {IoHeartOutline} from "react-icons/io5";
+import style from './CardVertical.module.scss'
+import {Image} from 'antd'
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import {useCardVertical} from "../../../hooks/use-card-vertical";
-import {useGetAllProductsQuery} from "../../../api/productApi";
+import ButtonToFavorite from "../../lib/Button/ButtonToFavorite/ButtonToFavorite";
+import ButtonToCart from "../../lib/Button/ButtonToCart/ButtonToCart";
 
 const CardVertical = (props: {product: Product}) => {
-    const {addToCart, addToFavourite, contextHolder} = useCardVertical(props);
-    const dispatch = useAppDispatch();
-
-    const handleAddProductClick = () => {
-        dispatch(addProduct(props.product))
-        addToCart()
-    }
-
-    const handleAddProductFavouriteClick = () => {// todo нельзя добавить в избранное если там уже есть данный товар, изменять цвет кнопки
-        addToFavourite()
-        // todo добавление в избранное
-    }
-
     const navigate = useNavigate();
 
     const handleCardClick = () => {
@@ -33,8 +15,8 @@ const CardVertical = (props: {product: Product}) => {
 
     return <div className={style.card} >
         <div className={style.info}>Топ продаж</div>
-        <button className={style.heart} onClick={handleAddProductFavouriteClick}><IoHeartOutline size={28}/></button>
-        <div style={{marginTop: '25px'}}>
+        <ButtonToFavorite className={style.heart} product={props.product} type='button'/>
+        <div className={style.img}>
             <Image loading={'lazy'}
                    height={200}
                 // @ts-ignore
@@ -46,7 +28,7 @@ const CardVertical = (props: {product: Product}) => {
 
             <div className={style.priceBlock} >
                 <p className={style.price} >Цена {props.product.attributes.price} ₽</p>
-                <ButtonClick width={'40px'} onClick={handleAddProductClick}><IoAddOutline size={28}/></ButtonClick>
+               <ButtonToCart product={props.product} type='icon'/>
             </div>
         </div>
 
