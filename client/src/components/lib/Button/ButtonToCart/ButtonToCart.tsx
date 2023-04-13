@@ -16,7 +16,6 @@ const ButtonToCart = (props: ToCartButtonProps) => {
     function handleClickAddProduct() {
         dispatch(addProduct(props.product))
         message({text: `${props.product.attributes.title} добавлено в корзину`, type: 'info'})}
-    
 
     return (
         props.type === 'icon' ?

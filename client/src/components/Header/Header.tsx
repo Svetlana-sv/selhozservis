@@ -35,8 +35,8 @@ const Header = () => {
         <div className={style.header}>
             <div className={`${style.headerItem} ${style.headerLeftItem}`}>
                 <ButtonIcon title={'Каталог'} link={'catalog'} icon={IoGridOutline}/>
-                <ButtonIcon title={'Акции'} icon={IoPricetagsOutline}/>
-                <ButtonIcon title={'Справочник'} icon={IoReaderOutline}/>
+                <ButtonIcon title={'Акции'} link={'catalog'} icon={IoPricetagsOutline}/>
+                <ButtonIcon title={'Справочник'} link={'catalog'} icon={IoReaderOutline}/>
             </div>
 
             <div className={style.headerItem}>
@@ -68,7 +68,7 @@ const Header = () => {
 
 
                 <button>
-                    <Badge count={cart.length}>
+                    <Badge count={cart.length} color='#994C4C'>
                         <Link to={"/cart"}><IoCartOutline size={28} style={{marginRight: '10px'}}/></Link></Badge>
                 </button>
 

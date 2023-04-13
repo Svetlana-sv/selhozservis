@@ -17,7 +17,6 @@ const productApi = api.injectEndpoints({
       query: newProduct => ({
         url: `/products`,
         method: 'POST',
-        // Include the entire post object as the body of the request
         body: newProduct
       })
     }),
@@ -25,3 +24,4 @@ const productApi = api.injectEndpoints({
 })
 
 export const {useGetAllProductsQuery, useGetProductQuery, useLazyGetProductQuery} = productApi
+
