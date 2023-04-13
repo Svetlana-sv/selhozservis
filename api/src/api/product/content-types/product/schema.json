@@ -52,18 +52,6 @@
     },
     "application": {
       "type": "richtext"
-    },
-    "favorite_id": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::favorite.favorite",
-      "inversedBy": "product_id"
-    },
-    "category_id": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "product_id"
     }
   }
 }

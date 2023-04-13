@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "product_id": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "favorite_id"
-    },
     "user_id": {
       "type": "relation",
       "relation": "manyToMany",

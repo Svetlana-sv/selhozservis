@@ -21,12 +21,6 @@
     },
     "level": {
       "type": "integer"
-    },
-    "product_id": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "category_id"
     }
   }
 }
