@@ -9,6 +9,7 @@ import Card from "./pages/Card/Card";
 import Contacts from "./pages/Contacts/Contacts";
 import Account from "./pages/Account/Account";
 import Order from "./pages/Order/Order";
+import Wholesale from "./pages/Wholesale/Wholesale";
 
 function AppRouter() {
 
@@ -22,6 +23,7 @@ function AppRouter() {
             <Route path='/contacts' element={<Contacts/>}/>
             <Route path='/account' element={<Account/>}/>
             <Route path='/order' element={<Order/>}/>
+            <Route path='/wholesale' element={<Wholesale/>}/>
         </Routes>
     )
 }

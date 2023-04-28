@@ -10,12 +10,20 @@ import Breadcrumb from "./components/Breadcrumbs/Breadcrumb";
 import {ToastContainer} from "react-toastify";
 import React from "react";
 import "react-toastify/dist/ReactToastify.css";
+import { ConfigProvider } from "antd";
 
 function App() {
     return (
         <ReduxProvider store={store}>
             <BrowserRouter>
-
+                <ConfigProvider
+                    theme={{
+                        token: {
+                            colorPrimary: '#994C4C',
+                            // fontFamily: 'var(--Ubuntu--FontFamily)'
+                        },
+                    }}
+                >
                 <div className={styles.app}>
                     <Header/>
 
@@ -35,11 +43,11 @@ function App() {
                             draggable
                             pauseOnHover
                             theme="light"/>
-
                     </div>
                     <Footer/>
 
                 </div>
+                </ConfigProvider>
             </BrowserRouter>
         </ReduxProvider>
 

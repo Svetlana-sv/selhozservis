@@ -26,6 +26,8 @@ const routes = [
   {path: '/cart', breadcrumb: 'Корзина'},
   {path: '/account', breadcrumb: 'Аккаунт'},
   {path: '/cart', breadcrumb: 'Корзина'},
+  {path: '/order', breadcrumb: 'Оформление заказа'},
+  {path: '/wholesale', breadcrumb: 'Оптовым покупателям'},
 ];
 
 const Breadcrumb = () => {

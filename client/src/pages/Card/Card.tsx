@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Card.module.scss'
 import {Button} from "../../components/lib/Button/Button";
-import {Collapse, Image} from "antd";
+import {Collapse, Image, Tabs} from "antd";
 import {useGetAllProductsQuery, useGetProductQuery} from "../../api/productApi";
 import {useLocation, useParams} from "react-router-dom";
 import {Product} from "../../api/types/product";
@@ -31,22 +31,26 @@ const Card = () => {
         <div className={style.container}>
 
 
-            <div className={style.card}>
-
+        <div className={style.card}>
+            <div>
+                <div className={style.info}>Топ продаж</div>
+                <div className={style.image}>
                     <Image
                         // @ts-ignore
                         src={`http://localhost:1337${product?.data.attributes.image.data.attributes.url}`}
                         height={300}
                     ></Image>
 
+                </div>
             </div>
+
             <div className={style.description}>
                 <h1>{product?.data.attributes.title}</h1>
                 {/*<p>Доп инфа (фасовка и тд)</p>*/}
                 <h3>{product?.data.attributes.description}</h3>
                 <h3>{product?.data.attributes.price}</h3>
                 <ToCartButton product={product?.data as Product} type='button'/>
-                <ToCartButton product={product?.data as Product} type='icon'/>
+                {/*<ToCartButton product={product?.data as Product} type='icon'/>*/}
                 <ButtonToFavorite product={product?.data as Product} type='button'/>
             </div>
 
@@ -69,7 +73,28 @@ const Card = () => {
                     <p>eyteytyeryer</p>
                 </Panel>
             </Collapse>
-        </div> </div>
+        </div>
+
+
+
+        </div>
+
+        <Tabs
+            // onChange={onChange}
+            tabPosition={'top'}
+            type="card"
+            size={'large'}
+            items={new Array(3).fill(null).map((_, i) => {
+                const id = String(i + 1);
+                return {
+                    label: `Tab ${id}`,
+                    key: id,
+                    children: `Content of Tab Pane ${id}`,
+                };
+            })}
+        />
+
+        </div>
     </Wrapper>
 }
 

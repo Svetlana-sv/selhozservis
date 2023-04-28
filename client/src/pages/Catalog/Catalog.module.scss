@@ -24,7 +24,15 @@
     flex-direction: row;
     justify-content: space-between;
 
-    .sortingCard {}
+    .sortingCard {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      .sortingCardTitle {
+        margin-right: 10px;
+      }
+    }
   }
 
   .catalogList {

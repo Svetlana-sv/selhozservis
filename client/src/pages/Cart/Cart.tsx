@@ -64,7 +64,7 @@ const Cart = () => {
 {cart.length > 0 ? <div className={style.cartClear} >
                 <Button onClick={handleClearCart}>Очистить корзину</Button>
                 </div>
-                : <div className={style.cartClearText} >Добавьте товар</div>}
+                : <div className={style.cartClearText} >В Вашей корзине пока ничего нет</div>}
 
             </div>
             {/*right side*/}

@@ -28,9 +28,13 @@ const Catalog = () => {
             <div className={style.sorting}>
                 <p>Сортировать: по возрастанию цены</p>
                 <div className={style.sortingCard}>
-                    <ButtonIcon icon={IoMenuOutline} onClick={() => setSortingType('horizontal')} />
-                    <ButtonIcon icon={IoGridOutline} onClick={() => setSortingType('vertical')}/>
+                    <p className={style.sortingCardTitle}>Вид:</p>
+                    <div>
+                        <ButtonIcon icon={IoMenuOutline} onClick={() => setSortingType('horizontal')} />
+                        <ButtonIcon icon={IoGridOutline} onClick={() => setSortingType('vertical')}/>
+                    </div>
                 </div>
+
             </div>
             <div className={style.catalogList}>
                 { isFetching? 
