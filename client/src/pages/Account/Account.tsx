@@ -6,6 +6,8 @@ import {message} from "../../message/message";
 import style from './Account.module.scss'
 import {Button, Form, Input} from "antd";
 import Wrapper from "../../components/lib/Wrapper/Wrapper";
+import { selectUserToken, setUserToken } from "../../store/reducer/authSlice";
+import useAppSelector from "../../hooks/use-app-selector";
 
 const Account = () => {
     const [register, {isLoading, isSuccess, error, isError}] =
@@ -14,6 +16,8 @@ const Account = () => {
     const [password, setPassword] = useState('');
     const [username, setUserName] = useState('');
 
+    const dispatch = useAppDispatch();
+
     const submitForm = () => {
         if (email.length > 0 && password.length > 0){
             register({email, password, username})
@@ -21,6 +25,7 @@ const Account = () => {
                 .then(reponse => {
                     if (reponse.token) {
                         message({text: `Вы зарегистрированы!`, type: 'success'})
+                        dispatch(setUserToken(reponse.token))
                     } else {
                         message({text: `Ошибка!`, type: 'error'})
                     }
@@ -28,12 +33,16 @@ const Account = () => {
         }
     }
 
+    const auth = useAppSelector(selectUserToken);
+
     const onFinishFailed = (errorInfo: any) => {
         message({text: `Ошибка!`, type: 'error'})
     };
 
-    return <Wrapper>
 
+
+    return <Wrapper>
+    {!auth ?
     <div className={style.form}>
 
         <Form
@@ -77,14 +86,20 @@ const Account = () => {
                 </Button>
             </Form.Item>
         </Form>
-    </div>
 
-        <h2>Личный кабинет</h2>
+        <a href="">Зарегистрироваться</a>
+    </div>
+    :
+    <div>
+ <h2>Личный кабинет</h2>
         <div>
             Личная информация
             Избранное
             История заказов
         </div>
+    </div>
+       
+        }
     </Wrapper>
 }
 

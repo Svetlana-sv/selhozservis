@@ -7,12 +7,13 @@ import style from "./Cart.module.scss"
 import {Button} from '../../components/lib/Button/Button'
 import {CountMapProduct, Product} from "../../api/types/product";
 import {navigate} from "ionicons/icons";
-import {Image, message} from 'antd'
+import {Image} from 'antd';
 import {useNavigate} from "react-router-dom";
 import {IoArrowForwardOutline} from "react-icons/all";
 import mir from '../../assets/Mir-logo.png'
 import Wrapper from '../../components/lib/Wrapper/Wrapper';
 import useAppDispatch from '../../hooks/use-app-dispatch';
+import {message} from "../../message/message";
 
 const Cart = () => {
     const cart = useAppSelector(selectCart);
@@ -39,7 +40,12 @@ const Cart = () => {
     const navigate = useNavigate();
 
     function handleClickOrder() {
-        navigate(`/order`)
+        if (cart.length > 0) {
+            navigate(`/order`)
+        }else{
+            message({text: `В Вашей корзине ${cart.length} товаров!`, type: 'info'})
+        }
+        
     }
 
     const handleClearCart = () => {

@@ -3,8 +3,15 @@ import { Product } from "../../api/types/product";
 import {RootState} from "../store";
 import {IUser} from "../../api/types/user";
 
+type AuthState = {
+    loading: boolean,
+    userInfo: any,
+    userToken: string | null,
+    error: any,
+    success: boolean,
+}
 
-const initialState = {
+const initialState: AuthState = {
     loading: false,
     userInfo: {},
     userToken: null,
@@ -17,9 +24,12 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         reset: () => initialState,
+        setUserToken: (state, {payload}: { payload: string }) => {
+            state.userToken=payload
+          },
     }
 });
 
-// export const {addProduct,deleteProduct, reset} = cart.actions;
-// export const selectUser = (state: RootState) => state.user;
+export const {setUserToken, reset} = authSlice.actions;
+export const selectUserToken = (state: RootState) => state.auth.userToken;
 export default authSlice.reducer;

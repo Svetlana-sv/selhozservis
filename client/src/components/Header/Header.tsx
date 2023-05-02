@@ -68,8 +68,8 @@ const Header = () => {
         <div className={style.header}>
             <div className={`${style.headerItem} ${style.headerLeftItem}`}>
                 <ButtonIcon title={'Каталог'} link={'catalog'} icon={IoGridOutline}/>
-                <ButtonIcon title={'Акции'} link={'catalog'} icon={IoPricetagsOutline}/>
-                <ButtonIcon title={'О препаратах'} link={'catalog'} icon={IoReaderOutline}/>
+                <ButtonIcon title={'Акции'} link={'sale'} icon={IoPricetagsOutline}/>
+                <ButtonIcon title={'О препаратах'} link={'guidebook'} icon={IoReaderOutline}/>
             </div>
 
             <div className={style.headerItem}>
@@ -122,7 +122,7 @@ const Header = () => {
                 <button>
                     <Badge count={cart.length} color='#994C4C'>
                         <Link to={"/cart"}><IoCartOutline size={28} style={{marginRight: '10px'}}/></Link></Badge>
-                    <p style={{marginLeft: '12px'}}>Корзина</p>
+                    {/* <p style={{marginLeft: '12px'}}>Корзина</p> */}
                 </button>
 
 

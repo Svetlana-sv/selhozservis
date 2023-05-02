@@ -6,29 +6,7 @@ import {useGetProductQuery} from "../../api/productApi";
 import {Typography} from "antd";
 import {TypographyProps} from "antd/es/typography";
 import Wrapper from "../lib/Wrapper/Wrapper";
-
-const CatalogBreadcrumb: BreadcrumbComponentType<'id'> = ({match}) => {
-  const {data: product} = useGetProductQuery(match.params.id || '');
-
-  return <span>
-    {product?.data.attributes.title}
-  </span>
-}
-
-const routes = [
-  {path: '/', breadcrumb: 'Главная'},
-  {path: '/catalog', breadcrumb: 'Каталог'},
-  {path: '/contacts', breadcrumb: 'Контакты'},
-  {path: '/catalog/:id', breadcrumb: CatalogBreadcrumb},
-  {path: '/about', breadcrumb: 'О компании'},
-  {path: '/contacts', breadcrumb: 'Контакты'},
-  {path: '/card', breadcrumb: 'Карточка'},
-  {path: '/cart', breadcrumb: 'Корзина'},
-  {path: '/account', breadcrumb: 'Аккаунт'},
-  {path: '/cart', breadcrumb: 'Корзина'},
-  {path: '/order', breadcrumb: 'Оформление заказа'},
-  {path: '/wholesale', breadcrumb: 'Оптовым покупателям'},
-];
+import { routes } from "./BreadcrumbRoutes";
 
 const Breadcrumb = () => {
   const breadcrumbs = useBreadcrumbs(routes);

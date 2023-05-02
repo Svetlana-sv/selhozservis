@@ -10,6 +10,12 @@ import Contacts from "./pages/Contacts/Contacts";
 import Account from "./pages/Account/Account";
 import Order from "./pages/Order/Order";
 import Wholesale from "./pages/Wholesale/Wholesale";
+import Manufacturers from "./pages/Manufacturers/Manufacturers";
+import Sale from "./pages/Sale/Sale";
+import GuideBook from "./pages/GuideBook/GuideBook";
+import PersonalDataProtection from "./pages/PersonalDataProtection/PersonalDataProtection";
+import PublicOfferAgreement from "./pages/PublicOfferAgreement/PublicOfferAgreement";
+import PaymentDelivery from "./pages/PaymentDelivery/PaymentDelivery";
 
 function AppRouter() {
 
@@ -24,6 +30,12 @@ function AppRouter() {
             <Route path='/account' element={<Account/>}/>
             <Route path='/order' element={<Order/>}/>
             <Route path='/wholesale' element={<Wholesale/>}/>
+            <Route path='/manufacturers' element={<Manufacturers/>}/>
+            <Route path='/sale' element={<Sale/>}/>
+            <Route path='/guidebook' element={<GuideBook/>}/>
+            <Route path='/PersonalDataProtection' element={<PersonalDataProtection/>}/>
+            <Route path='/PublicOfferAgreement' element={<PublicOfferAgreement/>}/>
+            <Route path='/paymentAndDelivery' element={<PaymentDelivery/>}/>
         </Routes>
     )
 }
