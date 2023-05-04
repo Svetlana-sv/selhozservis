@@ -1,8 +1,13 @@
 import React from 'react';
 import styles from "./Home.module.scss"
-import {Carousel} from "antd";
+import {Carousel, Image} from "antd";
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
 import Wrapper from '../../components/lib/Wrapper/Wrapper';
+import {Paragraphy, Title, Text} from '../../components/lib/Typography/Typography';
+import pek from '../../assets/pek.png';
+import sdek from '../../assets/download.png';
+import dl from '../../assets/Delovye_linii-2.jpg';
+
 
 const contentStyle: React.CSSProperties = {
     height: '40vh',
@@ -30,9 +35,12 @@ const Home = () => {
             </div>
         </Carousel>
         <br/>
-        <h2>Рекомендуем</h2>
+        <Title align={'left'}>Рекомендуем</Title>
+        <div>
+            <Text>Здесь будут карточки</Text>
+        </div>
         <br/>
-        <h2>Доставка</h2>
+        <Title align={'left'}>Доставка</Title>
         <br/>
         <div>
             <ul>
@@ -52,6 +60,17 @@ const Home = () => {
                     Доставка осуществляется за счет Покупателя и оплачивается отдельно.
                 </li>
             </ul>
+            <div>
+                <Image loading={'lazy'}
+                       width={200}
+                       src={pek} />
+                <Image loading={'lazy'}
+                       width={200}
+                       src={sdek} />
+                <Image loading={'lazy'}
+                       width={200}
+                       src={dl} />
+            </div>
         </div>
         <br/>
 

@@ -14,7 +14,10 @@ const cart = createSlice({
     },
     deleteProduct: (state: Product[], {payload}: { payload: Product }) => {
       return void(state.splice(state.findIndex(p => p.id === payload.id),1));
-    }
+    },
+    // changeSum: (state, payload) => {
+    //
+    // }
   }
 });
 

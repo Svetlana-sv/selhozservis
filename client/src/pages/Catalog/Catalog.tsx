@@ -10,6 +10,7 @@ import Wrapper from '../../components/lib/Wrapper/Wrapper';
 import Card from '../../components/Card/Card';
 import ButtonIcon from '../../components/lib/Button/ButtonIcon';
 import { Skeleton } from 'antd';
+import {Text,Paragraphy} from '../../components/lib/Typography/Typography'
 
 const Catalog = () => {
     const [search, setSearch] = useState('');
@@ -26,9 +27,9 @@ const Catalog = () => {
         </div>
         <div>
             <div className={style.sorting}>
-                <p>Сортировать: по возрастанию цены</p>
+                <Paragraphy>Сортировать: по возрастанию цены</Paragraphy>
                 <div className={style.sortingCard}>
-                    <p className={style.sortingCardTitle}>Вид:</p>
+                    <Paragraphy className={style.sortingCardTitle}>Вид:</Paragraphy>
                     <div>
                         <ButtonIcon icon={IoMenuOutline} onClick={() => setSortingType('horizontal')} />
                         <ButtonIcon icon={IoGridOutline} onClick={() => setSortingType('vertical')}/>

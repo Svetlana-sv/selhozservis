@@ -5,9 +5,10 @@ import cart, {reset, selectCart} from "../../store/reducer/cart";
 import CartItem from "./CartItem";
 import style from "./Cart.module.scss"
 import {Button} from '../../components/lib/Button/Button'
+import {Title, Paragraphy, Text} from '../../components/lib/Typography/Typography'
 import {CountMapProduct, Product} from "../../api/types/product";
 import {navigate} from "ionicons/icons";
-import {Image} from 'antd';
+import {Image, Input} from 'antd';
 import {useNavigate} from "react-router-dom";
 import {IoArrowForwardOutline} from "react-icons/all";
 import mir from '../../assets/Mir-logo.png'
@@ -42,10 +43,10 @@ const Cart = () => {
     function handleClickOrder() {
         if (cart.length > 0) {
             navigate(`/order`)
-        }else{
+        } else {
             message({text: `В Вашей корзине ${cart.length} товаров!`, type: 'info'})
         }
-        
+
     }
 
     const handleClearCart = () => {
@@ -54,59 +55,67 @@ const Cart = () => {
 
     return <div className={style.cart}>
         <Wrapper>
-        <h2 style={{textAlign: 'left'}}>Корзина</h2>
-        
-        <div className={style.container}>
-            
-            <div className={style.cartItems}>
-                
-               
-                {Array.from(countMap)
-                .map((product) => {
-                        const [id, countMapItem] = product
-                        return <CartItem
-                            product={countMapItem} key={id}/>
-                    })}
-{cart.length > 0 ? <div className={style.cartClear} >
-                <Button onClick={handleClearCart}>Очистить корзину</Button>
+            <div className={style.container}>
+
+                <div className={style.cartItems}>
+
+
+                    {Array.from(countMap)
+                        .map((product) => {
+                            const [id, countMapItem] = product
+                            return <CartItem
+                                product={countMapItem} key={id}/>
+                        })}
+                    {cart.length > 0 ? <div className={style.cartClear}>
+                            <Button onClick={handleClearCart}>Очистить корзину</Button>
+                        </div>
+                        : <div className={style.cartClearText}>В Вашей корзине пока ничего нет</div>}
+
                 </div>
-                : <div className={style.cartClearText} >В Вашей корзине пока ничего нет</div>}
+                {/*right side*/}
+                <div className={style.cartBlockInfo}>
+                    <Title color={'#994C4C'} align={'left'}>Количество товаров в корзине: {cart.length}</Title>
+
+                    {/*{if (price >= 9000){*/}
+                    {/*    <p>Доставка: бесплатно</p>*/}
+                    {/*    <hr/>*/}
+                    {/*    }*/}
+                    {/*}*/}
+                    <Title align={'left'} weight={'500'}>Итоговая сумма {price.toFixed(2)} ₽</Title>
+
+                    <Button onClick={handleClickOrder}>Оформить заказ</Button>
+                </div>
+
+                <div className={style.cartBlockInfo}>
+                    <Title color={'#994C4C'} align={'left'}>Принимаем к оплате</Title>
+                    <div className={style.cartBlockInfoImage}>
+                        <Image height={25} src={`${mir}`}/>
+                    </div>
+                    <Text align={'left'} fontSize={'16px'} weight={'300'}>Также можно расплатиться наличными при
+                        доставке</Text>
+                    <Title color={'#994C4C'} align={'left'}>Доставка</Title>
+                    <Text align={'left'} fontSize={'16px'} weight={'300'}>Бесплатно при заказе от 30 00 р</Text>
+                </div>
 
             </div>
-            {/*right side*/}
-            <div className={style.cartBlockInfo}>
-                <h2>В корзине {cart.length} товаров</h2>
-                <hr/>
-                {/*{if (price >= 9000){*/}
-                {/*    <p>Доставка: бесплатно</p>*/}
-                {/*    <hr/>*/}
-                {/*    }*/}
-                {/*}*/}
-                <h2>Итоговая сумма {price.toFixed(2)} ₽</h2>
-                <hr/>
-                <Button onClick={handleClickOrder}>Оформить заказ</Button>
-            </div>
 
-            <div className={style.cartBlockInfo}>
-                <h2>Принимаем к оплате</h2>
-                <Image height={25} src={`${mir}`}/>
-                <p>Также можно расплатиться наличными при доставке</p>
-                <h2>Доставка</h2>
-                <p>Бесплатно при заказе от 30 00 р</p>
-            </div>
-
-        </div>
         </Wrapper>
-        
-    <div className={style.blockSubscription}>
-        <h2>Подпишитесь на рассылку</h2>
-        <p>Подпишитесь на рассылку выгодных предложений и узнавайте первыми о новых акциях</p>
-        <div>
-            <input type="text" placeholder={'Введите e-mail'}/>
-            <IoArrowForwardOutline/>
+        <div className={style.containerblockSubscription}>
+            <div className={style.blockSubscription}>
+                <div className={style.blockSubscriptionLeftItem}>
+                    <div className={style.text}>
+                        <Title color={'#EFEFEF'}>Подпишитесь на рассылку</Title>
+                        <Paragraphy color={'#EFEFEF'} weight={'300'} align={'center'}>Подпишитесь на рассылку выгодных
+                            предложений и узнавайте первыми о новых акциях</Paragraphy>
+                    </div>
+
+                </div>
+                <div className={style.blockSubscriptionRightItem}>
+                    <Input placeholder="Введите email"/>
+                    <IoArrowForwardOutline color={'#EFEFEF'} size={'28px'}/>
+                </div>
+            </div>
         </div>
-    </div>
-    
     </div>
 }
 

@@ -4,13 +4,12 @@ import style from './Order.module.scss'
 import useAppSelector from "../../hooks/use-app-selector";
 import {selectCart} from "../../store/reducer/cart";
 import {CountMapProduct} from "../../api/types/product";
-import CartItem from "../Cart/CartItem";
 import React, {useState} from "react";
-import Wrapper from "../../components/lib/Wrapper/Wrapper";
-import {current} from "@reduxjs/toolkit";
-import {toast} from "react-toastify";
-import onChange = toast.onChange;
-import {Input, Radio, RadioChangeEvent, Space, Steps} from "antd";
+import Wrapper from "../../components/lib/Wrapper/Wrapper";;
+import {Image, Input, Radio, RadioChangeEvent, Space, Steps} from "antd";
+import {Button} from "../../components/lib/Button/Button";
+import {message} from "../../message/message";
+import {Title,Paragraphy,Text} from '../../components/lib/Typography/Typography'
 
 const {Step} = Steps;
 const Order = () => {
@@ -50,15 +49,32 @@ const Order = () => {
         setValue(e.target.value);
     };
 
+    const handleClickOrder = () => {
+        if (cart.length > 0) {
+            message({text: `В Вашей корзине ${cart.length} товаров!`, type: 'info'})
+            // todo логика оформления заказа
+        }else{
+            message({text: `В Вашей корзине ${cart.length} товаров!`, type: 'info'})
+        }
+
+    }
+
+    const onChangePaymentMethod = (e: RadioChangeEvent) => {
+        console.log(`radio checked:${e.target.value}`);
+    };
+
+    const onChangeDeliveryMethod = (e: RadioChangeEvent) => {
+        console.log(`radio checked:${e.target.value}`);
+    };
+
+
+
     return <Wrapper>
         <div className={style.container}>
-            <div>
-
-
-                <Link to={'/cart'}><IoArrowBackOutline/> Вернуться в корзину</Link>
-                <h2>Оформление заказа</h2>
+            <div className={style.LeftSide}>
+                <Link to={'/cart'}><div style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}><IoArrowBackOutline/><Text align={'left'}>Вернуться в корзину</Text></div></Link>
+                <Title align={'left'} margin={'10px 0px 10px 0px'}>Оформление заказа</Title>
                 {/*    todo если авторизован... */}
-
 
 
 
@@ -102,67 +118,61 @@ const Order = () => {
                     }
                 />
                 <Step title="Способ доставки"
-                      description={ <div>
-                          <div className={style.form_radio_group}>
-                              <div className={style.form_radio_group_item}>
-                                  <input id="radio-d-1" type="radio" name="radio1" value="1"/>
-                                  <label htmlFor="radio-d-1">Самовывоз</label>
-                              </div>
-                              <div className={style.form_radio_group_item}>
-                                  <input id="radio-d-2" type="radio" name="radio1" value="2"/>
-                                  <label htmlFor="radio-d-2">Службы доставки</label>
-                              </div>
-                              <div className={style.form_radio_group_item}>
-                                  <input id="radio-d-3" type="radio" name="radio1" value="3"/>
-                                  <label htmlFor="radio-d-3">Собственный курьер</label>
-                              </div>
-                          </div>
-                      </div>}
+                      description={ <Radio.Group onChange={onChangeDeliveryMethod} defaultValue="a" buttonStyle="solid" size="large">
+                          <Radio.Button value="a">Самовывоз</Radio.Button>
+                          <Radio.Button value="b">Службы доставки</Radio.Button>
+                          <Radio.Button value="c">Курьер</Radio.Button>
+                      </Radio.Group>}
                 />
                 <Step title="Способ оплаты"
-                      description={ <div>
-                          <div className={style.form_radio_group}>
-                              <div className={style.form_radio_group_item}>
-                                  <input id="radio-1" type="radio" name="radio" value="1"/>
-                                  <label htmlFor="radio-1">Наличными</label>
-                              </div>
-                              <div className={style.form_radio_group_item}>
-                                  <input id="radio-2" type="radio" name="radio" value="2"/>
-                                  <label htmlFor="radio-2">Безналичная оплата</label>
-                              </div>
-                              <div className={style.form_radio_group_item}>
-                                  <input id="radio-3" type="radio" name="radio" value="3"/>
-                                  <label htmlFor="radio-3">Онлайн</label>
-                              </div>
-                          </div>
-                      </div>}
+                      description={ <Radio.Group onChange={onChangePaymentMethod} defaultValue="a" buttonStyle="solid" size="large">
+                          <Radio.Button value="a">Наличными</Radio.Button>
+                          <Radio.Button value="b">Безналичная оплата</Radio.Button>
+                          <Radio.Button value="c">Онлайн</Radio.Button>
+                      </Radio.Group>}
                 />
             </Steps>
-
-
-
-
             <hr/>
-            <h2>
-                Состав заказа
-            </h2>
+                <Title align={'left'} margin={'10px 0px 10px 0px'}>Состав заказа</Title>
             <div>
-                {Array.from(countMap)
-                    .map((product) => {
-                        const [id, countMapItem] = product
-                        return <CartItem
-                            product={countMapItem} key={id}/>
-                        //  todo create OrderItem
-                    })}
+                <table>
+                    <tr>
+                        <th><Text>Наименование</Text></th>
+                        <th><Text>Количество</Text></th>
+                        <th><Text>Сумма</Text></th>
+                    </tr>
+                    {Array.from(countMap)
+                        .map((product) => {
+                            const [id, countMapItem] = product
+                            return <tr>
+                                <td><div><Image loading={'lazy'} height={150} // @ts-ignore
+                                                src={`http://localhost:1337${countMapItem.product.attributes.image.data.attributes.url}`} />{countMapItem.product.attributes.title}</div></td>
+                                <td>{countMapItem.count}</td>
+                                <td>{(countMapItem.count * countMapItem.product.attributes.price).toFixed(2)} ₽</td>
+                            </tr>
+                        })}
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th><Text weight={'500'}>Итого: {price.toFixed(2)} ₽</Text></th>
+                    </tr>
+                </table>
+
             </div>
         </div>
 
-        <div>
-
-            Оформить заказ
-            Размещая заказ я подтверждаю, что согласен с Правилами пользования сайтом и обработки персональных данных и
-            Публичной офертой
-        </div>
+            <div className={style.RightSide}>
+                <Title color={'#994C4C'} align={'left'}>Количество товаров в корзине: {cart.length}</Title>
+                {/*<p>Способ доставки: {delivery_method}</p>*/}
+                <Text align={'left'}>Способ доставки:  </Text>
+                <Text align={'left'}>Доставка: </Text>
+                <Text align={'left'}>Способ оплаты: </Text>
+                {/*<p>Способ оплаты: {payment_method}</p>*/}
+                <Title align={'left'} weight={'600'}>Итоговая сумма {price.toFixed(2)} ₽</Title>
+                <Button onClick={handleClickOrder}>Подтвердить заказ</Button>
+                <Paragraphy fontSize={'14px'}>Размещая заказ я подтверждаю, что согласен с Правилами пользования сайтом и обработки персональных данных и
+                    Публичной офертой</Paragraphy>
+            </div>
 
 
     </div>

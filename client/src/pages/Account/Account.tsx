@@ -4,7 +4,7 @@ import {useState} from "react";
 import React from "react";
 import {message} from "../../message/message";
 import style from './Account.module.scss'
-import {Button, Form, Input} from "antd";
+import {Button, Form, Input, Modal} from "antd";
 import Wrapper from "../../components/lib/Wrapper/Wrapper";
 import { selectUserToken, setUserToken } from "../../store/reducer/authSlice";
 import useAppSelector from "../../hooks/use-app-selector";
@@ -41,54 +41,76 @@ const Account = () => {
 
 
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+
+
     return <Wrapper>
+        <Button type="primary" onClick={showModal}>
+            Open Modal
+        </Button>
+
     {!auth ?
-    <div className={style.form}>
+        <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk}
+               onCancel={handleCancel}
+               footer={[]}>
+            <div className={style.form}>
 
-        <Form
-            name="basic"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
-            style={{ maxWidth: 600 }}
-            initialValues={{ remember: true }}
-            onFinish={submitForm}
-            onFinishFailed={onFinishFailed }
-            autoComplete="off"
-        >
-            <Form.Item
-                label="Логин"
-                name="username"
-                rules={[{ required: true, message: 'Пожалуйста введите логин!' }]}
-            >
-                <Input onChange={(e) => setUserName(e.target.value)}/>
-            </Form.Item>
+                <Form
+                    name="basic"
+                    labelCol={{ span: 8 }}
+                    wrapperCol={{ span: 16 }}
+                    style={{ maxWidth: 600 }}
+                    initialValues={{ remember: true }}
+                    onFinish={submitForm}
+                    onFinishFailed={onFinishFailed }
+                    autoComplete="off"
+                >
+                    <Form.Item
+                        label="Логин"
+                        name="username"
+                        rules={[{ required: true, message: 'Пожалуйста введите логин!' }]}
+                    >
+                        <Input onChange={(e) => setUserName(e.target.value)}/>
+                    </Form.Item>
 
-            <Form.Item
-                label="E-mail"
-                name="email"
-                rules={[{ required: true, message: 'Пожалуйста введите e-mail!' }]}
-            >
-                <Input onChange={(e) => setEmail(e.target.value)}/>
-            </Form.Item>
+                    <Form.Item
+                        label="E-mail"
+                        name="email"
+                        rules={[{ required: true, message: 'Пожалуйста введите e-mail!' }]}
+                    >
+                        <Input onChange={(e) => setEmail(e.target.value)}/>
+                    </Form.Item>
 
-            <Form.Item
-                label="Пароль"
-                name="password"
-                rules={[{ required: true, message: 'Пожалуйста введите пароль!' }]}
-            >
-                <Input.Password onChange={(e) => setPassword(e.target.value)}/>
-            </Form.Item>
+                    <Form.Item
+                        label="Пароль"
+                        name="password"
+                        rules={[{ required: true, message: 'Пожалуйста введите пароль!' }]}
+                    >
+                        <Input.Password onChange={(e) => setPassword(e.target.value)}/>
+                    </Form.Item>
 
 
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
-                    Submit
-                </Button>
-            </Form.Item>
-        </Form>
-
-        <a href="">Зарегистрироваться</a>
-    </div>
+                    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                        <Button type="primary" htmlType="submit">
+                            Зарегистрироваться
+                        </Button>
+                    </Form.Item>
+                </Form>
+                {/*<a href="">Зарегистрироваться</a>*/}
+            </div>
+        </Modal>
     :
     <div>
  <h2>Личный кабинет</h2>

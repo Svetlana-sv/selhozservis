@@ -99,25 +99,26 @@ const Header = () => {
                 {/*    </div>*/}
                 {/*</div>*/}
 
-                <Dropdown
-                    className={style.dropdown}
-                    menu={{ items }}
-                    dropdownRender={(menu) => (
-                        <div style={contentStyle}>
-                            {React.cloneElement(menu as React.ReactElement, { style: menuStyle })}
-                            <Divider style={{ margin: 0 }} />
-                            <Space style={{ padding: 8 }}>
-                                <Button><Link to={'/account'}>Войти/зарегистрироваться</Link></Button>
-                            </Space>
-                        </div>
-                    )}
-                >
-                    <a onClick={(e) => e.preventDefault()}>
-                            <ButtonIcon title={'Личный кабинет'} link={'account'} icon={IoPersonOutline}/>
-                            {/*<DownOutlined />*/}
-                    </a>
-                </Dropdown>
+                {/*<Dropdown*/}
+                {/*    className={style.dropdown}*/}
+                {/*    menu={{ items }}*/}
+                {/*    dropdownRender={(menu) => (*/}
+                {/*        <div style={contentStyle}>*/}
+                {/*            {React.cloneElement(menu as React.ReactElement, { style: menuStyle })}*/}
+                {/*            <Divider style={{ margin: 0 }} />*/}
+                {/*            <Space style={{ padding: 8 }}>*/}
+                {/*                <Button><Link to={'/account'}>Войти/зарегистрироваться</Link></Button>*/}
+                {/*            </Space>*/}
+                {/*        </div>*/}
+                {/*    )}*/}
+                {/*>*/}
+                {/*    <a onClick={(e) => e.preventDefault()}>*/}
+                {/*            <ButtonIcon title={'Личный кабинет'} link={'account'} icon={IoPersonOutline}/>*/}
+                {/*            /!*<DownOutlined />*!/*/}
+                {/*    </a>*/}
+                {/*</Dropdown>*/}
 
+                <ButtonIcon title={'Личный кабинет'} link={'account'} icon={IoPersonOutline}/>
 
                 <button>
                     <Badge count={cart.length} color='#994C4C'>
