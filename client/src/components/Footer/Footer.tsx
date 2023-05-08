@@ -1,39 +1,40 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import style from "./Footer.module.scss"
+import {Title,Text, Paragraphy} from "../lib/Typography/Typography"
 
 const Footer = () => {
 
 return <>
     <div className={style.footer}>
         <div>
-            <h3>Информация</h3>
-            <Link to={"/about"}>О компании</Link>
-            <Link to={"/wholesale"}>Оптовым покупателям</Link>
-            <Link to={"/manufacturers"}>Производители</Link>
+            <Text color={"var(--footer--FontColor)"} fontSize={'22px'} weight={'400'} margin={'7px'}>Информация</Text>
+            <Link to={"/about"}><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>О компании</Text></Link>
+            <Link to={"/wholesale"}><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>Оптовым покупателям</Text></Link>
+            <Link to={"/manufacturers"}><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>Производители</Text></Link>
         </div>
         <div>
-            <h3>Клиентам</h3>
-            <Link to={"/paymentAndDelivery"}>Оплата и доставка</Link>
-            <Link to={"/sale"}>Акции</Link>
-            <Link to={"/contacts"}>Контакты</Link>
-            <Link to={"/PublicOfferAgreement"}>Договор публичной оферты</Link>
-            <Link to={"/PersonalDataProtection"}>Защита персональных данных</Link>
+            <Text color={"var(--footer--FontColor)"} fontSize={'22px'} weight={'400'} margin={'7px'}>Клиентам</Text>
+            <Link to={"/paymentAndDelivery"}><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>Оплата и доставка</Text></Link>
+            <Link to={"/sale"}><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>Акции</Text></Link>
+            <Link to={"/contacts"}><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>Контакты</Text></Link>
+            <Link to={"/PublicOfferAgreement"}><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>Договор публичной оферты</Text></Link>
+            <Link to={"/PersonalDataProtection"}><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>Защита персональных данных</Text></Link>
         </div>
         <div>
-            <h3>Контакты</h3>
-            <a>+7 (495) 647-00-58</a>
-            <a>+7 (916) 254-21-12</a>
-            <a>selhozservis@internet.ru</a>
+            <Text color={"var(--footer--FontColor)"} fontSize={'22px'} weight={'400'} margin={'7px'}>Контакты</Text>
+            <a><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>+7 (495) 647-00-58</Text></a>
+            <a><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>+7 (916) 254-21-12</Text></a>
+            <a><Text color={"var(--footer--FontColor)"} fontSize={'18px'} weight={'200'}>selhozservis@internet.ru</Text></a>
         </div>
         <div>
-            <h3>График работы</h3>
-            <p>Пн-Пт с 10:00 до 17:00</p>
+            <Text color={"var(--footer--FontColor)"} fontSize={'22px'} weight={'400'} margin={'7px'}>График работы</Text>
+            <Text color={"var(--footer--FontColor)"} fontSize={'16px'} weight={'200'}>Пн-Пт с 10:00 до 17:00</Text>
             <br/>
-            <h3>Адрес</h3>
-            <a href="https://yandex.ru/maps/213/moscow/house/slobodskoy_pereulok_6s10/Z04YcA9iT0QOQFtvfXt0eX9kZg==/?ll=37.682620%2C55.758372&z=16">Москва, ул. Слободской переулок, д.6, строение 10, помещение 1</a>
+            <Text color={"var(--footer--FontColor)"} fontSize={'22px'} weight={'400'} margin={'7px'}>Адрес</Text>
+            <a href="https://yandex.ru/maps/213/moscow/house/slobodskoy_pereulok_6s10/Z04YcA9iT0QOQFtvfXt0eX9kZg==/?ll=37.682620%2C55.758372&z=16"><Text color={"var(--footer--FontColor)"} fontSize={'16px'} weight={'200'}>Москва, ул. Слободской переулок, д.6, строение 10, помещение 1</Text></a>
         </div>
-        <div> OOO “СЕЛЬХОЗЭКОСЕРВИС” © 2023
+        <div> <Text color={"var(--footer--FontColor)"} fontSize={'14px'} weight={'200'}>OOO “СЕЛЬХОЗЭКОСЕРВИС” © 2023</Text>
         </div>
 
     </div>

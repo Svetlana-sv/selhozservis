@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import React from "react";
 import {IconType} from "react-icons";
+import {Title} from '../Typography/Typography'
 
 type ButtonProps = {
   title?: string,
@@ -13,7 +14,7 @@ type ButtonProps = {
 const ButtonIcon = (props: ButtonProps) => {
   return (props.link ?
       <button onClick={props.onClick} className={props.className}>
-          <Link to={`/${props.link}`}><props.icon size={28} style={{marginRight: '10px'}}/>{props.title}</Link>
+          <Link to={`/${props.link}`}><props.icon size={28} style={{marginRight: '10px'}}/><Title fontSize={'22px'} weight={'500'}>{props.title}</Title></Link>
       </button>
       :
       <button onClick={props.onClick} className={props.className}>

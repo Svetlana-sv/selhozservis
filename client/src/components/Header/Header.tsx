@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import style from "./Header.module.scss"
 import logo from "../../assets/logo/logo-temp.png"
 import type {MenuProps} from 'antd'
+import {Title} from '../lib/Typography/Typography'
 
 import {
     IoCartOutline,
@@ -17,6 +18,7 @@ import ButtonIcon from "../lib/Button/ButtonIcon";
 import ButtonToFavorite from "../lib/Button/ButtonToFavorite/ButtonToFavorite";
 import {DownOutlined} from "@ant-design/icons";
 import {Button} from "../lib/Button/Button";
+import {selectUserToken} from "../../store/reducer/authSlice";
 
 const { useToken } = theme;
 
@@ -63,6 +65,8 @@ const Header = () => {
     const menuStyle = {
         boxShadow: 'none',
     };
+
+    const authToken = useAppSelector(selectUserToken);
 
     return <div className={style.wrapper}>
         <div className={style.header}>
@@ -118,12 +122,15 @@ const Header = () => {
                 {/*    </a>*/}
                 {/*</Dropdown>*/}
 
-                <ButtonIcon title={'Личный кабинет'} link={'account'} icon={IoPersonOutline}/>
-
+                {authToken ?
+                    <ButtonIcon title={'Личный кабинет'} link={'account'} icon={IoPersonOutline}/>
+                    :
+                    <ButtonIcon title={'Личный кабинет'} link={'authorization'} icon={IoPersonOutline}/>
+                }
                 <button>
                     <Badge count={cart.length} color='#994C4C'>
                         <Link to={"/cart"}><IoCartOutline size={28} style={{marginRight: '10px'}}/></Link></Badge>
-                    {/* <p style={{marginLeft: '12px'}}>Корзина</p> */}
+                     <Title style={{marginLeft: '12px'}} fontSize={'22px'} weight={'500'}>Корзина</Title>
                 </button>
 
 

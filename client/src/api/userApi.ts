@@ -6,7 +6,6 @@ import {IGenericResponse} from "./types/user";
 const userApi = api.injectEndpoints({
     endpoints: (builder) => ({
 
-
     }),
 })
 

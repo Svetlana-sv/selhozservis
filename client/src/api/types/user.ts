@@ -4,12 +4,19 @@ export interface IUser {
     password: string;
 }
 
-export interface IGenericResponse {
-    status: string;
-    message: string;
+export interface IUserAuth {
+    identifier: string;
+    password: string;
 }
+
+
 
 export interface RegisterResponse {
     status: string;
     token: string;
+}
+
+export interface AuthResponse {
+    status: string;
+    jwt: string;
 }

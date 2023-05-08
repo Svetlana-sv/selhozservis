@@ -19,7 +19,6 @@ const CardVertical = (props: {product: Product}) => {
         <div className={style.img}>
             <Image loading={'lazy'}
                    height={200}
-                // @ts-ignore
                    src={`http://localhost:1337${props.product.attributes.image.data.attributes.url}`} />
         </div>
         <div style={{marginLeft: '13px', textAlign: 'left',marginTop: '7px'}}>

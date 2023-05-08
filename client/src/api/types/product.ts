@@ -1,8 +1,16 @@
+type Image = {
+  data: {
+    attributes: {
+      url: string;
+    }
+  }
+}
+
 export type Product = {
   id: number
   attributes: {
     title: string
-    image: string
+    image: Image
     description: string
     price: number
     price_old: number
@@ -18,4 +26,5 @@ export type Product = {
 export type CountMapProduct = {
   product: Product;
   count: number;
+  price: number;
 };

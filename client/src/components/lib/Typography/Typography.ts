@@ -13,7 +13,7 @@ interface Props {
 export const Paragraphy = styled.p<Props>`
   color: ${p => p.color ? p.color : 'var(--color)'};
   text-align: ${p => p.align ? p.align : 'left'};
-  padding: 2px;
+  margin: ${p => p.margin ? p.margin : '0px'};
   font-weight: ${p => p.weight ? p.weight : '400'};
   font-family: var(--Ubuntu--FontFamily);
   font-size: ${p => p.fontSize ? p.fontSize : '17px'};
@@ -29,7 +29,7 @@ export const Text = styled.p<Props>`
   font-weight: ${p => p.weight ? p.weight : '400'};
   font-family: ${p => p.type == 'title' ? 'var(--Philosopher--FontFamily)' : 'var(--Ubuntu--FontFamily)'};
   font-size: ${p => p.fontSize ? p.fontSize : '18px'};
-
+  margin: ${p => p.margin ? p.margin : '0px'};
   // @media ${device.mobileM} {
   //   font-size: 16px;
   // }

@@ -2,7 +2,7 @@ import {IoArrowBackOutline} from "react-icons/all";
 import {Link} from "react-router-dom";
 import style from './Order.module.scss'
 import useAppSelector from "../../hooks/use-app-selector";
-import {selectCart} from "../../store/reducer/cart";
+import {selectCart, selectGroupCart} from "../../store/reducer/cart";
 import {CountMapProduct} from "../../api/types/product";
 import React, {useState} from "react";
 import Wrapper from "../../components/lib/Wrapper/Wrapper";;
@@ -13,26 +13,7 @@ import {Title,Paragraphy,Text} from '../../components/lib/Typography/Typography'
 
 const {Step} = Steps;
 const Order = () => {
-    const cart = useAppSelector(selectCart);
-
-    let price = 0;
-    const countMap = new Map<number, CountMapProduct>();
-
-    cart.forEach(product => {
-        if (countMap.has(product.id)) {
-            // @ts-ignore
-            const count = countMap.get(product.id).count + 1 || 0;
-            countMap.set(product.id, {product, count});
-        } else {
-            countMap.set(product.id, {product, count: 1});
-        }
-    });
-
-    cart
-        .map((product) => {
-            price
-                += product.attributes.price
-        })
+    const {countMap,price,length} = useAppSelector(selectGroupCart);
 
     const [current, setCurrent] = useState(0);
 
@@ -50,11 +31,11 @@ const Order = () => {
     };
 
     const handleClickOrder = () => {
-        if (cart.length > 0) {
-            message({text: `В Вашей корзине ${cart.length} товаров!`, type: 'info'})
+        if (length > 0) {
+            message({text: `В Вашей корзине ${length} товаров!`, type: 'info'})
             // todo логика оформления заказа
         }else{
-            message({text: `В Вашей корзине ${cart.length} товаров!`, type: 'info'})
+            message({text: `В Вашей корзине ${length} товаров!`, type: 'info'})
         }
 
     }
@@ -145,7 +126,7 @@ const Order = () => {
                         .map((product) => {
                             const [id, countMapItem] = product
                             return <tr>
-                                <td><div><Image loading={'lazy'} height={150} // @ts-ignore
+                                <td><div><Image loading={'lazy'} height={150}
                                                 src={`http://localhost:1337${countMapItem.product.attributes.image.data.attributes.url}`} />{countMapItem.product.attributes.title}</div></td>
                                 <td>{countMapItem.count}</td>
                                 <td>{(countMapItem.count * countMapItem.product.attributes.price).toFixed(2)} ₽</td>
@@ -162,7 +143,7 @@ const Order = () => {
         </div>
 
             <div className={style.RightSide}>
-                <Title color={'#994C4C'} align={'left'}>Количество товаров в корзине: {cart.length}</Title>
+                <Title color={'#994C4C'} align={'left'}>Количество товаров в корзине: {length}</Title>
                 {/*<p>Способ доставки: {delivery_method}</p>*/}
                 <Text align={'left'}>Способ доставки:  </Text>
                 <Text align={'left'}>Доставка: </Text>

@@ -1,12 +1,11 @@
 import {Product} from "./types/product";
 import {api} from './rtkConfig';
 import {ApiArrayResponse, ApiObjectResponse} from "./types/apiResponse";
-import {IGenericResponse, IUser, RegisterResponse} from "./types/user";
+import {AuthResponse, IUser, RegisterResponse, IUserAuth} from "./types/user";
 
 const authApi = api.injectEndpoints({
     endpoints: (builder) => ({
         registerUser: builder.mutation<RegisterResponse, IUser>({
-        // registerUser: builder.mutation<IGenericResponse, RegisterInput>({
             query(data) {
                 return {
                     url: '/auth/local/register',
@@ -14,9 +13,22 @@ const authApi = api.injectEndpoints({
                     body: data,
                 };
             },
+
+        }),
+        authUser: builder.mutation<AuthResponse, IUserAuth>({
+            query(data) {
+                return {
+                    url: '/auth/local',
+                    method: 'POST',
+                    body: data,
+                };
+            },
+// transformResponse -
+
+
         }),
 
     }),
 })
 
-export const {useRegisterUserMutation} = authApi
+export const {useRegisterUserMutation,useAuthUserMutation} = authApi

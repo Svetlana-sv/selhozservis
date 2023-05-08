@@ -23,6 +23,7 @@ const Card = () => {
         dispatch(addProduct(product?.data!))
     }
 
+
     // кнопки удалить, в избранное, добавить (двух видов)
 
     // про карточку
@@ -36,7 +37,6 @@ const Card = () => {
                 <div className={style.info}>Топ продаж</div>
                 <div className={style.image}>
                     <Image
-                        // @ts-ignore
                         src={`http://localhost:1337${product?.data.attributes.image.data.attributes.url}`}
                         height={300}
                     ></Image>

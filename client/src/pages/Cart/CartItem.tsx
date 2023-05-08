@@ -23,7 +23,7 @@ const handleAddProductFavouriteClick = () => {
 
 return <div className={style.cartItem}>
     <div className={style.blockImage}>
-        <Image loading={'lazy'} height={150} // @ts-ignore
+        <Image loading={'lazy'} height={150}
             src={`http://localhost:1337${props.product.product.attributes.image.data.attributes.url}`} />
     </div>
     <div className={style.blockMain}>

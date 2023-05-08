@@ -16,6 +16,8 @@ import GuideBook from "./pages/GuideBook/GuideBook";
 import PersonalDataProtection from "./pages/PersonalDataProtection/PersonalDataProtection";
 import PublicOfferAgreement from "./pages/PublicOfferAgreement/PublicOfferAgreement";
 import PaymentDelivery from "./pages/PaymentDelivery/PaymentDelivery";
+import AuthPage from "./pages/AuthPage/AuthPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function AppRouter() {
 
@@ -36,6 +38,8 @@ function AppRouter() {
             <Route path='/PersonalDataProtection' element={<PersonalDataProtection/>}/>
             <Route path='/PublicOfferAgreement' element={<PublicOfferAgreement/>}/>
             <Route path='/paymentAndDelivery' element={<PaymentDelivery/>}/>
+            <Route path='/authorization' element={<AuthPage/>}/>
+            <Route path='/registration' element={<RegisterPage/>}/>
         </Routes>
     )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from "../../components/Card/Card";
 import useAppSelector from "../../hooks/use-app-selector";
-import cart, {reset, selectCart} from "../../store/reducer/cart";
+import cart, {reset, selectCart, selectGroupCart} from "../../store/reducer/cart";
 import CartItem from "./CartItem";
 import style from "./Cart.module.scss"
 import {Button} from '../../components/lib/Button/Button'
@@ -17,34 +17,15 @@ import useAppDispatch from '../../hooks/use-app-dispatch';
 import {message} from "../../message/message";
 
 const Cart = () => {
-    const cart = useAppSelector(selectCart);
-    var price = Number(0);
-    const countMap = new Map<number, CountMapProduct>();
+    const {countMap,price,length} = useAppSelector(selectGroupCart);
     const dispatch = useAppDispatch();
-
-    cart.forEach(product => {
-        if (countMap.has(product.id)) {
-            // @ts-ignore
-            const count = countMap.get(product.id).count + 1 || 0;
-            countMap.set(product.id, {product, count});
-        } else {
-            countMap.set(product.id, {product, count: 1});
-        }
-    });
-
-    cart
-        .map((product) => {
-            price
-                += product.attributes.price
-        })
-
     const navigate = useNavigate();
 
     function handleClickOrder() {
-        if (cart.length > 0) {
+        if (length > 0) {
             navigate(`/order`)
         } else {
-            message({text: `В Вашей корзине ${cart.length} товаров!`, type: 'info'})
+            message({text: `В Вашей корзине ${length} товаров!`, type: 'info'})
         }
 
     }
@@ -69,12 +50,12 @@ const Cart = () => {
                     {cart.length > 0 ? <div className={style.cartClear}>
                             <Button onClick={handleClearCart}>Очистить корзину</Button>
                         </div>
-                        : <div className={style.cartClearText}>В Вашей корзине пока ничего нет</div>}
+                        : <Text margin={"17px"} weight={'300'}>В Вашей корзине пока ничего нет</Text>}
 
                 </div>
                 {/*right side*/}
                 <div className={style.cartBlockInfo}>
-                    <Title color={'#994C4C'} align={'left'}>Количество товаров в корзине: {cart.length}</Title>
+                    <Title color={'#994C4C'} align={'left'}>Количество товаров в корзине: {length}</Title>
 
                     {/*{if (price >= 9000){*/}
                     {/*    <p>Доставка: бесплатно</p>*/}
