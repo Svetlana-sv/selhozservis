@@ -17,7 +17,7 @@ export const Paragraphy = styled.p<Props>`
   font-weight: ${p => p.weight ? p.weight : '400'};
   font-family: var(--Ubuntu--FontFamily);
   font-size: ${p => p.fontSize ? p.fontSize : '17px'};
-  line-height: 20px;
+  line-height: 1.5;
   // @media ${device.mobileM} {
   //   font-size: 16px;
   // }

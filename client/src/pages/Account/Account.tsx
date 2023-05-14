@@ -1,22 +1,55 @@
-import {useAuthUserMutation, useRegisterUserMutation} from "../../api/authApi";
-import useAppDispatch from "../../hooks/use-app-dispatch";
-import {useState} from "react";
 import React from "react";
-import {message} from "../../message/message";
-import style from './Account.module.scss'
-import {Button, Form, Input, Modal} from "antd";
 import Wrapper from "../../components/lib/Wrapper/Wrapper";
-import { selectUserToken, setUserToken } from "../../store/reducer/authSlice";
-import useAppSelector from "../../hooks/use-app-selector";
+import {Text} from "../../components/lib/Typography/Typography";
+import Container from '../../components/lib/Container/Container';
+import SubscriptionBlock from "../../components/SubscriptionBlock/SubscriptionBlock";
+import PersonalData from "../../components/Account/PersonalData/PersonalData";
+import OrderHistory from "../../components/Account/OrderHistory/OrderHistory";
+import Favourite from "../../components/Account/Favourites/Favourite";
+import {Tabs} from "antd";
+import {useNavigate, useParams} from "react-router-dom";
+
 
 const Account = () => {
-      return <Wrapper>
-        <div>
-            Личная информация
-            Избранное
-            История заказов
-        </div>
-    </Wrapper>
+    const params = useParams();
+    const tabKey = params.tabKey;
+    const navigate = useNavigate();
+
+    const handleChange = (activeTabKey: string) => {
+        navigate(`/account/${activeTabKey}`);
+    }
+    return <Container>
+        <Wrapper>
+            <Tabs
+                defaultActiveKey={tabKey}
+                onChange={handleChange}
+                items={[
+                    {
+                        label: (
+                            <Text>Персональные данные</Text>
+                        ),
+                        key: 'personalData',
+                        children: <PersonalData/>,
+                    },
+                    {
+                        label: (
+                            <Text>Избранное</Text>
+                        ),
+                        key: 'favourites',
+                        children: <Favourite/>,
+                    },
+                    {
+                        label: (
+                            <Text>История заказов</Text>
+                        ),
+                        key: 'history',
+                        children: <OrderHistory/>,
+                    },
+                ]}
+            />
+        </Wrapper>
+        <SubscriptionBlock/>
+    </Container>
 }
 
 export default Account;

@@ -1,6 +1,7 @@
 import {Product} from "./types/product";
 import {api} from './rtkConfig';
 import {ApiArrayResponse, ApiObjectResponse} from "./types/apiResponse";
+import {Category} from "./types/category";
 
 const productApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -20,8 +21,14 @@ const productApi = api.injectEndpoints({
         body: newProduct
       })
     }),
+    getAllCategories: builder.query<ApiArrayResponse<Category>, void>({
+      query: () => '/categories?populate=*',
+    }),
+    getAllFavourites: builder.query<ApiArrayResponse<Product>, void>({
+      query: () => '/favourites?populate=*',
+    }),
   }),
 })
 
-export const {useGetAllProductsQuery, useGetProductQuery, useLazyGetProductQuery} = productApi
+export const {useGetAllProductsQuery, useGetAllCategoriesQuery,useGetAllFavouritesQuery, useGetProductQuery, useLazyGetProductQuery} = productApi
 

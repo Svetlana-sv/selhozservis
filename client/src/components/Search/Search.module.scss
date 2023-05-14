@@ -4,15 +4,17 @@
   align-items: center;
   text-align: center;
   justify-content: center;
+  width: 100%;
 
   input{
     transition: .3s border-color;
-    width: 400px;
+    width: 100%;
     padding: 15px;
     border-radius: 15px;
-    border: 0;
+    border: 0px;
     outline: none;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.09);
+    //box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.09);
     height: 40px;
     &:hover,
     &:focus {
@@ -27,7 +29,8 @@
     margin: 10px;
     .icon{
 
-      color: #9a9a9a;
+      //color: #9a9a9a;
+      color: #3d3d3d;
     }
   }
 

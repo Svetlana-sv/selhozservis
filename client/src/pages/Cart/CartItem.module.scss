@@ -1,4 +1,4 @@
-.cartItem{
+.cartItem {
   display: grid;
   grid-template-columns: 150px 3fr;
   margin: 15px;
@@ -9,7 +9,7 @@
   border-radius: 20px;
   height: 170px;
 
-  .blockImage{
+  .blockImage {
     width: 150px;
     text-align: center;
     align-items: center;
@@ -17,46 +17,46 @@
     display: flex;
   }
 
-  .blockMain{
+  .blockMain {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
 
-    .blockInfo{
+    .blockInfo {
       margin-top: 5px;
       text-align: left;
       align-items: flex-start;
 
-      .price{
+      .price {
         font-size: 18px;
         font-weight: 400;
         line-height: 1.4;
       }
 
-      .blockInput{
-        margin: 15px 0 10px 0;
+      .blockInput {
+        margin: 15px 0px 15px 0px;
         display: flex;
         flex-direction: row;
-    
 
-      input{
 
-    padding: 4px 11px;
-    color: rgba(0, 0, 0, 0.88);
-    font-size: 14px;
-    width: 100%;
-    min-width: 0;
-    background-color: #ffffff;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #d9d9d9;
-    border-radius: 6px;
-    transition: all 0.2s;
+        input {
+          padding: 4px 11px;
+          color: rgba(0, 0, 0, 0.88);
+          font-size: 14px;
+          width: 100%;
+          max-width: 150px;
+          background-color: #ffffff;
+          border-width: 1px;
+          border-style: solid;
+          border-color: #d9d9d9;
+          border-radius: 6px;
+          transition: all 0.2s;
+        }
       }
-    }  }
+    }
 
-    .blockButtons{
+    .blockButtons {
       align-items: flex-end;
       display: flex;
       justify-content: space-between;

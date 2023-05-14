@@ -6,18 +6,18 @@ import CartItem from "./CartItem";
 import style from "./Cart.module.scss"
 import {Button} from '../../components/lib/Button/Button'
 import {Title, Paragraphy, Text} from '../../components/lib/Typography/Typography'
-import {CountMapProduct, Product} from "../../api/types/product";
-import {navigate} from "ionicons/icons";
 import {Image, Input} from 'antd';
 import {useNavigate} from "react-router-dom";
-import {IoArrowForwardOutline} from "react-icons/all";
 import mir from '../../assets/Mir-logo.png'
 import Wrapper from '../../components/lib/Wrapper/Wrapper';
+import Container from '../../components/lib/Container/Container';
 import useAppDispatch from '../../hooks/use-app-dispatch';
 import {message} from "../../message/message";
+import SubscriptionBlock from "../../components/SubscriptionBlock/SubscriptionBlock";
 
 const Cart = () => {
     const {countMap,price,length} = useAppSelector(selectGroupCart);
+    const cart = useAppSelector(selectCart);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const Cart = () => {
         dispatch(reset());
     }
 
-    return <div className={style.cart}>
+    return <Container>
         <Wrapper>
             <div className={style.container}>
 
@@ -62,7 +62,7 @@ const Cart = () => {
                     {/*    <hr/>*/}
                     {/*    }*/}
                     {/*}*/}
-                    <Title align={'left'} weight={'500'}>Итоговая сумма {price.toFixed(2)} ₽</Title>
+                    <Title align={'left'} weight={'500'} margin={'10px 0px 15px 0px'}>Итоговая сумма {price.toFixed(2)} ₽</Title>
 
                     <Button onClick={handleClickOrder}>Оформить заказ</Button>
                 </div>
@@ -81,23 +81,8 @@ const Cart = () => {
             </div>
 
         </Wrapper>
-        <div className={style.containerblockSubscription}>
-            <div className={style.blockSubscription}>
-                <div className={style.blockSubscriptionLeftItem}>
-                    <div className={style.text}>
-                        <Title color={'#EFEFEF'}>Подпишитесь на рассылку</Title>
-                        <Paragraphy color={'#EFEFEF'} weight={'300'} align={'center'}>Подпишитесь на рассылку выгодных
-                            предложений и узнавайте первыми о новых акциях</Paragraphy>
-                    </div>
-
-                </div>
-                <div className={style.blockSubscriptionRightItem}>
-                    <Input placeholder="Введите email"/>
-                    <IoArrowForwardOutline color={'#EFEFEF'} size={'28px'}/>
-                </div>
-            </div>
-        </div>
-    </div>
+        <SubscriptionBlock/>
+    </Container>
 }
 
 export default Cart;

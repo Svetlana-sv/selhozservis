@@ -11,7 +11,7 @@ const Search = (props: searchProps) => {
   return <div className={style.search}>
       <input value={searchText} placeholder="Поиск по каталогу..." type="text" onChange={(e) => setSearchText(e.target.value)}/>
       <button>
-      <IoSearchOutline size={24} className={style.icon}/>
+      <IoSearchOutline size={28} className={style.icon}/>
       </button>
   </div>
 }

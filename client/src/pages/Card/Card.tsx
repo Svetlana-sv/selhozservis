@@ -1,18 +1,14 @@
 import React from 'react';
 import style from './Card.module.scss'
-import {Button} from "../../components/lib/Button/Button";
 import {Collapse, Image, Tabs} from "antd";
-import {useGetAllProductsQuery, useGetProductQuery} from "../../api/productApi";
-import {useLocation, useParams} from "react-router-dom";
+import {useGetProductQuery} from "../../api/productApi";
+import {useParams} from "react-router-dom";
 import {Product} from "../../api/types/product";
-import {IoHeartOutline} from "react-icons/io5";
-import {toast, ToastContainer} from "react-toastify";
-import {message} from "../../message/message";
 import {addProduct} from "../../store/reducer/cart";
 import useAppDispatch from "../../hooks/use-app-dispatch";
 import Wrapper from '../../components/lib/Wrapper/Wrapper';
 import ToCartButton from '../../components/lib/Button/ButtonToCart/ButtonToCart';
-import ButtonToFavorite from '../../components/lib/Button/ButtonToFavorite/ButtonToFavorite';
+import ButtonToFavourite from '../../components/lib/Button/ButtonToFavourite/ButtonToFavourite';
 const { Panel } = Collapse;
 const Card = () => {
     const params = useParams();
@@ -51,7 +47,7 @@ const Card = () => {
                 <h3>{product?.data.attributes.price}</h3>
                 <ToCartButton product={product?.data as Product} type='button'/>
                 {/*<ToCartButton product={product?.data as Product} type='icon'/>*/}
-                <ButtonToFavorite product={product?.data as Product} type='button'/>
+                <ButtonToFavourite product={product?.data as Product} type='button'/>
             </div>
 
 

@@ -1,10 +1,39 @@
-.carousel{
+.blockCarousel{
+  margin: 0px 0px 20px 0px;
+}
 
-  .content{
-    height: 400px;
-    color: #fff;
-    lineHeight: 160px;
-    textAlign: center;
-    background: #364d79;
+.blockRecommendProducts{
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  row-gap: 25px;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 15px 0px 20px 0px;
+}
+
+.blockDelivery{
+  margin: 5px 0px 15px 0px;
+
+  li {
+    /* OR */
+    list-style-type: '📦';
+    padding-inline-start: 1ch;
+    line-height: 2.8;
   }
+  ul{
+    margin-left: 15px;
+  }
+}
+
+.blockDeliveryImage{
+  width: 100%;
+  background: #FFFFFF;
+  border: 2px solid #F5F5F5;
+  box-shadow: 0px 4px 4px 1px rgba(211, 211, 211, 0.25);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 15px 0px 20px 0px;
 }

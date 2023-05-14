@@ -12,10 +12,40 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "tovaries": {
+    "total": {
+      "type": "float"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Обрабатывается",
+        "Передано в доставку",
+        "Ожидает получения",
+        "Ожидает оплату",
+        "Завершено",
+        "Отменено"
+      ]
+    },
+    "payment": {
+      "type": "enumeration",
+      "enum": [
+        "Наличные",
+        "Безналичная оплата",
+        "Онлайн"
+      ]
+    },
+    "delivery": {
+      "type": "enumeration",
+      "enum": [
+        "Самовывоз",
+        "Служба доставки",
+        "Курьер"
+      ]
+    },
+    "order_products": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::product.product"
+      "target": "api::order-products.order-products"
     }
   }
 }

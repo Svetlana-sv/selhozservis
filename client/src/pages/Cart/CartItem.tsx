@@ -8,8 +8,10 @@ import {addProduct, deleteProduct} from "../../store/reducer/cart";
 import useAppDispatch from "../../hooks/use-app-dispatch";
 import {IoAddOutline, IoHeartOutline, IoRemoveOutline} from "react-icons/io5";
 import {message} from "../../message/message";
-import ButtonToFavorite from "../../components/lib/Button/ButtonToFavorite/ButtonToFavorite";
+import ButtonToFavourite from "../../components/lib/Button/ButtonToFavourite/ButtonToFavourite";
 import ButtonDelete from "../../components/lib/Button/ButtonDelete/ButtonDelete";
+import {Title,Text,Paragraphy} from '../../components/lib/Typography/Typography'
+
 const CartItem = (props: {product: CountMapProduct}) => {
 const dispatch = useAppDispatch();
 
@@ -29,7 +31,7 @@ return <div className={style.cartItem}>
     <div className={style.blockMain}>
 
         <div className={style.blockInfo}>
-            <h2>{props.product.product.attributes.title}</h2>
+            <Title align={'left'}>{props.product.product.attributes.title}</Title>
             <div className={style.blockInput}>
                 <ButtonIcon icon={IoRemoveOutline} onClick={()=> {
                     dispatch(deleteProduct(props.product.product))
@@ -41,11 +43,11 @@ return <div className={style.cartItem}>
                         dispatch(addProduct(props.product.product))
                         }}/>
             </div>
-            <p className={style.price}>Цена: {props.product.product.attributes.price} ₽ за штуку</p>
+            <Paragraphy className={style.price}>Цена: {props.product.product.attributes.price} ₽ за штуку</Paragraphy>
         </div>
 
         <div className={style.blockButtons}>
-            <ButtonToFavorite product={props.product.product} />
+            <ButtonToFavourite product={props.product.product} />
             <ButtonDelete product={props.product.product} />
         </div>
     </div>

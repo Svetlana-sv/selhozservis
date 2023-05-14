@@ -10,22 +10,21 @@ import {Image, Input, Radio, RadioChangeEvent, Space, Steps} from "antd";
 import {Button} from "../../components/lib/Button/Button";
 import {message} from "../../message/message";
 import {Title,Paragraphy,Text} from '../../components/lib/Typography/Typography'
+import PersonalDataForm from "../../components/Account/PersonalData/PersonalDataForm/PersonalDataForm";
 
 const {Step} = Steps;
 const Order = () => {
     const {countMap,price,length} = useAppSelector(selectGroupCart);
-
-    const [current, setCurrent] = useState(0);
-
-    const onChange = (value: number) => {
-        console.log('onChange:', value);
-        setCurrent(value);
-    };
-    const description = 'This is a description.';
-
+    const [currentStep, setCurrent] = useState(0);
     const [value, setValue] = useState(1);
 
-    const onChange1 = (e: RadioChangeEvent) => {
+    const changeStep = (value: number) => {
+        console.log('onChange:', value);
+        setCurrent(value);
+
+    };
+
+    const handleChange = (e: RadioChangeEvent) => {
         console.log('radio checked', e.target.value);
         setValue(e.target.value);
     };
@@ -41,10 +40,12 @@ const Order = () => {
     }
 
     const onChangePaymentMethod = (e: RadioChangeEvent) => {
+        // todo
         console.log(`radio checked:${e.target.value}`);
     };
 
     const onChangeDeliveryMethod = (e: RadioChangeEvent) => {
+        // todo
         console.log(`radio checked:${e.target.value}`);
     };
 
@@ -57,45 +58,12 @@ const Order = () => {
                 <Title align={'left'} margin={'10px 0px 10px 0px'}>Оформление заказа</Title>
                 {/*    todo если авторизован... */}
 
-
-
-                <Steps current={current}
-                       onChange={onChange}
+                <Steps current={currentStep}
+                       onChange={changeStep}
                        direction="vertical">
                 <Step title="Контактные данные"
                     description={
-                    <div>
-                        <div>
-                            <Radio.Group onChange={onChange1} value={value}>
-                                <Space direction="vertical">
-                                    {/*<Radio value={1}>Физическое лицо</Radio>*/}
-                                    <Radio value={2}>Юридическое лицо</Radio>
-                                </Space>
-                            </Radio.Group>
-                        </div>
-                        <div>
-                        <div>
-                            <label htmlFor="">Электронная почта</label>
-                            <Input placeholder="Введите e-mail"/>
-                        </div>
-                        <div>
-                            <label htmlFor="">Телефон</label>
-                            <Input placeholder="Введите номер телефона"/>
-                        </div>
-                        </div>
-                        <div>
-                            <label htmlFor="">Фамилия</label>
-                            <Input placeholder="Введите фамилию"/>
-                        </div>
-                        <div>
-                            <label htmlFor="">Имя</label>
-                            <Input placeholder="Введите имя"/>
-                        </div>
-                        <div>
-                            <label htmlFor="">Отчество</label>
-                            <Input placeholder="Введите отчество"/>
-                        </div>
-                    </div>
+                        <PersonalDataForm/>
                     }
                 />
                 <Step title="Способ доставки"

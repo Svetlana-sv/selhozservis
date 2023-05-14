@@ -66,10 +66,15 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "favorite_id": {
+    "order_id": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::favorite.favorite",
+      "relation": "oneToMany",
+      "target": "api::order.order"
+    },
+    "favourite_id": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::favourite.favourite",
       "mappedBy": "user_id"
     }
   }

@@ -2,7 +2,7 @@ import style from './CardHorizontal.module.scss'
 import {Product} from "../../../api/types/product";
 import {Image} from 'antd'
 import {useNavigate} from "react-router-dom";
-import ButtonToFavorite from "../../lib/Button/ButtonToFavorite/ButtonToFavorite";
+import ButtonToFavourite from "../../lib/Button/ButtonToFavourite/ButtonToFavourite";
 import ButtonToCart from "../../lib/Button/ButtonToCart/ButtonToCart";
 
 const CardHorizontal = (props: {product: Product}) => {
@@ -14,7 +14,7 @@ const CardHorizontal = (props: {product: Product}) => {
 
     return <div className={style.card} >
         <div className={style.info}>Топ продаж</div>
-        <ButtonToFavorite className={style.heart} product={props.product} type='button'/>
+        <ButtonToFavourite className={style.heart} product={props.product} type='button'/>
         <div className={style.img}>
             <Image loading={'lazy'}
                    height={200}

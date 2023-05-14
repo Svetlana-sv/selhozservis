@@ -20,7 +20,9 @@ function App() {
                     theme={{
                         token: {
                             colorPrimary: '#994C4C',
-                            // fontFamily: 'var(--Ubuntu--FontFamily)'
+                            fontFamily: 'var(--Ubuntu--FontFamily)',
+                            // fontSize: 16,
+                            // fontWeightStrong: 300,
                         },
                     }}
                 >
@@ -33,7 +35,7 @@ function App() {
                         </div>
                         <AppRouter/>
                         <ToastContainer
-                            position="top-right"
+                            position="bottom-right"
                             autoClose={1000}
                             hideProgressBar
                             newestOnTop={false}

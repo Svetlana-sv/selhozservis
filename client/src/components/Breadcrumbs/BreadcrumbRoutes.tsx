@@ -4,6 +4,7 @@ import React from "react";
 import {Route} from "react-router-dom";
 import AuthPage from "../../pages/AuthPage/AuthPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
+import {useGetOrderQuery} from "../../api/orderApi";
 
 const CatalogBreadcrumb: BreadcrumbComponentType<'id'> = ({match}) => {
     const {data: product} = useGetProductQuery(match.params.id || '');
@@ -12,6 +13,14 @@ const CatalogBreadcrumb: BreadcrumbComponentType<'id'> = ({match}) => {
       {product?.data.attributes.title}
     </span>
   }
+
+const OrderHistoryBreadcrumb: BreadcrumbComponentType<'id'> = ({match}) => {
+    const {data: order} = useGetOrderQuery(match.params.id || '');
+
+    return <span>
+      Заказ №{order?.data.id}
+    </span>
+}
 
 export const routes = [
     {path: '/', breadcrumb: 'Главная'},
@@ -33,4 +42,6 @@ export const routes = [
     {path: '/paymentAndDelivery', breadcrumb: 'Оплата и доставка'},
     {path: '/authorization', breadcrumb: 'Авторизация'},
     {path: '/registration', breadcrumb: 'Регистрация'},
+    {path: '/account/history', breadcrumb: 'История заказов'},
+    {path: '/account/history/:id', breadcrumb: OrderHistoryBreadcrumb},
   ];
