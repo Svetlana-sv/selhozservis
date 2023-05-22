@@ -7,6 +7,7 @@ type ButtonProps = {
   title?: string,
   link?: string,
   icon: IconType,
+    statusButton?: boolean,
   onClick?: () => void,
   className?: string,
 }
@@ -18,7 +19,13 @@ const ButtonIcon = (props: ButtonProps) => {
       </button>
       :
       <button onClick={props.onClick} className={props.className} style={{marginRight: '10px'}}>
-          <props.icon size={28}/>{props.title}
+          {props.statusButton ?
+              <props.icon size={28} color={'#994C4C'}/>
+              :
+              <props.icon size={28}/>
+          }
+          {props.title}
+
       </button>
   );
 }

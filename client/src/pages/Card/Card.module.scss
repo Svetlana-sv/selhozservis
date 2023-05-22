@@ -1,11 +1,18 @@
 .container{
-
+  .blockRecommendProducts{
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    row-gap: 25px;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin: 15px 0px 20px 0px;
+  }
 
 .card {
   margin-top: 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 1fr;
   gap: 20px 40px;
   grid-template-areas:
     ". ."
@@ -15,14 +22,18 @@
   .description {
     text-align: left;
 
-    button {
-      width: 200px;
+    .blockRow{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      button{
+        margin: 10px 10px 10px 0px;
+      }
     }
+
+
   }
 
-  .information {
-    grid-area: f;
-  }
 
 
   .info {
@@ -52,4 +63,11 @@
     align-items: center;
     justify-content: center;
   }
-}}
+}
+
+
+  .information {
+    margin: 20px 0px 20px 0px;
+  }
+
+}

@@ -15,16 +15,48 @@
         text-align: center;
     }
 
-    .info {
+    .tag {
         position: absolute;
-        background-color: #B9F7B3;
+        display: block;
+        flex-direction: column;
+        row-gap: 1px;
+        column-gap: 5px;
         font-size: 12px;
         color: #FFFFFF;
         padding: 0px 4px;
-        left: 15px;
-        border-radius: 0px 5px;
-    }
+        margin-left: 13px;
+        width: auto;
+        height: 22px;
+        overflow: hidden;
+        //overflow: clip;
+        //overflow: scroll;
+        //overflow-scrolling: touch;
+        //left: 15px;
+        //border-radius: 0px 5px;
 
+
+    }
+    .tag:hover {
+        z-index: 100;
+        overflow: visible;
+        //overflow: clip;
+        //overflow: scroll;
+        //overflow-scrolling: touch;
+        //left: 15px;
+        //border-radius: 0px 5px;
+    }
+    .tagInfo{
+        color: #9a9a9a;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        border: 1px solid #9a9a9a;
+        padding: 0px 4px;
+        position: absolute;
+        width: auto;
+        right: 50px;
+    }
     .heart {
         position: absolute;
         top: 10px;

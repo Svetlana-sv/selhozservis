@@ -43,5 +43,7 @@ export const routes = [
     {path: '/authorization', breadcrumb: 'Авторизация'},
     {path: '/registration', breadcrumb: 'Регистрация'},
     {path: '/account/history', breadcrumb: 'История заказов'},
+    {path: '/account/favourites', breadcrumb: 'Избранные товары'},
+    {path: '/account/personalData', breadcrumb: 'Персональные данные'},
     {path: '/account/history/:id', breadcrumb: OrderHistoryBreadcrumb},
   ];

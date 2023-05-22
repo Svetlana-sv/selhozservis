@@ -52,6 +52,44 @@
     },
     "application": {
       "type": "richtext"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "packing": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::packing.packing"
+    },
+    "packing_count": {
+      "type": "integer"
+    },
+    "count_metric": {
+      "type": "integer"
+    },
+    "metric": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::metric.metric"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
+    },
+    "product_info": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product-info.product-info",
+      "mappedBy": "product"
+    },
+    "favourite": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::favourite.favourite",
+      "inversedBy": "product"
     }
   }
 }

@@ -62,7 +62,7 @@ const Cart = () => {
                     {/*    <hr/>*/}
                     {/*    }*/}
                     {/*}*/}
-                    <Title align={'left'} weight={'500'} margin={'10px 0px 15px 0px'}>Итоговая сумма {price.toFixed(2)} ₽</Title>
+                    <Text align={'left'} weight={'400'} margin={'10px 0px 15px 0px'} fontSize={'20px'}>Итоговая сумма {price.toFixed(2)} ₽</Text>
 
                     <Button onClick={handleClickOrder}>Оформить заказ</Button>
                 </div>

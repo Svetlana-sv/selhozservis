@@ -70,12 +70,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order.order"
-    },
-    "favourite_id": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::favourite.favourite",
-      "mappedBy": "user_id"
     }
   }
 }

@@ -1,23 +1,28 @@
-// import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
-
+import style from './Contacts.module.scss'
 import Wrapper from "../../components/lib/Wrapper/Wrapper"
+import {Text,Paragraphy} from "../../components/lib/Typography/Typography";
 
 
 const Contacts = () => {
   return <Wrapper>
-    <h2>Контакты</h2>
+    <div className={style.container}>
 
-    {/*<YMaps query={{ lang: 'en_RU' }}>*/}
-    {/*    <Map defaultState={{ center: [55.75, 37.57], zoom: 9 }} />*/}
-    {/*    <Placemark geometry={[55.684758, 37.738521]} />*/}
-    {/*    /!*<Placemark geometry={[55.758372, 37.682619]} options={{iconColor: '#000'}}/>*!/*/}
-    {/*</YMaps>*/}
 
-      {/*https://yandex.com/map-constructor/?from=mapsapi*/}
+    <div className={style.blockMap}>
       <iframe
-          src="https://yandex.com/map-widget/v1/?um=constructor%3A15945225de10963b362952e6c2d28e12513fc03503856da1d6c8fd7cd1843d76&amp;source=constructor"
-          width="500" height="400" frameBorder="0"></iframe>
+          src="https://yandex.com/map-widget/v1/?um=constructor%3Acd8664dd076757a3c98a2d33facb6b38e25d924c8e239ab4960a46432c1061a1&amp;source=constructor"
+          width="100%" height="100%" frameBorder="0"/>
+    </div>
+  <div>
+    <Paragraphy>Адрес: Москва, ул. Слободской переулок, д.6, строение 10, помещение 1</Paragraphy>
+    <Paragraphy>График работы: Пн-Пт с 10:00 до 17:00</Paragraphy>
+    <Paragraphy>Тел.: +7 (495) 647 00 58, +7 (916) 254 21 12 (WhatsApp, Viber)</Paragraphy>
+    <Paragraphy>E-mail: selhozservis@internet.ru</Paragraphy>
+  </div>
+    </div>
   </Wrapper>
+
+
 }
 
 export default Contacts

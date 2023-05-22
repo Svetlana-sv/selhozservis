@@ -2,6 +2,7 @@ import {Product} from "./types/product";
 import {api} from './rtkConfig';
 import {ApiArrayResponse, ApiObjectResponse} from "./types/apiResponse";
 import {Category} from "./types/category";
+import {FavouriteProduct} from "./types/favouriteProduct";
 
 const productApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -24,11 +25,18 @@ const productApi = api.injectEndpoints({
     getAllCategories: builder.query<ApiArrayResponse<Category>, void>({
       query: () => '/categories?populate=*',
     }),
-    getAllFavourites: builder.query<ApiArrayResponse<Product>, void>({
-      query: () => '/favourites?populate=*',
+    getAllFavourites: builder.query<ApiArrayResponse<FavouriteProduct>, void>({
+      query: () => '/favourites?populate=deep,3',
+    }),
+    addNewFavoriteProduct: builder.mutation({
+      query: newProduct => ({
+        url: `/favourites`,
+        method: 'POST',
+        body: newProduct
+      })
     }),
   }),
 })
 
-export const {useGetAllProductsQuery, useGetAllCategoriesQuery,useGetAllFavouritesQuery, useGetProductQuery, useLazyGetProductQuery} = productApi
+export const {useGetAllProductsQuery, useGetAllCategoriesQuery,useGetAllFavouritesQuery, useGetProductQuery, useAddNewFavoriteProductMutation, useLazyGetProductQuery} = productApi
 

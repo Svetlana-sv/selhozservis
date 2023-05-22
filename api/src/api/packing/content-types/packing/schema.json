@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "packings",
+  "info": {
+    "singularName": "packing",
+    "pluralName": "packings",
+    "displayName": "Packing",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

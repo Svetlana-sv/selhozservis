@@ -42,7 +42,7 @@ const RegisterPage = () => {
 
     return <Wrapper>
         <Link to={'/authorization'}><div style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}><IoArrowBackOutline/><Text align={'left'} fontSize={'16px'}>Вернуться назад</Text></div></Link>
-        <div className="container">
+        <div className="containerForm">
             <Form
                 name="normal_login"
                 className="login-form"

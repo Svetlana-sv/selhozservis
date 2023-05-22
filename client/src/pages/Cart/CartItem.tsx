@@ -25,13 +25,13 @@ const handleAddProductFavouriteClick = () => {
 
 return <div className={style.cartItem}>
     <div className={style.blockImage}>
-        <Image loading={'lazy'} height={150}
+        <Image loading={'lazy'} height={120}
             src={`http://localhost:1337${props.product.product.attributes.image.data.attributes.url}`} />
     </div>
     <div className={style.blockMain}>
 
         <div className={style.blockInfo}>
-            <Title align={'left'}>{props.product.product.attributes.title}</Title>
+            <Title align={'left'} fontSize={'20px'}>{props.product.product.attributes.title}</Title>
             <div className={style.blockInput}>
                 <ButtonIcon icon={IoRemoveOutline} onClick={()=> {
                     dispatch(deleteProduct(props.product.product))
@@ -43,7 +43,7 @@ return <div className={style.cartItem}>
                         dispatch(addProduct(props.product.product))
                         }}/>
             </div>
-            <Paragraphy className={style.price}>Цена: {props.product.product.attributes.price} ₽ за штуку</Paragraphy>
+            <Paragraphy className={style.price} fontSize={'20px'}>Цена: {props.product.product.attributes.price} ₽ за штуку</Paragraphy>
         </div>
 
         <div className={style.blockButtons}>

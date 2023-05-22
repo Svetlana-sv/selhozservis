@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {CountMapProduct, Product} from "../../api/types/product";
 import {RootState} from "../store";
+import {OrderProducts} from "../../api/types/order";
 
 const initialState: Product[] = [];
 
@@ -38,6 +39,33 @@ export const selectGroupCart = (state: RootState) => {
   const groupCart = state.cart;
   var price = Number(0);
   const countMap = new Map<number, CountMapProduct>();
+  const length = state.cart.length;
+
+  groupCart.forEach(product => {
+    if (countMap.has(product.id)) {
+
+      const count = getFromMap(countMap, product.id).count + 1;
+      const price = product.attributes.price;
+      countMap.set(product.id, {product, count, price });
+    } else {
+      countMap.set(product.id, {product, count: 1, price});
+    }
+  });
+
+  groupCart
+      .map((product) => {
+        price
+            += product.attributes.price
+      })
+
+  return {countMap,price,length};
+}
+
+export const selectGroupOrderProduct = (state: RootState) => {
+  const groupCart = state.cart;
+  var price = Number(0);
+  const countMap = new Map<number, CountMapProduct>();
+  const countMap1 = new Map<number, OrderProducts>();
   const length = state.cart.length;
 
   groupCart.forEach(product => {

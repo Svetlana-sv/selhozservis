@@ -25,6 +25,24 @@
     gap: 10px 0px;
   }
 
+  .catalogFilter{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    align-items: flex-start;
+
+    @media screen and (max-width: 500px) {
+      margin: auto;
+    }
+
+    .catalogFilterButtons{
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+  }
+
   .sorting {
     display: flex;
     flex-direction: row;
@@ -50,26 +68,17 @@
     margin-top: 15px;
     display: flex;
     flex-direction: row;
-    column-gap: 15px;
-    row-gap: 25px;
+    column-gap: 5px;
+    row-gap: 15px;
     flex-wrap: wrap;
+    justify-content: space-between;
 
-    // display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(1fr, 5fr));
-    // grid-template: repeat(auto-fill, 4fr);
-    // grid-auto-flow: row dense;  /* or 'row', 'row dense', 'column dense' */
-    // grid-auto-flow: column dense;
-    // grid-auto-rows: auto;
-    // align-items: stretch;
-    // justify-items: stretch;
-    // grid-template-rows: auto;
-
-    // @media screen and (max-width: 500px) {
-    //   display: flex;
-    //   flex-direction: column;
-    //   align-items: center;
-    //   gap: 10px 0px;
-    // }
+     @media screen and (max-width: 500px) {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       gap: 10px 0px;
+     }
   }
 
   .paginationBlock {

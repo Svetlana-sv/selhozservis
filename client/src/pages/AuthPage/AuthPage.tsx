@@ -43,7 +43,7 @@ const AuthPage = () => {
 
     return (
         <Wrapper>
-            <div className="container">
+            <div className="containerForm">
                 <Form
                     name="normal_login"
                     className="login-form"

@@ -1,8 +1,10 @@
-export type favouriteProduct = {
+import {Product} from "./product";
+import {ApiArrayResponse, ApiObjectResponse} from "./apiResponse";
+
+export type FavouriteProduct = {
     id: number
     attributes: {
-        title: string,
-        parent_id: number,
-        level: number
+        user_id: string,
+        product: ApiObjectResponse<Product>,
     }
 }

@@ -24,5 +24,5 @@ const orderApi = api.injectEndpoints({
     }),
 })
 
-export const {useGetOrdersQuery, useGetOrderQuery} = orderApi
+export const {useGetOrdersQuery, useGetOrderQuery, useAddOrderMutation} = orderApi
 

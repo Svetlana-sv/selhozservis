@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "metrics",
+  "info": {
+    "singularName": "metric",
+    "pluralName": "metrics",
+    "displayName": "Metric",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

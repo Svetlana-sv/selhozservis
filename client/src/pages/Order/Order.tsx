@@ -11,17 +11,19 @@ import {Button} from "../../components/lib/Button/Button";
 import {message} from "../../message/message";
 import {Title,Paragraphy,Text} from '../../components/lib/Typography/Typography'
 import PersonalDataForm from "../../components/Account/PersonalData/PersonalDataForm/PersonalDataForm";
+import {useAuthUserMutation} from "../../api/authApi";
+import {useAddOrderMutation} from "../../api/orderApi";
 
 const {Step} = Steps;
 const Order = () => {
     const {countMap,price,length} = useAppSelector(selectGroupCart);
     const [currentStep, setCurrent] = useState(0);
     const [value, setValue] = useState(1);
-
+    const [order, {data}] =
+        useAddOrderMutation();
     const changeStep = (value: number) => {
         console.log('onChange:', value);
         setCurrent(value);
-
     };
 
     const handleChange = (e: RadioChangeEvent) => {
@@ -31,8 +33,9 @@ const Order = () => {
 
     const handleClickOrder = () => {
         if (length > 0) {
-            message({text: `В Вашей корзине ${length} товаров!`, type: 'info'})
+            // useAddOrderMutation(countMap)
             // todo логика оформления заказа
+            message({text: `В Вашей корзине ${length} товаров!`, type: 'info'})
         }else{
             message({text: `В Вашей корзине ${length} товаров!`, type: 'info'})
         }
@@ -77,7 +80,7 @@ const Order = () => {
                       description={ <Radio.Group onChange={onChangePaymentMethod} defaultValue="a" buttonStyle="solid" size="large">
                           <Radio.Button value="a">Наличными</Radio.Button>
                           <Radio.Button value="b">Безналичная оплата</Radio.Button>
-                          <Radio.Button value="c">Онлайн</Radio.Button>
+                          <Radio.Button value="c" disabled={true}>Онлайн</Radio.Button>
                       </Radio.Group>}
                 />
             </Steps>

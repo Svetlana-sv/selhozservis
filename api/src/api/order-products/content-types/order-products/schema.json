@@ -21,7 +21,7 @@
     "sum_price": {
       "type": "float"
     },
-    "product_id": {
+    "product": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::product.product"

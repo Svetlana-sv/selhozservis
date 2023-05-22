@@ -13,29 +13,45 @@ import {Pagination, Skeleton} from 'antd';
 import {Text,Paragraphy} from '../../components/lib/Typography/Typography'
 import {toast} from "react-toastify";
 import dark = toast.dark;
+import {Button} from "../../components/lib/Button/Button";
+import {Key} from "antd/lib/table/interface";
 
 const Catalog = () => {
     const [search, setSearch] = useState('');
+    const [filter, setFilter] = useState<Key[]>([]);
+    const [filterStatus, setFilterStatus] = useState(true);
+
     const {data: products, isError, isFetching} = useGetAllProductsQuery();
+    console.log('products', products)
     const [sortingType, setSortingType] = useState('vertical');
     const [currentPage, setCurrentPage] = useState(0);
 
     const pageSize = 10;
     const pageCount = Math.ceil(products?.data.length || 0 / pageSize);
 
-    // const arr = products?.data.slice(0, 2);
     const arr = products?.data.slice(currentPage * pageSize, currentPage * pageSize + pageSize);
-    console.log(arr)
-    // const seenPage = pageCount / pageSize;
 
     const PaginationChange = (page: number, pageSize: number) => {
         setCurrentPage(page - 1);
     }
 
+
+    const applyFilters = () => {
+        setFilterStatus(false);
+    }
+
+    const resetFilters = () => {
+        setFilterStatus(true);
+    }
+
     return <Wrapper>
     <div className={style.catalog}>
-        <div>
-            <CatalogFilter/>
+        <div className={style.catalogFilter}>
+            <CatalogFilter setFilter={setFilter} setFilterStatus={setFilterStatus}/>
+            <div className={style.catalogFilterButtons}>
+                {/*<Button onClick={applyFilters}>Применить</Button>*/}
+                {/*<Button onClick={resetFilters}>Сбросить фильтры</Button>*/}
+            </div>
         </div>
         <div>
             <Search searchText={search} setSearchText={setSearch}/>
@@ -51,14 +67,25 @@ const Catalog = () => {
                         <ButtonIcon className={style.rightButton} icon={IoGridOutline} onClick={() => setSortingType('vertical')}/>
                     </div>
                 </div>
-
+            {/*todo сбросить все, применить фильтры (кнопки сделать)*/}
             </div>
             <div className={style.catalogList}>
                 { isFetching? 
                 <Skeleton active/>
                 :           
                 products?.data
+                    // todo фильтр по категориям
                     .filter(product => product.attributes.title.toLowerCase().includes(search))
+
+                    .filter((product, index) => {
+                        if (filterStatus) return true;
+                        const a = product.attributes.categories.data.find(()=>true)
+                        console.log(a)
+                        if (a){
+                            return filter.includes(a.id.toString())
+                        }
+                        return false;
+                    })
                     .slice(currentPage * pageSize, currentPage * pageSize + pageSize)
                     .map(
                         product => <Card key={product.id} product={product} type={sortingType}/>

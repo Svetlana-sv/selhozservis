@@ -13,11 +13,9 @@ export type Order = {
     }
 }
 
-type OrderProducts = {
-    id: number
-    attributes: {
-        count: number,
-        price: number,
-        sum_price: number,
-    }
+export type OrderProducts = {
+    product: Product,
+    count: number,
+    price: number,
+    sum_price: number,
 }
