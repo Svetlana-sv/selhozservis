@@ -1,11 +1,11 @@
 .breadcrumb {
-  display: flex;
-  flex-direction: row;
-  align-self: start;
-
-  a {
-    font-family: var(--Philosopher--FontFamily);
     display: flex;
-    align-items: center;
-  }
+    flex-direction: row;
+    align-self: start;
+
+    a {
+        font-family: var(--Philosopher--FontFamily);
+        display: flex;
+        align-items: center;
+    }
 }

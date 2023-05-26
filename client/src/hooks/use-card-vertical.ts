@@ -1,10 +1,7 @@
-import {Product} from "../api/types/product";
-import {message} from "antd";
-import {skipToken} from "@reduxjs/toolkit/query";
-import {useGetProductQuery} from "../api/productApi";
+import { Product } from '../api/types/product';
+import { message } from 'antd';
 
 export const useCardVertical = (props: { product: Product }) => {
-
     const [messageApi, contextHolder] = message.useMessage();
     const addToCart = () => {
         messageApi.open({
@@ -19,8 +16,5 @@ export const useCardVertical = (props: { product: Product }) => {
             content: `"${props.product.attributes.title}" добавлено в избранное`,
         });
     };
-    return {addToCart, addToFavourite, contextHolder};
-
-}
-
-
+    return { addToCart, addToFavourite, contextHolder };
+};

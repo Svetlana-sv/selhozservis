@@ -79,17 +79,29 @@
       "relation": "oneToMany",
       "target": "api::tag.tag"
     },
-    "product_info": {
+    "product_application": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::product-info.product-info",
+      "relation": "manyToOne",
+      "target": "api::product-application.product-application",
+      "inversedBy": "products"
+    },
+    "guide": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::guide.guide",
+      "inversedBy": "products"
+    },
+    "favourites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::favourite.favourite",
       "mappedBy": "product"
     },
-    "favourite": {
+    "order_products": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::favourite.favourite",
-      "inversedBy": "product"
+      "relation": "oneToMany",
+      "target": "api::order-products.order-products",
+      "mappedBy": "product"
     }
   }
 }

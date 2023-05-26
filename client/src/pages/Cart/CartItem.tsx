@@ -1,57 +1,76 @@
-import React from "react";
-import {CountMapProduct, Product} from "../../api/types/product";
-import {Image, InputNumber} from "antd";
-import {Button} from '../../components/lib/Button/Button'
-import ButtonIcon from '../../components/lib/Button/ButtonIcon'
-import style from './CartItem.module.scss'
-import {addProduct, deleteProduct} from "../../store/reducer/cart";
-import useAppDispatch from "../../hooks/use-app-dispatch";
-import {IoAddOutline, IoHeartOutline, IoRemoveOutline} from "react-icons/io5";
-import {message} from "../../message/message";
-import ButtonToFavourite from "../../components/lib/Button/ButtonToFavourite/ButtonToFavourite";
-import ButtonDelete from "../../components/lib/Button/ButtonDelete/ButtonDelete";
-import {Title,Text,Paragraphy} from '../../components/lib/Typography/Typography'
+import React from 'react';
+import { CountMapProduct } from '../../api/types/product';
+import { Image } from 'antd';
+import ButtonIcon from '../../components/lib/Button/ButtonIcon';
+import style from './CartItem.module.scss';
+import { addProduct, deleteProduct } from '../../store/reducer/cart';
+import useAppDispatch from '../../hooks/use-app-dispatch';
+import { IoAddOutline, IoRemoveOutline } from 'react-icons/io5';
+import ButtonToFavourite from '../../components/lib/Button/ButtonToFavourite/ButtonToFavourite';
+import ButtonDelete from '../../components/lib/Button/ButtonDelete/ButtonDelete';
+import { Paragraphy, Title } from '../../components/lib/Typography/Typography';
 
-const CartItem = (props: {product: CountMapProduct}) => {
-const dispatch = useAppDispatch();
+const CartItem = (props: { product: CountMapProduct }) => {
+    const dispatch = useAppDispatch();
 
-const handleDeleteProductClick = () => {
-dispatch(deleteProduct(props.product.product))
-};
+    const handleDeleteProductClick = () => {
+        dispatch(deleteProduct(props.product.product));
+    };
 
-const handleAddProductFavouriteClick = () => {
-// todo добавление в избранное
-};
+    const handleAddProductFavouriteClick = () => {
+        // todo добавление в избранное
+    };
 
-return <div className={style.cartItem}>
-    <div className={style.blockImage}>
-        <Image loading={'lazy'} height={120}
-            src={`http://localhost:1337${props.product.product.attributes.image.data.attributes.url}`} />
-    </div>
-    <div className={style.blockMain}>
-
-        <div className={style.blockInfo}>
-            <Title align={'left'} fontSize={'20px'}>{props.product.product.attributes.title}</Title>
-            <div className={style.blockInput}>
-                <ButtonIcon icon={IoRemoveOutline} onClick={()=> {
-                    dispatch(deleteProduct(props.product.product))
-                    }}/>
-                    <input value={props.product.count} placeholder="Search products" onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        const newValue = e.target.value;
-                    }}/>
-                    <ButtonIcon icon={IoAddOutline} onClick={()=> {
-                        dispatch(addProduct(props.product.product))
-                        }}/>
+    return (
+        <div className={style.cartItem}>
+            <div className={style.blockImage}>
+                <Image
+                    loading={'lazy'}
+                    height={120}
+                    src={`http://localhost:1337${props.product.product.attributes.image.data.attributes.url}`}
+                />
             </div>
-            <Paragraphy className={style.price} fontSize={'20px'}>Цена: {props.product.product.attributes.price} ₽ за штуку</Paragraphy>
-        </div>
+            <div className={style.blockMain}>
+                <div className={style.blockInfo}>
+                    <Title align={'left'} fontSize={'20px'}>
+                        {props.product.product.attributes.title}
+                    </Title>
+                    <div className={style.blockInput}>
+                        <ButtonIcon
+                            icon={IoRemoveOutline}
+                            onClick={() => {
+                                dispatch(deleteProduct(props.product.product));
+                            }}
+                        />
+                        <input
+                            value={props.product.count}
+                            placeholder="Search products"
+                            onChange={(
+                                e: React.ChangeEvent<HTMLInputElement>
+                            ) => {
+                                const newValue = e.target.value;
+                            }}
+                        />
+                        <ButtonIcon
+                            icon={IoAddOutline}
+                            onClick={() => {
+                                dispatch(addProduct(props.product.product));
+                            }}
+                        />
+                    </div>
+                    <Paragraphy className={style.price} fontSize={'20px'}>
+                        Цена: {props.product.product.attributes.price} ₽ за
+                        штуку
+                    </Paragraphy>
+                </div>
 
-        <div className={style.blockButtons}>
-            <ButtonToFavourite product={props.product.product} />
-            <ButtonDelete product={props.product.product} />
+                <div className={style.blockButtons}>
+                    <ButtonToFavourite product={props.product.product} />
+                    <ButtonDelete product={props.product.product} />
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-}
+    );
+};
 
-export default CartItem
+export default CartItem;

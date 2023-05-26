@@ -4,11 +4,11 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order",
+    "displayName": "Заказы",
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -45,7 +45,14 @@
     "order_products": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::order-products.order-products"
+      "target": "api::order-products.order-products",
+      "mappedBy": "order"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "order"
     }
   }
 }

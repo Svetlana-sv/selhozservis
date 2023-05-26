@@ -1,8 +1,8 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
 import cart from './reducer/cart';
-import {api} from "../api/rtkConfig";
-import authReducer from "./reducer/authSlice";
+import { api } from '../api/rtkConfig';
+import authReducer from './reducer/authSlice';
 
 const store = configureStore({
     reducer: {
@@ -10,10 +10,12 @@ const store = configureStore({
         // [authApi.reducerPath]: authApi.reducer,
         // [userApi.reducerPath]: userApi.reducer,
         cart,
-        auth: authReducer
+        auth: authReducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({serializableCheck: false}).concat(api.middleware),
+        getDefaultMiddleware({ serializableCheck: false }).concat(
+            api.middleware
+        ),
 });
 
 export default store;

@@ -1,18 +1,18 @@
-import Wrapper from "../../components/lib/Wrapper/Wrapper";
+import Wrapper from '../../components/lib/Wrapper/Wrapper';
 import './RegisterPage.css';
-import {Button, Checkbox, Form, Input} from "antd";
-import React, {useState} from "react";
-import {useAuthUserMutation, useRegisterUserMutation} from "../../api/authApi";
-import useAppDispatch from "../../hooks/use-app-dispatch";
-import {message} from "../../message/message";
-import {setUserToken} from "../../store/reducer/authSlice";
-import {IoArrowBackOutline} from "react-icons/all";
-import {Text} from "../../components/lib/Typography/Typography";
-import {Link} from "react-router-dom";
-import {LockOutlined, MailOutlined, UserOutlined} from "@ant-design/icons";
+import { Button, Form, Input } from 'antd';
+import React, { useState } from 'react';
+import { useRegisterUserMutation } from '../../api/authApi';
+import useAppDispatch from '../../hooks/use-app-dispatch';
+import { message } from '../../message/message';
+import { setUserToken } from '../../store/reducer/authSlice';
+import { IoArrowBackOutline } from 'react-icons/all';
+import { Text } from '../../components/lib/Typography/Typography';
+import { Link } from 'react-router-dom';
+import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 
 const RegisterPage = () => {
-    const [register, {isLoading, isSuccess, error, isError}] =
+    const [register, { isLoading, isSuccess, error, isError }] =
         useRegisterUserMutation();
 
     const [email, setEmail] = useState('');
@@ -22,70 +22,118 @@ const RegisterPage = () => {
     const dispatch = useAppDispatch();
 
     const submitForm = () => {
-        if (email.length > 0 && password.length > 0){
-            register({email, password, username})
+        if (email.length > 0 && password.length > 0) {
+            register({ email, password, username })
                 .unwrap()
-                .then(reponse => {
-                    if (reponse.token) {
-                        message({text: `Вы зарегистрированы!`, type: 'success'})
-                        dispatch(setUserToken(reponse.token))
+                .then((response) => {
+                    if (response.token) {
+                        message({
+                            text: `Вы зарегистрированы!`,
+                            type: 'success',
+                        });
+                        dispatch(setUserToken(response.token));
                     } else {
-                        message({text: `Ошибка!`, type: 'error'})
+                        message({ text: `Ошибка!`, type: 'error' });
                     }
-                })
+                });
         }
-    }
-
-    const onFinishFailed = (errorInfo: any) => {
-        message({text: `Ошибка!`, type: 'error'})
     };
 
-    return <Wrapper>
-        <Link to={'/authorization'}><div style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}><IoArrowBackOutline/><Text align={'left'} fontSize={'16px'}>Вернуться назад</Text></div></Link>
-        <div className="containerForm">
-            <Form
-                name="normal_login"
-                className="login-form"
-                initialValues={{remember: true}}
-                onFinish={submitForm}
-                onFinishFailed={onFinishFailed }
-            >
-                <Form.Item
-                    name="username"
-                    rules={[{required: true, message: 'Пожалуйста, введите логин!'}]}
+    const onFinishFailed = (errorInfo: any) => {
+        message({ text: `Ошибка!`, type: 'error' });
+    };
+
+    return (
+        <Wrapper>
+            <Link to={'/authorization'}>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginBottom: '10px',
+                    }}
                 >
-                    <Input prefix={<UserOutlined className="site-form-item-icon"/>} placeholder="Логин"
-                           onChange={(e) => setUserName(e.target.value)}/>
-                </Form.Item>
-
-                <Form.Item
-                    name="email"
-                    rules={[{required: true, message: 'Пожалуйста, введите e-mail!'}]}
+                    <IoArrowBackOutline />
+                    <Text align={'left'} fontSize={'16px'}>
+                        Вернуться назад
+                    </Text>
+                </div>
+            </Link>
+            <div className="containerForm">
+                <Form
+                    name="normal_login"
+                    className="login-form"
+                    initialValues={{ remember: true }}
+                    onFinish={submitForm}
+                    onFinishFailed={onFinishFailed}
                 >
-                    <Input prefix={<MailOutlined className="site-form-item-icon"/>} placeholder="E-mail"
-                           onChange={(e) => setEmail(e.target.value)}/>
-                </Form.Item>
-                <Form.Item
-                    name="password"
-                    rules={[{required: true, message: 'Пожалуйста, введите пароль!'}]}
-                >
-                    <Input
-                        prefix={<LockOutlined className="site-form-item-icon"/>}
-                        type="password"
-                        placeholder="Пароль"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </Form.Item>
+                    <Form.Item
+                        name="username"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Пожалуйста, введите логин!',
+                            },
+                        ]}
+                    >
+                        <Input
+                            prefix={
+                                <UserOutlined className="site-form-item-icon" />
+                            }
+                            placeholder="Логин"
+                            onChange={(e) => setUserName(e.target.value)}
+                        />
+                    </Form.Item>
 
+                    <Form.Item
+                        name="email"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Пожалуйста, введите e-mail!',
+                            },
+                        ]}
+                    >
+                        <Input
+                            prefix={
+                                <MailOutlined className="site-form-item-icon" />
+                            }
+                            placeholder="E-mail"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        name="password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Пожалуйста, введите пароль!',
+                            },
+                        ]}
+                    >
+                        <Input
+                            prefix={
+                                <LockOutlined className="site-form-item-icon" />
+                            }
+                            type="password"
+                            placeholder="Пароль"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Form.Item>
 
-                <Form.Item>
-                    <Button type="primary" onClick={submitForm} className="login-form-button">
-                        Зарегистрироваться
-                    </Button>
-                </Form.Item>
-            </Form>
-        </div>
-    </Wrapper>
-}
+                    <Form.Item>
+                        <Button
+                            type="primary"
+                            onClick={submitForm}
+                            className="login-form-button"
+                        >
+                            Зарегистрироваться
+                        </Button>
+                    </Form.Item>
+                </Form>
+            </div>
+        </Wrapper>
+    );
+};
 
-export default RegisterPage
+export default RegisterPage;

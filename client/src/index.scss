@@ -2,118 +2,117 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500&display=swap');
 
 :root {
-  //font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  //font-family: 'Ubuntu', sans-serif;
-  font-family: 'Noto Sans', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  
-  // variables
-  --footer--BackgoundColor: #303030;
-  --footer--FontSize: 18px;
-  --footer--FontColor: #fff;
+    //font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    //font-family: 'Ubuntu', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
 
-  --header--BackgoundColor: #fff;
-  --header--FontSize: 20px;
-  --header--FontColor: #333333;
+    // variables
+    --footer--BackgoundColor: #303030;
+    --footer--FontSize: 18px;
+    --footer--FontColor: #fff;
 
-  --Philosopher--FontFamily:  'Philosopher';
-  --Ubuntu--FontFamily:  'Noto Sans';
+    --header--BackgoundColor: #fff;
+    --header--FontSize: 20px;
+    --header--FontColor: #333333;
 
-  --color: #303030;
-  --color-footer: #ffffff;
-  --color-input-light-grey: #e0e0e0;
-  --color-input-grey: #9a9a9a;
-  --background-color-footer: #303030;
-  --main-text--FontSize: 18px;
+    --Philosopher--FontFamily: 'Philosopher';
+    --Ubuntu--FontFamily: 'Noto Sans';
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+    --color: #303030;
+    --color-footer: #ffffff;
+    --color-input-light-grey: #e0e0e0;
+    --color-input-grey: #9a9a9a;
+    --background-color-footer: #303030;
+    --main-text--FontSize: 18px;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
 }
 * {
-  box-sizing:border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  font-weight: 500;
-  color: #545353;
-  text-decoration: none;
-  cursor: pointer;
+    font-weight: 500;
+    color: #545353;
+    text-decoration: none;
+    cursor: pointer;
 }
 a:hover {
-  color: #b7b7b7;
+    color: #b7b7b7;
 }
 
 html,
 body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
 
-  ::-webkit-scrollbar{
-    width: 6px;
-    background-color: transparent;
-  }
+    ::-webkit-scrollbar {
+        width: 6px;
+        background-color: transparent;
+    }
 
-  ::-webkit-scrollbar-thumb{
-    background-color: #3a3b3d;
-    height: 200px;
-    width: 2px;
-    border-radius: 10px;
-    background-clip: padding-box;
-  }
+    ::-webkit-scrollbar-thumb {
+        background-color: #3a3b3d;
+        height: 200px;
+        width: 2px;
+        border-radius: 10px;
+        background-clip: padding-box;
+    }
 }
 
 h1 {
-  font-size: 2em;
-  font-family: 'Philosopher', sans-serif;
-  line-height: 1.1;
+    font-size: 2em;
+    font-family: 'Philosopher', sans-serif;
+    line-height: 1.1;
 }
 
-h2{
-  font-family: 'Philosopher', sans-serif;
+h2 {
+    font-family: 'Philosopher', sans-serif;
 }
 
-ul{
-  padding: 0;
+ul {
+    padding: 0;
 }
-li{
-  list-style: none;
+li {
+    list-style: none;
 }
 
 button {
-  outline: none;
-  border: none;
-  background: none;
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
-p{
-  padding: 0;
-  margin: 0;
-  font-family: 'Ubuntu', sans-serif;
+p {
+    padding: 0;
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
 }
-input{
-  font-family: 'Ubuntu', sans-serif;
+input {
+    font-family: 'Ubuntu', sans-serif;
 }
 
-hr{
-  margin: 10px;
-  color: #9a9a9a;
+hr {
+    margin: 10px;
+    color: #9a9a9a;
 }
 
 #root {
-  height: 100%;
+    height: 100%;
 }
-
 
 //@media (prefers-color-scheme: light) {
 //  :root {

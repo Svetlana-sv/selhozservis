@@ -1,6 +1,6 @@
 .card {
-    background: #FFFFFF;
-    border: 2px solid #F5F5F5;
+    background: #ffffff;
+    border: 2px solid #f5f5f5;
     box-shadow: 0px 4px 4px 1px rgba(211, 211, 211, 0.25);
     border-radius: 20px;
     width: 100%;
@@ -8,73 +8,100 @@
     position: relative;
     display: flex;
     flex-direction: row;
-  
-  
+
     .img {
         width: 200px;
-      display: flex;
-      justify-content: center;
-      max-height: 200px;
+        display: flex;
+        justify-content: center;
+        max-height: 200px;
         margin-top: 25px;
         text-align: center;
-  
     }
 
-  .tag{
-    position: absolute;
-    background-color: #B9F7B3;
-    font-size: 12px;
-    color: #FFFFFF;
-    padding: 0px 4px;
-    left: 15px;
-    border-radius: 0px 5px;
-  }
-  
+    .tag {
+        position: absolute;
+        display: block;
+        flex-direction: column;
+        row-gap: 1px;
+        column-gap: 5px;
+        font-size: 12px;
+        color: #ffffff;
+        padding: 0px 4px;
+        margin-left: 13px;
+        width: auto;
+        height: 22px;
+        overflow: hidden;
+        //overflow: clip;
+        //overflow: scroll;
+        //overflow-scrolling: touch;
+        //left: 15px;
+        //border-radius: 0px 5px;
+    }
+    .tag:hover {
+        z-index: 100;
+        overflow: visible;
+        //overflow: clip;
+        //overflow: scroll;
+        //overflow-scrolling: touch;
+        //left: 15px;
+        //border-radius: 0px 5px;
+    }
+    .tagInfo {
+        color: #9a9a9a;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        border: 1px solid #9a9a9a;
+        padding: 0px 4px;
+        position: absolute;
+        width: auto;
+        right: 50px;
+    }
+
     .info {
-      margin-left: 13px;
-      text-align: left;
-      padding: 21px 21px;
-      align-items: flex-end;
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
+        margin-left: 13px;
+        text-align: left;
+        padding: 21px 21px;
+        align-items: flex-end;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
     }
-  
-    .heart {
-      position: absolute;
-      top: 10px;
-      right: 0px;
-      color: #989898;
-      z-index: 100;
-    }
-  
-    .title {
-      font-size: 20px;
-      font-weight: bold;
-    }
-  
-    .description {
-      font-size: 12px;
-      color: #999;
-      margin-top: 5px;
-    }
-  
-    .priceBlock {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 15px;
 
-     
-  
-      .price {
-        font-size: 18px;
-        font-weight: 500;
-        margin-bottom: 10px;
-      }
+    .heart {
+        position: absolute;
+        top: 10px;
+        right: 0px;
+        color: #989898;
+        z-index: 100;
     }
-  
+
+    .title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .description {
+        font-size: 12px;
+        color: #999;
+        margin-top: 5px;
+    }
+
+    .priceBlock {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        .price {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+    }
+
     @media screen and (max-width: 500px) {
-      width: 200px;
+        width: 200px;
     }
-  }
+}

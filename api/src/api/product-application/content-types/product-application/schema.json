@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_applications",
+  "info": {
+    "singularName": "product-application",
+    "pluralName": "product-applications",
+    "displayName": "ProductApplication",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "product_application"
+    },
+    "consumption_rate": {
+      "type": "string"
+    },
+    "fluid_flow_rate": {
+      "type": "string"
+    },
+    "processing_method": {
+      "type": "string"
+    },
+    "processing_time": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Для личных подсобных хозяйств",
+        "Для питомников, ландшафтных организаций, озеленителей",
+        "Для сельскохозяйственных предприятий"
+      ]
+    },
+    "cultures": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::culture.culture"
+    },
+    "norm_application": {
+      "type": "float"
+    },
+    "norm_application_quantity": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::metric.metric"
+    },
+    "norm_application_area": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::metric.metric"
+    },
+    "description": {
+      "type": "text"
+    },
+    "active_substance": {
+      "type": "string"
+    },
+    "active_substance_content": {
+      "type": "string"
+    },
+    "chemical_class": {
+      "type": "string"
+    },
+    "method_penetration": {
+      "type": "string"
+    },
+    "character_action": {
+      "type": "string"
+    }
+  }
+}

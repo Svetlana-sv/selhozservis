@@ -1,52 +1,51 @@
-  .container {
+.container {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 30px;
     grid-template-areas:
-    "f ."
-    "f .";
+        'f .'
+        'f .';
 
     @media (max-width: 500px) {
-      display: flex;
-      gap: 10px;
-      flex-direction: column;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
     }
 
     .cartItems {
-      grid-area: f;
-      background: #FFFFFF;
-      //border: 2px solid #F5F5F5;
-      //box-shadow: 0px 1px 1px 1px rgba(211, 211, 211, 0.25);
-      //border-radius: 20px;
+        grid-area: f;
+        background: #ffffff;
+        //border: 2px solid #F5F5F5;
+        //box-shadow: 0px 1px 1px 1px rgba(211, 211, 211, 0.25);
+        //border-radius: 20px;
 
-      //border: 1px solid #F5F5F5;
-      //box-shadow: 0px 1px 1px 1px rgba(211, 211, 211, 0.25);
-      //border-radius: 15px;
+        //border: 1px solid #F5F5F5;
+        //box-shadow: 0px 1px 1px 1px rgba(211, 211, 211, 0.25);
+        //border-radius: 15px;
 
-      .cartClear {
-        text-align: center;
-        margin: 15px 0px;
-      }
-
-
+        .cartClear {
+            button {
+                margin: auto;
+            }
+        }
     }
 
     .cartBlockInfo {
-      text-align: center;
-      background: #FFFFFF;
-      border: 1px solid #F5F5F5;
-      box-shadow: 0px 1px 1px 1px rgba(211, 211, 211, 0.25);
-      border-radius: 15px;
-      padding: 20px;
-      //height: 250px;
+        text-align: center;
+        background: #ffffff;
+        border: 1px solid #f5f5f5;
+        box-shadow: 0px 1px 1px 1px rgba(211, 211, 211, 0.25);
+        border-radius: 15px;
+        padding: 20px;
+        //height: 250px;
 
-      .cartBlockInfoImage{
-        text-align: left;
-        margin: 10px 0px 10px 0px;
-      }
+        button {
+            margin: auto;
+        }
+
+        .cartBlockInfoImage {
+            text-align: left;
+            margin: 10px 0px 10px 0px;
+        }
     }
-
-  }
-
-
-
+}

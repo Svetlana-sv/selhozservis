@@ -1,6 +1,6 @@
 .card {
-    background: #FFFFFF;
-    border: 2px solid #F5F5F5;
+    background: #ffffff;
+    border: 2px solid #f5f5f5;
     box-shadow: 0px 4px 4px 1px rgba(211, 211, 211, 0.25);
     border-radius: 20px;
     width: 220px;
@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
 
-
     .img {
         margin-top: 25px;
         text-align: center;
@@ -17,12 +16,12 @@
 
     .tag {
         position: absolute;
-        display: block;
+        display: grid;
         flex-direction: column;
-        row-gap: 1px;
+        row-gap: 5px;
         column-gap: 5px;
         font-size: 12px;
-        color: #FFFFFF;
+        color: #ffffff;
         padding: 0px 4px;
         margin-left: 13px;
         width: auto;
@@ -33,8 +32,6 @@
         //overflow-scrolling: touch;
         //left: 15px;
         //border-radius: 0px 5px;
-
-
     }
     .tag:hover {
         z-index: 100;
@@ -45,7 +42,7 @@
         //left: 15px;
         //border-radius: 0px 5px;
     }
-    .tagInfo{
+    .tagInfo {
         color: #9a9a9a;
         height: 22px;
         display: flex;

@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -66,10 +65,23 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "order_id": {
+    "user_info": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-info.user-info",
+      "inversedBy": "user"
+    },
+    "favourites": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::order.order"
+      "target": "api::favourite.favourite",
+      "mappedBy": "user_id"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
     }
   }
 }
