@@ -26,6 +26,7 @@ const authSlice = createSlice({
         reset: () => initialState,
         setUserToken: (state, { payload }: { payload: string }) => {
             state.userToken = payload;
+            localStorage.setItem('userToken', payload);
         },
 
         setUserId: (state, { payload }: { payload: number }) => {

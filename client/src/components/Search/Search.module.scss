@@ -6,30 +6,59 @@
     justify-content: center;
     width: 100%;
 
-    input {
-        transition: 0.3s border-color;
-        width: 100%;
-        padding: 15px;
-        border-radius: 15px;
-        border: 0px;
-        outline: none;
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.09);
-        //box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.09);
+    .searchInput {
         height: 40px;
-        &:hover,
-        &:focus {
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-        }
-        @media screen and (max-width: 500px) {
-            width: 200px;
-        }
-    }
 
-    button {
-        margin: 10px;
-        .icon {
-            //color: #9a9a9a;
-            color: #3d3d3d;
+        //input{
+        //    height: 30px;
+        //}
+        //
+        //button{
+        //    height: 30px;
+        //}
+
+        span {
+            height: 40px;
+            input {
+                height: 40px;
+            }
+            span {
+                height: 40px;
+
+                button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: center;
+                    margin: auto;
+                    justify-items: center;
+                    align-self: center;
+                    justify-self: center;
+                    height: 40px;
+
+                    span {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        align-content: center;
+                        margin: auto;
+                        justify-items: center;
+                        align-self: center;
+                        justify-self: center;
+
+                        svg {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            align-content: center;
+                            margin: auto;
+                            justify-items: center;
+                            align-self: center;
+                            justify-self: center;
+                        }
+                    }
+                }
+            }
         }
     }
 }

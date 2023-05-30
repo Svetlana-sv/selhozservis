@@ -1,5 +1,27 @@
 .container {
     max-width: 500px;
+    .typeBlock {
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+
+        @media screen and (max-width: 500px) {
+            flex-direction: column;
+            text-align: left;
+        }
+        .radioGroup{
+            margin-left: 15px;
+            display: flex;
+            flex-direction: row;
+
+            @media screen and (max-width: 500px) {
+
+                margin: auto;
+            }
+        }
+    }
+
     .buttonUpdate {
         margin: auto;
         margin-top: 15px;

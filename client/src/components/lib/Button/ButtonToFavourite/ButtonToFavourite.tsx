@@ -1,4 +1,4 @@
-import { IoHeartOutline } from 'react-icons/io5';
+import { IoHeartOutline, IoHeart } from 'react-icons/io5';
 import { Product } from '../../../../api/types/product';
 import useAppDispatch from '../../../../hooks/use-app-dispatch';
 import ButtonIcon from '../ButtonIcon';
@@ -11,8 +11,12 @@ import {
 } from '../../../../store/reducer/authSlice';
 import {
     useAddNewFavoriteProductMutation,
+    useDeleteFavoriteProductMutation,
     useGetAllFavouritesQuery,
-} from '../../../../api/productApi';
+    useGetFavouriteQuery,
+    useLazyGetFavouriteQuery,
+} from '../../../../api/favouriteApi';
+import { isNum } from 'react-toastify/dist/utils';
 
 type ButtonToFavouriteProps = {
     product?: Product;
@@ -24,10 +28,14 @@ type ButtonToFavouriteProps = {
 const ButtonToFavourite = (props: ButtonToFavouriteProps) => {
     const dispatch = useAppDispatch();
     const [status, setStatus] = useState(false);
+    const [favId, setfavId] = useState(-1);
     const authToken = useAppSelector(selectUserToken);
     const userId = useAppSelector(selectUserId);
 
-    const [addFavorite, { data }] = useAddNewFavoriteProductMutation();
+    const [addFavorite, { data: addData }] = useAddNewFavoriteProductMutation();
+    const [deleteFavorite, { data: deleteData }] =
+        useDeleteFavoriteProductMutation();
+    const [getFavourite] = useLazyGetFavouriteQuery();
     var isFavourite = false;
 
     if (authToken) {
@@ -43,12 +51,31 @@ const ButtonToFavourite = (props: ButtonToFavouriteProps) => {
     }
     const handleClickProductToFavourite = () => {
         if (authToken) {
-            addFavorite(props.product);
-            message({
-                text: `${props.product?.attributes.title} добавлено в избранное`,
-                type: 'info',
-            });
-            setStatus(true);
+            if (isFavourite) {
+                if (props.product?.id !== undefined) {
+                    getFavourite({ userId, productId: props.product?.id })
+                        .unwrap()
+                        .then((response) =>
+                            deleteFavorite(response?.data[0].id)
+                        );
+                    message({
+                        text: `${props.product?.attributes.title} удалено из избранного`,
+                        type: 'info',
+                    });
+                }
+            } else {
+                addFavorite({
+                    data: {
+                        user_id: userId,
+                        product: props.product,
+                    },
+                });
+                message({
+                    text: `${props.product?.attributes.title} добавлено в избранное`,
+                    type: 'info',
+                });
+                setStatus(true);
+            }
         } else
             message({
                 text: `Для добавления товара в избранное войдите в личный кабинет!`,

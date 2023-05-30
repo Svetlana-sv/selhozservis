@@ -4,7 +4,7 @@
   "info": {
     "singularName": "favourite",
     "pluralName": "favourites",
-    "displayName": "Favourite",
+    "displayName": "Избранные товары",
     "description": ""
   },
   "options": {

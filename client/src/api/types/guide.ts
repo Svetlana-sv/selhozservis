@@ -7,5 +7,6 @@ export type Guide = {
         title: string;
         type: string;
         products: ApiArrayResponse<Product>;
+        info: string;
     };
 };

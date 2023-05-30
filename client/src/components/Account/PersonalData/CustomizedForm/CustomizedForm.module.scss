@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+
+  div {
+
+    //margin: 2px 2px;
+
+    div {
+
+
+      margin: 2px 2px;
+
+    }
+    div{
+      @media screen and (max-width: 500px) {
+        padding: 0px;
+      }
+
+    label {
+      width: 102px;
+      display: flex;
+      margin: auto;
+      margin: 2px 2px;
+      justify-content: flex-end;
+      justify-items: center;
+      align-items: center;
+      justify-self: center;
+      text-align: center;
+      align-self: center;
+      align-content: center;
+      margin: auto;
+      font-weight: 600;
+
+      @media screen and (max-width: 500px) {
+        margin: auto;
+        width: auto;
+      }
+    }}
+  }
+
+}

@@ -1,0 +1,25 @@
+.container{
+ margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: left;
+  text-align: left;
+    .info{
+      margin-bottom: 10px;
+
+      .blockIdButton{
+        display: flex;
+        flex-direction: row;
+
+
+      }
+
+
+    }
+
+  .tableBlock{
+    margin-bottom: 10px;
+  }
+
+}

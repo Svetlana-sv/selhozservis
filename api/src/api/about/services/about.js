@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * user-info service
+ * about service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::user-info.user-info');
+module.exports = createCoreService('api::about.about');

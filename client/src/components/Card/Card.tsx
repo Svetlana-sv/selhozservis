@@ -3,7 +3,6 @@ import CardVertical from './CardVertical/CardVertical';
 import CardHorizontal from './CardHorizontal/CardHorizontal';
 
 const Card = (props: { product: Product; type: string }) => {
-    console.log('props.product.id', props.product.id);
     return (
         <>
             {props.type === 'vertical' ? (

@@ -12,14 +12,13 @@ const CatalogBreadcrumb: BreadcrumbComponentType<'id'> = ({ match }) => {
 
 const GuideBookBreadcrumb: BreadcrumbComponentType<'id'> = ({ match }) => {
     const { data: guideBook } = useGetGuidesByIdQuery(match.params.id || '');
-    // console.log('data: guideBook', guideBook?.data.attributes.title)
     return <span>{guideBook?.data[0].attributes.title}</span>;
 };
 
 const OrderHistoryBreadcrumb: BreadcrumbComponentType<'id'> = ({ match }) => {
     const { data: order } = useGetOrderQuery(match.params.id || '');
 
-    return <span>Заказ №{order?.data.id}</span>;
+    return <span>Заказ №{order?.data[0].id}</span>;
 };
 
 export const routes = [

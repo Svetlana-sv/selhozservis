@@ -1,26 +1,124 @@
 import Wrapper from '../../lib/Wrapper/Wrapper';
 import style from './PersonalData.module.scss';
-import PersonalDataForm from './PersonalDataForm/PersonalDataForm';
-import { Button } from '../../lib/Button/Button';
-import { useState } from 'react';
-import { IUserInfo } from '../../../api/types/user';
+import {Button} from '../../lib/Button/Button';
+import React, {useEffect, useState} from 'react';
+import {Form, Input, Radio, Space} from 'antd';
+import useAppSelector from '../../../hooks/use-app-selector';
+import {selectUserId} from '../../../store/reducer/authSlice';
+import {
+    useGetUserInfoQuery,
+    useUpdateUserInfoMutation,
+} from '../../../api/userApi';
+import {Text} from '../../lib/Typography/Typography';
+import CustomizedForm, {FieldData} from "./CustomizedForm/CustomizedForm";
+import {message} from "../../../message/message";
+import {text} from "ionicons/icons";
+
+export enum Type {
+    INDIVIDUAL = 1,
+    LEGAL_PERSON = 2,
+}
 
 const PersonalData = () => {
-    const [userInfo, setUserInfo] = useState<IUserInfo>();
+    const userId = useAppSelector(selectUserId);
+    const {data: userInfo} = useGetUserInfoQuery(userId);
+
+    const [fields, setFields] = useState<FieldData[]>([
+        {
+            name: ['last_name'],
+            value: `${userInfo?.last_name || ''}`,
+        },
+        {name: ['name'], value: `${userInfo?.name || ''}`},
+        {name: ['middle_name'], value: `${userInfo?.middle_name || ''}`},
+        {
+            name: ['number'],
+            value: `${userInfo?.number || ''}`,
+        },
+        {name: ['email'], value: `${userInfo?.email || ''}`},
+    ]);
+    const [newUserInfo] = useUpdateUserInfoMutation();
+    useEffect(() => {
+        setFields([
+            {
+                name: ['last_name'],
+                value: `${userInfo?.last_name || ''}`,
+            },
+            {name: ['name'], value: `${userInfo?.name || ''}`},
+            {name: ['middle_name'], value: `${userInfo?.middle_name || ''}`},
+            {
+                name: ['number'],
+                value: `${userInfo?.number || ''}`,
+            },
+            {name: ['email'], value: `${userInfo?.email || ''}`},
+        ]);
+    }, [userInfo]);
 
     const handleUpdateData = () => {
-        console.log(userInfo);
+        newUserInfo({
+            id: userId,
+            data: {
+                name: fields[1].value,
+                type:
+                    type === Type.INDIVIDUAL
+                        ? 'Физическое лицо'
+                        : 'Юридическое лицо',
+                last_name: fields[0].value,
+                email: fields[3].value,
+                middle_name: fields[2].value,
+                number: fields[4].value,
+            },
+        })
+            .unwrap()
+            .then((response) => {
+                    if (response.isError) {
+                        message({text: 'Ошибка!', type: 'error'})
+                    } else {
+                        message({text: 'Данные успешно изменены!', type: 'success'})
+                    }
+                }
+            )
     };
+
+    const [type, setType] = useState(
+        (userInfo?.type || '') === 'Физическое лицо'
+            ? Type.INDIVIDUAL
+            : Type.LEGAL_PERSON
+    );
 
     return (
         <Wrapper>
             <div className={style.container}>
-                <PersonalDataForm setUserInfo={setUserInfo} />
+                <div className={style.typeBlock}>
+                    <Text
+                        align={'left'}
+                        fontSize={'14px'}
+                        weight={'600'}
+                        margin={'5px 0px'}
+                    >
+                        Выберите тип:
+                    </Text>
+                    <Radio.Group
+                        onChange={(e) => setType(e.target.value)}
+                        value={type}
+                        className={style.radioGroup}
+                    >
+                        <Space direction="horizontal">
+                            <Radio value={Type.INDIVIDUAL} disabled={true}>Физическое лицо</Radio>
+                            <Radio value={Type.LEGAL_PERSON}>Юридическое лицо</Radio>
+                        </Space>
+                    </Radio.Group>
+                </div>
+                <CustomizedForm
+                    fields={fields}
+                    onChange={(newFields) => {
+                        setFields(newFields);
+                    }}
+                />
                 <Button
-                    className={style.buttonUpdate}
                     onClick={handleUpdateData}
+                    className={style.buttonUpdate}
                 >
-                    Сохранить
+                    Обновить данные
                 </Button>
             </div>
         </Wrapper>

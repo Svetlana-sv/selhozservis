@@ -71,12 +71,18 @@ const CardVertical = (props: { product: Product }) => {
                         100x14 см
                     </Paragraphy>
                 )}
-                <div className={style.priceBlock}>
-                    <Paragraphy className={style.price}>
-                        Цена {props.product.attributes.price} ₽
-                    </Paragraphy>
-                    <ButtonToCart product={props.product} type="icon" />
-                </div>
+                {props.product.attributes.rest_products > 0 ? (
+                    <div className={style.priceBlock}>
+                        <Paragraphy className={style.price}>
+                            Цена {props.product.attributes.price} ₽
+                        </Paragraphy>
+                        <ButtonToCart product={props.product} type="icon" />
+                    </div>
+                ) : (
+                    <div className={style.priceBlock}>
+                        <Paragraphy>Нет в наличие</Paragraphy>
+                    </div>
+                )}
             </div>
         </div>
     );

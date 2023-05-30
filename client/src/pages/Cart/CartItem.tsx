@@ -13,14 +13,6 @@ import { Paragraphy, Title } from '../../components/lib/Typography/Typography';
 const CartItem = (props: { product: CountMapProduct }) => {
     const dispatch = useAppDispatch();
 
-    const handleDeleteProductClick = () => {
-        dispatch(deleteProduct(props.product.product));
-    };
-
-    const handleAddProductFavouriteClick = () => {
-        // todo добавление в избранное
-    };
-
     return (
         <div className={style.cartItem}>
             <div className={style.blockImage}>
@@ -45,11 +37,6 @@ const CartItem = (props: { product: CountMapProduct }) => {
                         <input
                             value={props.product.count}
                             placeholder="Search products"
-                            onChange={(
-                                e: React.ChangeEvent<HTMLInputElement>
-                            ) => {
-                                const newValue = e.target.value;
-                            }}
                         />
                         <ButtonIcon
                             icon={IoAddOutline}
@@ -65,8 +52,8 @@ const CartItem = (props: { product: CountMapProduct }) => {
                 </div>
 
                 <div className={style.blockButtons}>
-                    <ButtonToFavourite product={props.product.product} />
-                    <ButtonDelete product={props.product.product} />
+                    <ButtonToFavourite product={props.product.product}/>
+                    <ButtonDelete product={props.product.product} type={'icon'}/>
                 </div>
             </div>
         </div>

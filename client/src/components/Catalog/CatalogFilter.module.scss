@@ -1,5 +1,7 @@
 .catalogFilterButtons {
     margin-top: 20px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+    align-self: center;
 }

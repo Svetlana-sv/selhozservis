@@ -12,6 +12,7 @@ const orderApi = api.injectEndpoints({
         getOrders: builder.query<ApiArrayResponse<Order>, number>({
             query: (id) =>
                 `/orders?filters[user][id][$eq]=${id}&populate=deep,4`,
+            providesTags: ['order'],
         }),
         getOrder: builder.query<ApiArrayResponse<Order>, string>({
             query: (id) => `/orders?filters[id][$eq]=${id}&populate=deep,4`,
@@ -25,6 +26,7 @@ const orderApi = api.injectEndpoints({
                 method: 'POST',
                 body: newProduct,
             }),
+            invalidatesTags: ['order'],
         }),
         addOrderProducts: builder.mutation<
             ApiObjectResponse<GetOrderProducts>,
@@ -36,6 +38,18 @@ const orderApi = api.injectEndpoints({
                 body: newProduct,
             }),
         }),
+        cancelOrder: builder.mutation({
+            query: (id) => ({
+                url: `/orders/${id}?populate=deep,4`,
+                method: 'PUT',
+                body: {
+                    "data":{
+                        "status":"Отменено"
+                    }
+                },
+            }),
+            invalidatesTags: ['order'],
+        }),
     }),
 });
 
@@ -44,4 +58,5 @@ export const {
     useGetOrderQuery,
     useAddOrderMutation,
     useAddOrderProductsMutation,
+    useCancelOrderMutation,
 } = orderApi;

@@ -23,28 +23,7 @@ const productApi = api.injectEndpoints({
             }),
         }),
         getAllCategories: builder.query<ApiArrayResponse<Category>, void>({
-            query: () => '/categories?populate=*',
-        }),
-        getAllFavourites: builder.query<
-            ApiArrayResponse<FavouriteProduct>,
-            number
-        >({
-            query: (id) =>
-                `/favourites?filters[user_id][id][$eq]=${id}&populate=deep,4`,
-        }),
-        // getProductsInfo: builder.query<
-        //     ApiArrayResponse<ProductInfo>,
-        //     void
-        //     >({
-        //     query: (id) =>
-        //         `/product-infos?populate=deep,5`,
-        // }),
-        addNewFavoriteProduct: builder.mutation({
-            query: (newProduct) => ({
-                url: `/favourites`,
-                method: 'POST',
-                body: newProduct,
-            }),
+            query: () => '/categories?sort[0]=id%3Aasc&populate=*',
         }),
     }),
 });
@@ -52,8 +31,6 @@ const productApi = api.injectEndpoints({
 export const {
     useGetAllProductsQuery,
     useGetAllCategoriesQuery,
-    useGetAllFavouritesQuery,
     useGetProductQuery,
-    useAddNewFavoriteProductMutation,
     useLazyGetProductQuery,
 } = productApi;

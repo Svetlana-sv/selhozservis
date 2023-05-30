@@ -4,7 +4,7 @@
   "info": {
     "singularName": "guide",
     "pluralName": "guides",
-    "displayName": "guide",
+    "displayName": "Справочник",
     "description": ""
   },
   "options": {
@@ -27,6 +27,9 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "guide"
+    },
+    "info": {
+      "type": "richtext"
     }
   }
 }

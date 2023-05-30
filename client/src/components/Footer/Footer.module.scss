@@ -22,7 +22,7 @@
         grid-column: 1 / 5;
     }
 
-    div {
+    .footerColumn {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -34,5 +34,17 @@
     a {
         margin: 0;
         color: var(--footer--FontColor);
+
+        .blockLinksContainer{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            .blockLinks{
+                margin-left: 5px;
+                display: flex;
+                flex-direction: row;
+            }
+
+        }
     }
 }

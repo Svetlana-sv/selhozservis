@@ -110,28 +110,33 @@
                         font-size: var(--header--FontSize);
                         color: var(--header--FontColor);
                         font-family: var(--Philosopher--FontFamily);
+
+                        svg{
+                            margin-right: 10px;
+                        }
                     }
                 }
-            }
-            .menuItem {
-                display: flex;
-                align-items: center;
-                text-align: center;
-                padding: 12px 24px;
-                flex-direction: row;
-                color: #333;
+                .menuItem {
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    padding: 12px 24px;
+                    flex-direction: row;
+                    color: #333;
 
-                font-family: 'Roboto', sans-serif;
-                font-size: 20px;
-                font-weight: 600;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 20px;
+                    font-weight: 600;
 
-                text-decoration: none;
+                    text-decoration: none;
 
-                transition-duration: 0.25s;
+                    transition-duration: 0.25s;
+                }
+                .menuItem:hover {
+                    background-color: #cfd8dc;
+                }
             }
-            .menuItem:hover {
-                background-color: #cfd8dc;
-            }
+
         }
     }
 
@@ -161,6 +166,12 @@
             align-items: center;
             //text-align: center;
             justify-content: space-between;
+
+            .buttonIcon {
+                svg{
+                    margin-right: 7px;
+                }
+            }
 
             .headerItemLogo {
                 margin: auto;

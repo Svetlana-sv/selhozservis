@@ -1,2 +1,25 @@
 .container {
+    p {
+        font-family: var(--Ubuntu--FontFamily);
+        line-height: 1.8;
+        strong {
+            font-weight: 1000;
+        }
+    }
+    .productsApplicationCollapse {
+        margin-top: 10px;
+    }
+
+    .productsList {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin-bottom: 20px;
+
+        @media screen and (max-width: 500px) {
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 }

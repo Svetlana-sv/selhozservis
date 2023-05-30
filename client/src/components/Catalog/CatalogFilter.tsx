@@ -1,13 +1,13 @@
 // import {useGetFilterQuery} from "../../api/productApi";
 // import CatalogItem from "./CatalogItem";
-import React, { useState } from 'react';
-import { Paragraphy } from '../lib/Typography/Typography';
-import { useGetAllCategoriesQuery } from '../../api/productApi';
-import { Tree } from 'antd';
+import React, {useState} from 'react';
+import {Paragraphy} from '../lib/Typography/Typography';
+import {useGetAllCategoriesQuery} from '../../api/productApi';
+import {Tree} from 'antd';
 import style from './CatalogFilter.module.scss';
-import { Category } from '../../api/types/category';
-import { Key } from 'antd/lib/table/interface';
-import { Button } from '../lib/Button/Button';
+import {Category} from '../../api/types/category';
+import {Key} from 'antd/lib/table/interface';
+import {Button} from '../lib/Button/Button';
 
 const CatalogFilter = (props: {
     setFilter: (filter: Key[]) => void;
@@ -35,9 +35,9 @@ const CatalogFilter = (props: {
         const temp: DataNode[] = [];
 
         for (const nodeInfo of data) {
-            const { id, attributes } = nodeInfo;
-            const { title, parent_id, level } = attributes;
-            const node: DataNode = { title, key: id.toString(), children: [] };
+            const {id, attributes} = nodeInfo;
+            const {title, parent_id, level} = attributes;
+            const node: DataNode = {title, key: id.toString(), children: []};
 
             if (level === 0) {
                 temp.push(node);
@@ -54,6 +54,7 @@ const CatalogFilter = (props: {
         }
         return treeData;
     }
+
     const applyFilters = () => {
         props.setFilterStatus(false);
         props.setFilter(checkedKeys);

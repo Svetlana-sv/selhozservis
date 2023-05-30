@@ -102,6 +102,10 @@
       "relation": "oneToMany",
       "target": "api::order-products.order-products",
       "mappedBy": "product"
+    },
+    "rest_products": {
+      "type": "integer",
+      "min": 0
     }
   }
 }

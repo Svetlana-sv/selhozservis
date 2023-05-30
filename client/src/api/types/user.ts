@@ -17,14 +17,12 @@ export type User = {
 
 export type UserInfo = {
     id: number;
-    attributes: {
-        name: string;
-        type: string;
-        last_name: string;
-        middle_name: string;
-        number: string;
-        user: ApiObjectResponse<User>;
-    };
+    name: string;
+    email: string;
+    type: string;
+    last_name: string;
+    middle_name: string;
+    number: string;
 };
 
 export interface IUserInfo {

@@ -13,7 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "total": {
-      "type": "float"
+      "type": "decimal"
     },
     "status": {
       "type": "enumeration",

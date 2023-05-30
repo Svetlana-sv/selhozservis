@@ -1,13 +1,15 @@
 import style from './GuideBookCard.module.scss';
 import { useParams } from 'react-router-dom';
 import Wrapper from '../../components/lib/Wrapper/Wrapper';
-import { Paragraphy } from '../../components/lib/Typography/Typography';
-import { Collapse } from 'antd';
+import { Paragraphy, Title } from '../../components/lib/Typography/Typography';
+import { Collapse, Skeleton } from 'antd';
 import { toast } from 'react-toastify';
 import React from 'react';
 import { useGetGuidesByIdQuery } from '../../api/guideBookApi';
-
+import ReactMarkdown from 'react-markdown';
 const { Panel } = Collapse;
+import remarkGfm from 'remark-gfm';
+import Card from '../../components/Card/Card';
 const GuideBookCard = () => {
     const text = `
   A dog is a type of domesticated animal.
@@ -23,50 +25,61 @@ const GuideBookCard = () => {
         isError,
         isFetching,
     } = useGetGuidesByIdQuery(params.id || '');
-    console.log('productInfo', guide);
-
-    const productInfo = guide?.data[0].attributes.products?.data[0].attributes;
-    console.log('productInfo', productInfo);
     return (
         <Wrapper>
             <div className={style.container}>
-                <Paragraphy>
-                    {/*Название: {guide?.data.attributes.title}*/}
-                </Paragraphy>
-                <Paragraphy>Title: {productInfo?.title}</Paragraphy>
-                {/*<Paragraphy>*/}
-                {/*    Сфера применения: {guide?.data.attributes.products_applications?.data.att}*/}
-                {/*</Paragraphy>*/}
-                {/*<Paragraphy>*/}
-                {/*    Назначение: {guide?.data.attributes.destination}*/}
-                {/*</Paragraphy>*/}
+                <Title
+                    align={'left'}
+                    weight={'600'}
+                    margin={'0px 0px 10px 0px'}
+                    color={'#994C4C'}
+                >
+                    Название: {guide?.data[0].attributes.title}
+                </Title>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {guide?.data[0].attributes.info!}
+                </ReactMarkdown>
+
+                {guide?.data[0].attributes.type !== null && (
+                    <div className={style.productsApplicationCollapse}>
+                        <Collapse defaultActiveKey={['1']} onChange={onChange}>
+                            {}
+                            <Panel header="This is panel header 1" key="1">
+                                <p>{text}</p>
+                            </Panel>
+                            <Panel header="This is panel header 2" key="2">
+                                <p>{text}</p>
+                            </Panel>
+                            <Panel header="This is panel header 3" key="3">
+                                <p>{text}</p>
+                            </Panel>
+                        </Collapse>
+                    </div>
+                )}
                 <div>
-                    <Collapse defaultActiveKey={['1']} onChange={onChange}>
-                        <Panel header="This is panel header 1" key="1">
-                            <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 2" key="2">
-                            <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 3" key="3">
-                            <p>{text}</p>
-                        </Panel>
-                    </Collapse>
-                </div>
-                <div>
-                    <Paragraphy>Товары</Paragraphy>
-                    {/*{isFetching ? (*/}
-                    {/*    <Skeleton active />*/}
-                    {/*) : (*/}
-                    {/*    productInfo?.data.attributes.pr*/}
-                    {/*    products?.data.map((product) => (*/}
-                    {/*        <Card*/}
-                    {/*            key={product.id}*/}
-                    {/*            product={product}*/}
-                    {/*            type={'vertical'}*/}
-                    {/*        />*/}
-                    {/*    ))*/}
-                    {/*)}*/}
+                    <Title
+                        align={'left'}
+                        weight={'600'}
+                        margin={'15px 0px 10px 0px'}
+                        color={'#994C4C'}
+                    >
+                        Товары
+                    </Title>
+                    <div className={style.productsList}>
+                        {isFetching ? (
+                            <Skeleton active />
+                        ) : (
+                            guide?.data[0].attributes.products?.data.map(
+                                (product) => (
+                                    <Card
+                                        key={product.id}
+                                        product={product}
+                                        type={'vertical'}
+                                    />
+                                )
+                            )
+                        )}
+                    </div>
                 </div>
             </div>
         </Wrapper>

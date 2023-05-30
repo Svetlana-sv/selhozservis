@@ -4,22 +4,40 @@
     column-gap: 50px;
 
     .LeftSide {
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            //border: none;
-            width: 100%;
+        .typeBlock {
             margin-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            .radioGroup{
+                margin-left: 15px;
+                display: flex;
+                flex-direction: row;
+            }
         }
-
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: center;
-            padding: 8px;
-
-            .blockTitleImage {
-                gap: 15px;
+        .table {
+            margin-bottom: 15px;
+            td,
+            th,
+            tr {
+                text-align: center;
+            }
+            .ant-table-cell {
+                text-align: center;
+            }
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                //border: none;
+                width: 100%;
+                td,
+                th,
+                tr {
+                    text-align: center;
+                }
+                .ant-table-cell {
+                    text-align: center;
+                }
             }
         }
     }

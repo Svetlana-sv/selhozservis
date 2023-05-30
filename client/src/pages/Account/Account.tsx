@@ -10,6 +10,7 @@ import { Tabs } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import useAppSelector from '../../hooks/use-app-selector';
 import { selectUserToken } from '../../store/reducer/authSlice';
+import style from './Account.module.scss'
 
 const Account = () => {
     const params = useParams();
@@ -31,17 +32,17 @@ const Account = () => {
                             {
                                 label: <Text>Персональные данные</Text>,
                                 key: 'personalData',
-                                children: <PersonalData />,
+                                children: <div className={style.container}><PersonalData /></div>,
                             },
                             {
                                 label: <Text>Избранное</Text>,
                                 key: 'favourites',
-                                children: <Favourite />,
+                                children: <div className={style.container}><Favourite /></div>,
                             },
                             {
                                 label: <Text>История заказов</Text>,
                                 key: 'history',
-                                children: <OrderHistory />,
+                                children: <div className={style.container}><OrderHistory /></div>,
                             },
                         ]}
                     />

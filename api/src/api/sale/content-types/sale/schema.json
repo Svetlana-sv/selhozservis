@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "sales",
+  "info": {
+    "singularName": "sale",
+    "pluralName": "sales",
+    "displayName": "Акции"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sale_text": {
+      "type": "richtext"
+    }
+  }
+}

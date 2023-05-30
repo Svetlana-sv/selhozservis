@@ -25,9 +25,9 @@ const AuthPage = () => {
             auth({ identifier, password })
                 .unwrap()
                 .then((reponse) => {
-                    console.log();
+
                     if (reponse.jwt) {
-                        console.log(reponse);
+
                         message({
                             text: `Вы авторизированы!`,
                             type: 'success',

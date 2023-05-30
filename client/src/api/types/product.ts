@@ -53,6 +53,7 @@ export type Product = {
         tags: ApiArrayResponse<Tag>;
         guide: ApiArrayResponse<Guide>;
         product_application: ApiArrayResponse<ProductApplication>;
+        rest_products: number;
     };
 };
 

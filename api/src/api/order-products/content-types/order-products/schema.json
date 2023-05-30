@@ -16,10 +16,10 @@
       "type": "integer"
     },
     "price": {
-      "type": "float"
+      "type": "decimal"
     },
     "sum_price": {
-      "type": "float"
+      "type": "decimal"
     },
     "product": {
       "type": "relation",

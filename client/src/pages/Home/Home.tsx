@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Home.module.scss';
-import { Carousel, Image, Skeleton } from 'antd';
+import {Carousel, Image, Skeleton} from 'antd';
 import Wrapper from '../../components/lib/Wrapper/Wrapper';
 import { Paragraphy, Title } from '../../components/lib/Typography/Typography';
 import pek from '../../assets/pek.png';
@@ -8,11 +8,15 @@ import sdek from '../../assets/download.png';
 import dl from '../../assets/Delovye_linii-2.jpg';
 import Card from '../../components/Card/Card';
 import { useGetAllProductsQuery } from '../../api/productApi';
+import Icon, {ArrowLeftOutlined, ArrowRightOutlined} from '@ant-design/icons';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const contentStyle: React.CSSProperties = {
-    height: '40vh',
+    height: '50vh',
     color: '#fff',
-    lineHeight: '40vh',
+    lineHeight: '50vh',
     textAlign: 'center',
     alignItems: 'center',
     background: '#d2d4d9',
@@ -20,14 +24,23 @@ const contentStyle: React.CSSProperties = {
 const Home = () => {
     // todo выгрузка по тэгам
     const { data: products, isError, isFetching } = useGetAllProductsQuery();
-
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
     return (
         <Wrapper>
-            <Carousel autoplay className={styles.blockCarousel}>
+            <Slider {...settings} autoplay className={styles.blockCarousel}>
                 <div>
                     <h3 style={contentStyle}>
-                        Качественные средства для роста растений по выгодным
-                        ценам
+
+                    <img
+                        loading={'lazy'}
+                        // height={40vh}
+                        src={`http://localhost:1337/uploads/Kornevin2_50352f2a75.png`}/>
                     </h3>
                 </div>
                 <div>
@@ -39,8 +52,7 @@ const Home = () => {
                 <div>
                     <h3 style={contentStyle}>4</h3>
                 </div>
-            </Carousel>
-
+            </Slider>
             <Title align={'left'}>Рекомендуем</Title>
             <div className={styles.blockRecommendProducts}>
                 {isFetching ? (
@@ -93,8 +105,8 @@ const Home = () => {
             </div>
             <div className={styles.blockDeliveryImage}>
                 <Image loading={'lazy'} width={200} src={pek} />
+                <Image loading={'lazy'} width={300} src={dl} />
                 <Image loading={'lazy'} width={200} src={sdek} />
-                <Image loading={'lazy'} width={200} src={dl} />
             </div>
         </Wrapper>
     );

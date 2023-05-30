@@ -1,0 +1,42 @@
+.markdown {
+  table {
+    border-collapse: collapse;
+    //border: 1px solid #9a9a9a;
+    border: 1px solid #9a9a9a;
+    text-align: center;
+    justify-items: center;
+
+    tr{
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border: 1px solid #9a9a9a;
+      text-align: center;
+      justify-items: center;
+    }
+  }
+  th{
+    //border-top-left-radius: 10px;
+    //border-top-right-radius: 10px;
+    color: rgba(0, 0, 0, 0.88);
+    font-weight: 10000;
+
+    background: #fafafa;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s ease;
+    text-align: center;
+  }
+  th,
+  td {
+    padding: 6px 13px;
+    //border: 1px solid black;
+    border: 1px solid #9a9a9a;
+    text-align: center;
+    justify-items: center;
+  }
+
+  p {
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+}
