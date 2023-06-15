@@ -77,9 +77,10 @@ const CatalogFilter = (props: {
     return (
         <>
             <Paragraphy
-                fontSize={'18px'}
+                fontSize={'16px'}
+                margin={'0px 0px 10px 0px'}
                 weight={'400'}
-                margin={'0px 0px 20px 0px'}
+                className={style.catalogFilterTitle}
             >
                 Категории:
             </Paragraphy>

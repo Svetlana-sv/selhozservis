@@ -17,6 +17,7 @@
     "@strapi/utils": "^4.8.2",
     "better-sqlite3": "8.0.1",
     "pg": "^8.10.0",
+    "order-panel": "file:./plugins/order-panel",
     "strapi-plugin-populate-deep": "^2.0.0"
   },
   "author": {
@@ -29,5 +30,8 @@
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.3"
+  }
 }

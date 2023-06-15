@@ -4,7 +4,7 @@
   "info": {
     "singularName": "order-products",
     "pluralName": "orders-products",
-    "displayName": "OrderProducts",
+    "displayName": "Товары в заказах",
     "description": ""
   },
   "options": {

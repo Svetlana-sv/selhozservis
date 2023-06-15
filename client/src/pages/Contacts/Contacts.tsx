@@ -1,10 +1,14 @@
 import style from './Contacts.module.scss';
 import Wrapper from '../../components/lib/Wrapper/Wrapper';
-import { Paragraphy } from '../../components/lib/Typography/Typography';
+import {Paragraphy} from '../../components/lib/Typography/Typography';
 
 const Contacts = () => {
     return (
         <Wrapper>
+            <Paragraphy weight={'600'}>Мы всегда рады помочь вам и ответить на ваши вопросы. Ниже вы найдете информацию о нашем адресе,
+                контактных данных и графике работы.</Paragraphy>
+            <br/>
+
             <div className={style.container}>
                 <div className={style.blockMap}>
                     <iframe
@@ -16,19 +20,25 @@ const Contacts = () => {
                 </div>
                 <div>
                     <Paragraphy>
-                        Адрес: Москва, ул. Слободской переулок, д.6, строение
+                        <strong>Адрес:</strong> Москва, ул. Слободской переулок, д.6, строение
                         10, помещение 1
                     </Paragraphy>
                     <Paragraphy>
-                        График работы: Пн-Пт с 10:00 до 17:00
+                        <strong>График работы:</strong> Пн-Пт с 10:00 до 17:00
                     </Paragraphy>
                     <Paragraphy>
-                        Тел.: +7 (495) 647 00 58, +7 (916) 254 21 12 (WhatsApp,
+                        <strong>Тел.:</strong> +7 (495) 647 00 58, +7 (916) 254 21 12 (WhatsApp,
                         Viber)
                     </Paragraphy>
-                    <Paragraphy>E-mail: selhozservis@internet.ru</Paragraphy>
+                    <Paragraphy><strong>E-mail:</strong> selhozservis@internet.ru</Paragraphy>
                 </div>
             </div>
+
+
+            <Paragraphy>Если у вас возникли вопросы, предложения или нужна дополнительная информация, пожалуйста, не
+                стесняйтесь обращаться к нам. Наша команда готова оказать вам помощь и предоставить необходимую
+                информацию.</Paragraphy>
+            <br/>
         </Wrapper>
     );
 };

@@ -1,18 +1,18 @@
 import Wrapper from '../../components/lib/Wrapper/Wrapper';
 import './RegisterPage.css';
-import { Button, Form, Input } from 'antd';
-import React, { useState } from 'react';
-import { useRegisterUserMutation } from '../../api/authApi';
+import {Button, Form, Input} from 'antd';
+import React, {useState} from 'react';
+import {useRegisterUserMutation} from '../../api/authApi';
 import useAppDispatch from '../../hooks/use-app-dispatch';
-import { message } from '../../message/message';
-import { setUserToken } from '../../store/reducer/authSlice';
-import { IoArrowBackOutline } from 'react-icons/all';
-import { Text } from '../../components/lib/Typography/Typography';
-import { Link } from 'react-router-dom';
-import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
+import {message} from '../../message/message';
+import {setUserToken} from '../../store/reducer/authSlice';
+import {IoArrowBackOutline} from 'react-icons/all';
+import {Text} from '../../components/lib/Typography/Typography';
+import {Link} from 'react-router-dom';
+import {LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
 
 const RegisterPage = () => {
-    const [register, { isLoading, isSuccess, error, isError }] =
+    const [register, {isLoading, isSuccess, error, isError}] =
         useRegisterUserMutation();
 
     const [email, setEmail] = useState('');
@@ -23,24 +23,34 @@ const RegisterPage = () => {
 
     const submitForm = () => {
         if (email.length > 0 && password.length > 0) {
-            register({ email, password, username })
+            // try {
+            //     throw
+            register({email, password, username})
                 .unwrap()
                 .then((response) => {
-                    if (response.token) {
+                    if (response.jwt) {
                         message({
                             text: `Вы зарегистрированы!`,
                             type: 'success',
                         });
-                        dispatch(setUserToken(response.token));
+                        dispatch(setUserToken(response.jwt));
                     } else {
-                        message({ text: `Ошибка!`, type: 'error' });
+                        message({text: `Ошибка!`, type: 'error'});
                     }
-                });
+                })
+            .catch((error) => message({text: `Ошибка! Проверьте уникальность данных.`, type: 'error'}))
+            // } catch (error) {
+            //     message({ text: `Ошибка!`, type: 'error' });
+            //     let messageText = 'Unknown Error'
+            //     if (error instanceof Error) messageText = error.message
+            // }
+
+
         }
     };
 
     const onFinishFailed = (errorInfo: any) => {
-        message({ text: `Ошибка!`, type: 'error' });
+        message({text: `Ошибка!`, type: 'error'});
     };
 
     return (
@@ -53,7 +63,7 @@ const RegisterPage = () => {
                         marginBottom: '10px',
                     }}
                 >
-                    <IoArrowBackOutline />
+                    <IoArrowBackOutline/>
                     <Text align={'left'} fontSize={'16px'}>
                         Вернуться назад
                     </Text>
@@ -63,7 +73,7 @@ const RegisterPage = () => {
                 <Form
                     name="normal_login"
                     className="login-form"
-                    initialValues={{ remember: true }}
+                    initialValues={{remember: true}}
                     onFinish={submitForm}
                     onFinishFailed={onFinishFailed}
                 >
@@ -78,7 +88,7 @@ const RegisterPage = () => {
                     >
                         <Input
                             prefix={
-                                <UserOutlined className="site-form-item-icon" />
+                                <UserOutlined className="site-form-item-icon"/>
                             }
                             placeholder="Логин"
                             onChange={(e) => setUserName(e.target.value)}
@@ -96,7 +106,7 @@ const RegisterPage = () => {
                     >
                         <Input
                             prefix={
-                                <MailOutlined className="site-form-item-icon" />
+                                <MailOutlined className="site-form-item-icon"/>
                             }
                             placeholder="E-mail"
                             onChange={(e) => setEmail(e.target.value)}
@@ -113,7 +123,7 @@ const RegisterPage = () => {
                     >
                         <Input
                             prefix={
-                                <LockOutlined className="site-form-item-icon" />
+                                <LockOutlined className="site-form-item-icon"/>
                             }
                             type="password"
                             placeholder="Пароль"

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "processing_methods",
+  "info": {
+    "singularName": "processing-method",
+    "pluralName": "processing-methods",
+    "displayName": "Методы обработки ",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "product_application": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-application.product-application",
+      "inversedBy": "processing_method"
+    }
+  }
+}

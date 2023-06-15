@@ -17,7 +17,7 @@ const GuideBook = () => {
             <div className={style.itemsList}>
                 {guideBook?.data
                     .filter((item) =>
-                        item.attributes.title.toLowerCase().includes(search)
+                        item.attributes.title.toLowerCase().includes(search.toLowerCase())
                     )
                     .map((item) => (
                         <GuideBookItem
@@ -27,10 +27,6 @@ const GuideBook = () => {
                         />
                     ))}
             </div>
-            <br />
-            <p>Калькулятор</p>
-            <br />
-            <Calculator />
             <br />
         </Wrapper>
     );

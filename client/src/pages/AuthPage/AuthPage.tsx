@@ -44,7 +44,8 @@ const AuthPage = () => {
                     } else {
                         onFinishFailed();
                     }
-                });
+                })
+                .catch((error) => message({text: `Ошибка! Проверьте подлинность данных.`, type: 'error'}))
         }
     };
 

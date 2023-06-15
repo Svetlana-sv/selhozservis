@@ -1,10 +1,11 @@
 import style from './CardHorizontal.module.scss';
-import { Product } from '../../../api/types/product';
-import { Image, Tag } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import {Product} from '../../../api/types/product';
+import {Image, Tag} from 'antd';
+import {useNavigate} from 'react-router-dom';
 import ButtonToFavourite from '../../lib/Button/ButtonToFavourite/ButtonToFavourite';
 import ButtonToCart from '../../lib/Button/ButtonToCart/ButtonToCart';
 import React from 'react';
+import useMediaQuery from "../../../hooks/useMediaQuery";
 
 const CardHorizontal = (props: { product: Product }) => {
     const navigate = useNavigate();
@@ -12,14 +13,14 @@ const CardHorizontal = (props: { product: Product }) => {
     const handleCardClick = () => {
         navigate(`/catalog/${props.product.id}`);
     };
-
+    const isMobile = useMediaQuery('(min-width: 500px)');
     return (
         <div className={style.card}>
             <div className={style.tag}>
                 {props.product.attributes.tags?.data.map((tag) => (
                     <Tag
                         color={tag.attributes.color}
-                        style={{ borderRadius: '0px 5px' }}
+                        style={{borderRadius: '0px 5px'}}
                     >
                         {tag.attributes.title}
                     </Tag>
@@ -35,7 +36,7 @@ const CardHorizontal = (props: { product: Product }) => {
                 <Image
                     loading={'lazy'}
                     height={200}
-                    src={`http://localhost:1337${props.product.attributes.image.data.attributes.url}`}
+                    src={`${props.product.attributes.image.data.attributes.url}`}
                 />
             </div>
             <div className={style.info}>
@@ -52,7 +53,10 @@ const CardHorizontal = (props: { product: Product }) => {
                     <p className={style.price}>
                         Цена {props.product.attributes.price} ₽
                     </p>
-                    <ButtonToCart product={props.product} type="button" />
+                    {isMobile ? <ButtonToCart product={props.product} type="button"/> :
+                        <ButtonToCart product={props.product} type="icon"/>
+
+                    }
                 </div>
             </div>
         </div>

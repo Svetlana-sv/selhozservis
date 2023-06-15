@@ -80,7 +80,7 @@ const Catalog = () => {
                             <div className={style.sortingBlock}>
                                 <div className={style.sorting}>
                                     <Paragraphy
-                                        fontSize={'18px'}
+                                        fontSize={'16px'}
                                         weight={'400'}
                                         margin={'0px 10px 0px 0px'}
                                     >
@@ -110,12 +110,12 @@ const Catalog = () => {
                                 <div className={style.sortingCard}>
                                     <Paragraphy
                                         className={style.sortingCardTitle}
-                                        fontSize={'18px'}
-                                        weight={'400'}
+                                        fontSize={'16px'}
+                                        weight={'300'}
                                     >
                                         Вид:
                                     </Paragraphy>
-                                    <div>
+                                    <div className={style.sortingCardRight}>
                                         <ButtonIcon
                                             icon={IoMenuOutline} colorIcon={sortingCard ==='horizontal' ? '#592b33' : '#656464'}
                                             onClick={() => setSortingCard('horizontal')}
@@ -136,7 +136,7 @@ const Catalog = () => {
                                         .filter((product) =>
                                             product.attributes.title
                                                 .toLowerCase()
-                                                .includes(search)
+                                                .includes(search.toLowerCase())
                                         )
                                         .filter((product, index) => {
                                             if (filterStatus) {

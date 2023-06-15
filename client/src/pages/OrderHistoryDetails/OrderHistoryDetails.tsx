@@ -1,12 +1,15 @@
 import {useNavigate, useParams} from 'react-router-dom';
 import {useCancelOrderMutation, useGetOrderQuery} from '../../api/orderApi';
 import {Button, Modal, Table} from 'antd';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './OrderHistoryDetails.module.scss'
 import {Paragraphy} from '../../components/lib/Typography/Typography'
 import {Button as ButtonS} from '../../components/lib/Button/Button'
 import {message} from "../../message/message";
-const { Column } = Table;
+import {logIn} from "ionicons/icons";
+
+const {Column} = Table;
+
 interface DataType {
     key: React.Key;
     title: string;
@@ -14,6 +17,7 @@ interface DataType {
     price: string;
     sum_price: string;
 }
+
 const OrderHistoryDetails = () => {
     const navigate = useNavigate();
     const params = useParams();
@@ -29,25 +33,35 @@ const OrderHistoryDetails = () => {
             title: item.attributes.product?.data.attributes.title,
             count: item.attributes.count,
             price: item.attributes.price.toFixed(2) + ' ₽',
-            sum_price: item.attributes.sum_price.toFixed(2) +' ₽',
+            sum_price: item.attributes.sum_price.toFixed(2) + ' ₽',
         });
     });
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isCancel, setCancel] = useState(true);
     const [cancelOrder] = useCancelOrderMutation();
     const showModal = () => {
         setIsModalOpen(true);
     };
+    useEffect(() => {
+        let now = new Date();
+        if (order) {
+            let a = (now.getTime() - new Date(order?.data[0].attributes.createdAt).getTime()) / 24 / 1000 / 60 / 60;
+            if (a >= 1) {
+                setCancel(false)
+            }
+        }
+
+    }, [new Date()])
 
     const handleOk = () => {
         setIsModalOpen(false);
-        order?.data[0].id!=undefined && cancelOrder(order?.data[0].id)
+        order?.data[0].id != undefined && cancelOrder(order?.data[0].id)
             .unwrap()
-            .then((response)=>{
-                console.log(response)
-                if (response.isError){
-                    message({text: `Ошибка!`, type:`error`})
-                }else{
-                    message({text: `Заказ №${response.data.id} отменен!`, type:`info`})
+            .then((response) => {
+                if (response.isError) {
+                    message({text: `Ошибка!`, type: `error`})
+                } else {
+                    message({text: `Заказ №${response.data.id} отменен!`, type: `info`})
                     navigate('/account/history')
                 }
             })
@@ -72,25 +86,31 @@ const OrderHistoryDetails = () => {
             </Modal>
             <div className={style.info}>
                 <div className={style.blockIdButton}>
-                <Paragraphy margin={'0px 10px 0px 0px'}>Заказ №{order?.data[0].id}</Paragraphy>
-                    <ButtonS width={'110px'} height={'25px'} fontSize={'12px'} colorBackground={'#afafaf'} onClick={showModal}>Отменить заказ</ButtonS>
+                    <Paragraphy margin={'0px 10px 0px 0px'}>Заказ №{order?.data[0].id}</Paragraphy>
+                    {
+                        isCancel &&
+                        <ButtonS width={'110px'} height={'25px'} fontSize={'12px'} colorBackground={'#afafaf'}
+                                 onClick={showModal}>Отменить заказ</ButtonS>
+                    }
                 </div>
                 <Paragraphy>Статус: {order?.data[0].attributes.status}</Paragraphy>
                 <Paragraphy>Способ оплаты: {order?.data[0].attributes.payment}</Paragraphy>
                 <Paragraphy>Способ доставки: {order?.data[0].attributes.delivery}</Paragraphy>
+                {
+                    order?.data[0].attributes.address &&
+                    <Paragraphy>Адрес доставки: {order?.data[0].attributes.address}</Paragraphy>
+                }
             </div>
             <div className={style.tableBlock}>
-
-            <Table dataSource={data} pagination={false} footer={() =>
-                `Итоговая сумма заказа: ${order?.data[0].attributes.total.toFixed(2)} ₽`
-            }>
-                <Column title="Наименование" dataIndex="title" key="title" />
-                <Column title="Количество" dataIndex="count" key="count" />
-                <Column title="Цена" dataIndex="price" key="price" />
-                <Column title="Сумма" dataIndex="sum_price" key="sum_price" />
-            </Table>
+                <Table dataSource={data} pagination={false} footer={() =>
+                    `Итоговая сумма заказа: ${order?.data[0].attributes.total.toFixed(2)} ₽`
+                }>
+                    <Column title="Наименование" dataIndex="title" key="title"/>
+                    <Column title="Количество" dataIndex="count" key="count"/>
+                    <Column title="Цена" dataIndex="price" key="price"/>
+                    <Column title="Сумма" dataIndex="sum_price" key="sum_price"/>
+                </Table>
             </div>
-
         </div>
     );
 };

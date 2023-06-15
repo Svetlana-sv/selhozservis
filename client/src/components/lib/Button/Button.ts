@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { device } from '../../../../styles/device';
 
 interface Props {
     colorBorder?: string;
@@ -42,6 +41,7 @@ export const Button = styled.button<Props>`
     background: #834141;
   }
 
-  @media ${device.mobileM} {
+  @media screen and (max-width: 690px) {
+    font-size: 14px;
   }
 `;

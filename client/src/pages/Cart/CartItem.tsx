@@ -19,7 +19,7 @@ const CartItem = (props: { product: CountMapProduct }) => {
                 <Image
                     loading={'lazy'}
                     height={120}
-                    src={`http://localhost:1337${props.product.product.attributes.image.data.attributes.url}`}
+                    src={`${props.product.product.attributes.image.data.attributes.url}`}
                 />
             </div>
             <div className={style.blockMain}>

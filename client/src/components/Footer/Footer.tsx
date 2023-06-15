@@ -1,22 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import style from './Footer.module.scss';
-import { Text } from '../lib/Typography/Typography';
-import { IonIcon } from '@ionic/react';
-import { logoWhatsapp } from 'ionicons/icons';
+import { Text,Paragraphy } from '../lib/Typography/Typography';
+
 const Footer = () => {
     return (
         <>
             <div className={style.footer}>
+                <div className={style.footerRow}>
                 <div className={style.footerColumn}>
-                    <Text
+                    <Paragraphy
                         color={'var(--footer--FontColor)'}
                         fontSize={'20px'}
                         weight={'400'}
                         margin={'7px'}
                     >
                         Информация
-                    </Text>
+                    </Paragraphy>
                     <Link to={'/about'}>
                         <Text
                             color={'var(--footer--FontColor)'}
@@ -26,15 +26,15 @@ const Footer = () => {
                             О компании
                         </Text>
                     </Link>
-                    <Link to={'/wholesale'}>
-                        <Text
-                            color={'var(--footer--FontColor)'}
-                            fontSize={'16px'}
-                            weight={'200'}
-                        >
-                            Оптовым покупателям
-                        </Text>
-                    </Link>
+                    {/*<Link to={'/wholesale'}>*/}
+                    {/*    <Text*/}
+                    {/*        color={'var(--footer--FontColor)'}*/}
+                    {/*        fontSize={'16px'}*/}
+                    {/*        weight={'200'}*/}
+                    {/*    >*/}
+                    {/*        Оптовым покупателям*/}
+                    {/*    </Text>*/}
+                    {/*</Link>*/}
                     <Link to={'/manufacturers'}>
                         <Text
                             color={'var(--footer--FontColor)'}
@@ -46,14 +46,14 @@ const Footer = () => {
                     </Link>
                 </div>
                 <div className={style.footerColumn}>
-                    <Text
+                    <Paragraphy
                         color={'var(--footer--FontColor)'}
                         fontSize={'20px'}
                         weight={'400'}
                         margin={'7px'}
                     >
                         Клиентам
-                    </Text>
+                    </Paragraphy>
                     <Link to={'/paymentAndDelivery'}>
                         <Text
                             color={'var(--footer--FontColor)'}
@@ -101,14 +101,14 @@ const Footer = () => {
                     </Link>
                 </div>
                 <div className={style.footerColumn}>
-                    <Text
+                    <Paragraphy
                         color={'var(--footer--FontColor)'}
                         fontSize={'20px'}
                         weight={'400'}
                         margin={'7px'}
                     >
                         Контакты
-                    </Text>
+                    </Paragraphy>
                     <a href={"tel:+74956470058"}>
                         <Text
                             color={'var(--footer--FontColor)'}
@@ -146,14 +146,14 @@ const Footer = () => {
 
                 </div>
                 <div className={style.footerColumn}>
-                    <Text
+                    <Paragraphy
                         color={'var(--footer--FontColor)'}
                         fontSize={'20px'}
                         weight={'400'}
                         margin={'7px'}
                     >
                         График работы
-                    </Text>
+                    </Paragraphy>
                     <Text
                         color={'var(--footer--FontColor)'}
                         fontSize={'16px'}
@@ -162,14 +162,14 @@ const Footer = () => {
                         Пн-Пт с 10:00 до 17:00
                     </Text>
                     <br />
-                    <Text
+                    <Paragraphy
                         color={'var(--footer--FontColor)'}
                         fontSize={'20px'}
                         weight={'400'}
                         margin={'7px'}
                     >
                         Адрес
-                    </Text>
+                    </Paragraphy>
                     <a href="https://yandex.ru/maps/213/moscow/house/slobodskoy_pereulok_6s10/Z04YcA9iT0QOQFtvfXt0eX9kZg==/?ll=37.682620%2C55.758372&z=16">
                         <Text
                             color={'var(--footer--FontColor)'}
@@ -180,6 +180,7 @@ const Footer = () => {
                             помещение 1
                         </Text>
                     </a>
+                </div>
                 </div>
                 <div className={style.footerColumn}>
                     {' '}

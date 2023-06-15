@@ -4,12 +4,15 @@
     box-shadow: 0px 4px 4px 1px rgba(211, 211, 211, 0.25);
     border-radius: 20px;
     width: 220px;
-    height: 350px;
+    height: 360px;
     position: relative;
     display: flex;
     flex-direction: column;
-
+    @media screen and (max-width: 690px) {
+        height: 320px;
+    }
     .img {
+        width: auto;
         margin-top: 25px;
         text-align: center;
     }
@@ -18,46 +21,31 @@
         position: absolute;
         display: grid;
         flex-direction: column;
-        row-gap: 5px;
+        row-gap: 2px;
         column-gap: 5px;
         font-size: 12px;
         color: #ffffff;
-        padding: 0px 4px;
+        padding: 0px 2px;
         margin-left: 13px;
         width: auto;
         height: 22px;
         overflow: hidden;
-        //overflow: clip;
-        //overflow: scroll;
-        //overflow-scrolling: touch;
-        //left: 15px;
-        //border-radius: 0px 5px;
+        @media screen and (max-width: 690px) {
+            p{
+
+            font-size: 12px;
+            }
+        }
     }
     .tag:hover {
         z-index: 100;
         overflow: visible;
-        //overflow: clip;
-        //overflow: scroll;
-        //overflow-scrolling: touch;
-        //left: 15px;
-        //border-radius: 0px 5px;
     }
-    .tagInfo {
-        color: #9a9a9a;
-        height: 22px;
-        display: flex;
-        align-items: center;
-        border-radius: 5px;
-        border: 1px solid #9a9a9a;
-        padding: 0px 4px;
-        position: absolute;
-        width: auto;
-        right: 50px;
-    }
+
     .heart {
         position: absolute;
         top: 10px;
-        right: 0px;
+        right: 10px;
         color: #989898;
         z-index: 100;
     }
@@ -70,6 +58,11 @@
     .description {
         font-size: 12px;
         color: #999;
+        padding-right: 7px;
+        @media screen and (max-width: 690px) {
+            //height: 20px;
+            overflow: hidden;
+        }
     }
 
     .priceBlock {
@@ -86,6 +79,13 @@
         .price {
             font-size: 18px;
             font-weight: 500;
+        }
+
+        .priceOld {
+            text-decoration: line-through;
+            font-size: 14px !important;
+            font-weight: 500;
+            color: #910e0e;
         }
     }
 

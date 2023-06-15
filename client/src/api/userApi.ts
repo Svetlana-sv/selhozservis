@@ -6,6 +6,7 @@ const userApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getUserInfo: builder.query<UserInfo, number>({
             query: (id) => `/users/${id}?populate=*`,
+            providesTags: ['personalData'],
         }),
         updateUserInfo: builder.mutation({
             query: ({ id, data }) => ({
@@ -13,6 +14,7 @@ const userApi = api.injectEndpoints({
                 method: 'PUT',
                 body: data,
             }),
+            invalidatesTags: ['personalData'],
         }),
     }),
 });

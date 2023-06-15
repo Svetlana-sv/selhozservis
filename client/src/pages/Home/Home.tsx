@@ -12,6 +12,7 @@ import Icon, {ArrowLeftOutlined, ArrowRightOutlined} from '@ant-design/icons';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const contentStyle: React.CSSProperties = {
     height: '50vh',
@@ -31,16 +32,17 @@ const Home = () => {
         slidesToShow: 1,
         slidesToScroll: 1
     };
+    const isMobile = useMediaQuery('(min-width: 1500px)');
     return (
         <Wrapper>
+            {isMobile ?
             <Slider {...settings} autoplay className={styles.blockCarousel}>
-                <div>
+                <div className={styles.blockSlide}>
                     <h3 style={contentStyle}>
-
                     <img
                         loading={'lazy'}
                         // height={40vh}
-                        src={`http://localhost:1337/uploads/Kornevin2_50352f2a75.png`}/>
+                        src={`/uploads/Bez_imeni2_f2b78903a3.bmp`}/>
                     </h3>
                 </div>
                 <div>
@@ -53,6 +55,9 @@ const Home = () => {
                     <h3 style={contentStyle}>4</h3>
                 </div>
             </Slider>
+                :
+                <div></div>
+            }
             <Title align={'left'}>Рекомендуем</Title>
             <div className={styles.blockRecommendProducts}>
                 {isFetching ? (

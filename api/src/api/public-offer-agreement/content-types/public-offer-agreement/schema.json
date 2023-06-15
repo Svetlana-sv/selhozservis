@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "public_offer_agreements",
+  "info": {
+    "singularName": "public-offer-agreement",
+    "pluralName": "public-offer-agreements",
+    "displayName": "Договор публичной оферты",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "information": {
+      "type": "richtext"
+    }
+  }
+}

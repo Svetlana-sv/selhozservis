@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { device } from '../../../../styles/device';
-
 interface Props {
     type?: 'paragraph' | 'title';
     align?: string;
@@ -15,12 +13,14 @@ export const Paragraphy = styled.p<Props>`
     text-align: ${(p) => (p.align ? p.align : 'left')};
     margin: ${(p) => (p.margin ? p.margin : '0px')};
     font-weight: ${(p) => (p.weight ? p.weight : '400')};
-    font-family: var(--Ubuntu--FontFamily);
+    font-family: ${(p) => (p.weight ? 'var(--UbuntuBold--FontFamily)' : 'var(--Ubuntu--FontFamily)')};
     font-size: ${(p) => (p.fontSize ? p.fontSize : '17px')};
     line-height: 1.7;
-    // @media ${device.mobileM} {
-    //   font-size: 16px;
-    // }
+
+
+  @media screen and (max-width: 690px) {
+    font-size: 16px;
+  }
 `;
 
 export const Text = styled.p<Props>`
@@ -33,9 +33,11 @@ export const Text = styled.p<Props>`
             : 'var(--Ubuntu--FontFamily)'};
     font-size: ${(p) => (p.fontSize ? p.fontSize : '18px')};
     margin: ${(p) => (p.margin ? p.margin : '0px')};
-    // @media ${device.mobileM} {
-    //   font-size: 16px;
-    // }
+
+
+  @media screen and (max-width: 690px) {
+    font-size: 15px;
+  }
 `;
 
 export const Title = styled.p<Props>`
@@ -45,4 +47,8 @@ export const Title = styled.p<Props>`
     font-weight: ${(p) => (p.weight ? p.weight : '600')};
     font-family: var(--Philosopher--FontFamily);
     font-size: ${(p) => (p.fontSize ? p.fontSize : '24px')};
+
+  @media screen and (max-width: 690px) {
+    font-size: 18px;
+  }
 `;

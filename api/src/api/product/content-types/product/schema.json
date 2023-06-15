@@ -79,12 +79,6 @@
       "relation": "oneToMany",
       "target": "api::tag.tag"
     },
-    "product_application": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product-application.product-application",
-      "inversedBy": "products"
-    },
     "guide": {
       "type": "relation",
       "relation": "manyToOne",
@@ -106,6 +100,12 @@
     "rest_products": {
       "type": "integer",
       "min": 0
+    },
+    "product_application": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-application.product-application",
+      "inversedBy": "products"
     }
   }
 }

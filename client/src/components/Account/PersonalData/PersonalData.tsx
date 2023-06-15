@@ -37,23 +37,52 @@ const PersonalData = () => {
         {name: ['email'], value: `${userInfo?.email || ''}`},
     ]);
     const [newUserInfo] = useUpdateUserInfoMutation();
+    const [type, setType] = useState(
+        (userInfo?.type) === 'Физическое лицо'
+            ? Type.INDIVIDUAL
+            : Type.LEGAL_PERSON
+    );
+    console.log(userInfo?.type)
+    console.log(type)
     useEffect(() => {
-        setFields([
-            {
-                name: ['last_name'],
-                value: `${userInfo?.last_name || ''}`,
-            },
-            {name: ['name'], value: `${userInfo?.name || ''}`},
-            {name: ['middle_name'], value: `${userInfo?.middle_name || ''}`},
-            {
-                name: ['number'],
-                value: `${userInfo?.number || ''}`,
-            },
-            {name: ['email'], value: `${userInfo?.email || ''}`},
-        ]);
-    }, [userInfo]);
+        if (type === Type.INDIVIDUAL){
+            setFields([
+                {
+                    name: ['last_name'],
+                    value: `${userInfo?.last_name || ''}`,
+                },
+                {name: ['name'], value: `${userInfo?.name || ''}`},
+                {name: ['middle_name'], value: `${userInfo?.middle_name || ''}`},
+                {
+                    name: ['number'],
+                    value: `${userInfo?.number || ''}`,
+                },
+                {name: ['email'], value: `${userInfo?.email || ''}`},
+                {name: ['inn'], value: ``},
+                {name: ['company_name'], value: ``},
+            ]);
+        } else{
+            setFields([
+                {
+                    name: ['last_name'],
+                    value: `${userInfo?.last_name || ''}`,
+                },
+                {name: ['name'], value: `${userInfo?.name || ''}`},
+                {name: ['middle_name'], value: `${userInfo?.middle_name || ''}`},
+                {
+                    name: ['number'],
+                    value: `${userInfo?.number || ''}`,
+                },
+                {name: ['email'], value: `${userInfo?.email || ''}`},
+                {name: ['inn'], value: `${userInfo?.inn || ''}`},
+                {name: ['company_name'], value: `${userInfo?.company_name || ''}`},
+            ]);
+        }
+
+    }, [userInfo,type]);
 
     const handleUpdateData = () => {
+        console.log(fields)
         newUserInfo({
             id: userId,
             data: {
@@ -66,6 +95,8 @@ const PersonalData = () => {
                 email: fields[3].value,
                 middle_name: fields[2].value,
                 number: fields[4].value,
+                inn: fields[5].value,
+                company_name: fields[6].value,
             },
         })
             .unwrap()
@@ -79,11 +110,7 @@ const PersonalData = () => {
             )
     };
 
-    const [type, setType] = useState(
-        (userInfo?.type || '') === 'Физическое лицо'
-            ? Type.INDIVIDUAL
-            : Type.LEGAL_PERSON
-    );
+
 
     return (
         <Wrapper>
@@ -103,7 +130,8 @@ const PersonalData = () => {
                         className={style.radioGroup}
                     >
                         <Space direction="horizontal">
-                            <Radio value={Type.INDIVIDUAL} disabled={true}>Физическое лицо</Radio>
+                            {/*<Radio value={Type.INDIVIDUAL} disabled={true}>Физическое лицо</Radio>*/}
+                            <Radio value={Type.INDIVIDUAL}>Физическое лицо</Radio>
                             <Radio value={Type.LEGAL_PERSON}>Юридическое лицо</Radio>
                         </Space>
                     </Radio.Group>
@@ -113,6 +141,7 @@ const PersonalData = () => {
                     onChange={(newFields) => {
                         setFields(newFields);
                     }}
+                    type={type}
                 />
                 <Button
                     onClick={handleUpdateData}

@@ -51,7 +51,7 @@ export type Product = {
         count_metric: number;
         categories: ApiArrayResponse<Category>;
         tags: ApiArrayResponse<Tag>;
-        guide: ApiArrayResponse<Guide>;
+        guide: ApiObjectResponse<Guide>;
         product_application: ApiArrayResponse<ProductApplication>;
         rest_products: number;
     };
@@ -60,18 +60,50 @@ export type Product = {
 export type ProductApplication = {
     id: number;
     attributes: {
-        description: string;
         consumption_rate: string;
         fluid_flow_rate: string;
-        processing_method: string;
         processing_time: string;
-        type: string;
-        norm_application: number;
-        norm_application_quantity: string;
-        norm_application_area: string;
+        types: ApiArrayResponse<Type>;
+        cultures: ApiArrayResponse<Culture>;
+        norm_application_quantity: ApiObjectResponse<Norm>;
+        norm_application_area: ApiObjectResponse<Norm>;
+        processing_method: ApiArrayResponse<ProcessingMethod>,
+        count_application_area: number,
+        count_application_quantity: number,
+        destination: string,
+        instruction: string
         products: ApiArrayResponse<Product>;
     };
 };
+
+export type Culture = {
+    id: number;
+    attributes: {
+        title: string,
+    }
+}
+
+export type Norm = {
+    id: number;
+    attributes: {
+        title: string,
+        short: string,
+    }
+}
+
+export type ProcessingMethod = {
+    id: number;
+    attributes: {
+        title: string,
+    }
+}
+
+export type Type = {
+    id: number;
+    attributes: {
+        title: string,
+    }
+}
 
 export type CountMapProduct = {
     product: Product;

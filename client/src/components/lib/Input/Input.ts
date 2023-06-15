@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { device } from '../../../../styles/device';
 
 interface Props {
     colorBorder?: string;
@@ -22,9 +21,5 @@ export const Input = styled.input<Props>`
     &:hover,
     &:focus {
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-    }
-
-    @media ${device.mobileM} {
-        width: 200px;
     }
 `;

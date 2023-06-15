@@ -1,117 +1,140 @@
 .catalog {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    //grid-template-rows: 1fr 1fr;
-    gap: 20px 10px;
-    grid-template-areas:
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  //grid-template-rows: 1fr 1fr;
+  gap: 20px 10px;
+  grid-template-areas:
         '. d'
         '. d';
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 
-    //:nth-child(1) {
-    //  grid-area: 1 / 3 / 3 /1;
-    //}
+  //:nth-child(1) {
+  //  grid-area: 1 / 3 / 3 /1;
+  //}
 
-    :nth-child(1) {
-        grid-area: 1 / 1 / 3 / 2;
-    }
+  :nth-child(1) {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+
+  @media screen and (max-width: 690px) {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px 0px;
+  }
+
+  .catalogFilter {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    align-items: flex-start;
 
     @media screen and (max-width: 500px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px 0px;
+      margin: auto;
     }
 
-    .catalogFilter {
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        text-align: left;
-        align-items: flex-start;
+    .catalogFilterButtons {
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+  }
 
-        @media screen and (max-width: 500px) {
-            margin: auto;
-        }
+  .sortingBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-        .catalogFilterButtons {
-            margin-top: 10px;
-            display: grid;
-            gap: 10px;
-        }
+    @media screen and (max-width: 750px) {
+      flex-direction: column;
+      margin-top: 10px;
     }
 
-    .sortingBlock {
-        margin-top: 15px;
+    .sorting {
+      display: flex;
+      flex-direction: row;
+      @media screen and (max-width: 400px) {
+        //flex-direction: column;
+
+        p {
+          margin-bottom: 5px;
+        }
+
+      }
+    }
+
+    .sortingCard {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      @media screen and (max-width: 750px) {
+        margin-top: 7px;
+        //justify-content: left;
+      }
+      @media screen and (max-width: 689px) {
+        margin-top: 10px;
+        justify-content: space-between;
+      }
+
+      .sortingCardRight{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-
-        @media screen and (max-width: 750px) {
-            flex-direction: column;
-            margin-top: 7px;
+        .rightButton {
+          margin-left: 5px;
         }
+      }
 
-        .sorting {
-            display: flex;
-            flex-direction: row;
-            @media screen and (max-width: 400px) {
-                flex-direction: column;
 
-            }
-        }
-        .sortingCard {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            @media screen and (max-width: 750px) {
-                margin-top: 7px;
-            }
-            @media screen and (max-width: 400px) {
-                margin-top: 10px;
-                justify-content: left;
-            }
-            .rightButton {
-                button{
-
-                    margin-right: 0px;
-                }
-            }
-
-            .sortingCardTitle {
-                margin-right: 10px;
-            }
-        }
+      .sortingCardTitle {
+        margin-right: 10px;
+      }
     }
+  }
 
-    .catalogList {
-        margin-top: 15px;
-        display: flex;
-        flex-direction: row;
-        column-gap: 5px;
-        row-gap: 15px;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
-
-        @media screen and (max-width: 500px) {
-            display: flex;
-            justify-content: space-evenly;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px 0px;
-        }
-        @media screen and (max-width: 730px) {
-            display: flex;
-            justify-content: space-evenly;
-            flex-direction: column;
-            align-items: center;
-        }
+  .catalogList {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    //flex-direction: row;
+    align-items: stretch;
+    column-gap: 5px;
+    row-gap: 15px;
+    //flex-wrap: wrap;
+    >*:last-child{
+      //margin-right: auto;
+      //justify-content: space-between;
+    //  display: flex;
+    //flex-wrap: wrap;
+    //  justify-self: flex-start !important;
+    //  flex-flow: row wrap;
+    //  background-color: #910e0e;
     }
-
-    .paginationBlock {
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
+    @media screen and (max-width: 500px) {
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px 0px;
     }
+    @media screen and (max-width: 730px) {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  .paginationBlock {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
 }

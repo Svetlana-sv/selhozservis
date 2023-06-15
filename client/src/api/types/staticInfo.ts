@@ -11,3 +11,11 @@ export type SaleInfo = {
         sale_text: string;
     };
 };
+
+export type StaticInfo = {
+    id: number;
+    attributes: {
+        information: string;
+    };
+};
+

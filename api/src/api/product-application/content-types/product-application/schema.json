@@ -4,7 +4,7 @@
   "info": {
     "singularName": "product-application",
     "pluralName": "product-applications",
-    "displayName": "ProductApplication",
+    "displayName": "Применение препарата",
     "description": ""
   },
   "options": {
@@ -14,7 +14,7 @@
   "attributes": {
     "products": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::product.product",
       "mappedBy": "product_application"
     },
@@ -24,27 +24,17 @@
     "fluid_flow_rate": {
       "type": "string"
     },
-    "processing_method": {
-      "type": "string"
-    },
     "processing_time": {
       "type": "string"
     },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Для личных подсобных хозяйств",
-        "Для питомников, ландшафтных организаций, озеленителей",
-        "Для сельскохозяйственных предприятий"
-      ]
-    },
     "cultures": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::culture.culture"
+      "relation": "manyToMany",
+      "target": "api::culture.culture",
+      "mappedBy": "product_application"
     },
-    "norm_application": {
-      "type": "float"
+    "count_application_area": {
+      "type": "decimal"
     },
     "norm_application_quantity": {
       "type": "relation",
@@ -56,23 +46,26 @@
       "relation": "oneToOne",
       "target": "api::metric.metric"
     },
-    "description": {
-      "type": "text"
+    "count_application_quantity": {
+      "type": "decimal"
     },
-    "active_substance": {
-      "type": "string"
+    "destination": {
+      "type": "richtext"
     },
-    "active_substance_content": {
-      "type": "string"
+    "instruction": {
+      "type": "richtext"
     },
-    "chemical_class": {
-      "type": "string"
+    "processing_method": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::processing-method.processing-method",
+      "mappedBy": "product_application"
     },
-    "method_penetration": {
-      "type": "string"
-    },
-    "character_action": {
-      "type": "string"
+    "types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::place-use.place-use",
+      "inversedBy": "product_application"
     }
   }
 }

@@ -17,12 +17,6 @@ const SearchText = (props: searchProps) => {
     const onSearch = (value: string) => setSearchText(value);
     return (
         <div className={style.search}>
-            {/*<input*/}
-            {/*    value={searchText}*/}
-            {/*    placeholder="Поиск по каталогу..."*/}
-            {/*    type="text"*/}
-            {/*    onChange={(e) => setSearchText(e.target.value)}*/}
-            {/*/>*/}
             <Search
                 placeholder="Поиск по каталогу..."
                 size={'large'}

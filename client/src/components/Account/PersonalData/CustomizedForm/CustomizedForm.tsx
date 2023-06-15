@@ -1,6 +1,7 @@
 import React from "react";
 import {Form, Input} from "antd";
 import style from './CustomizedForm.module.scss'
+import {Type} from "../PersonalData";
 export interface FieldData {
     name: string | number | (string | number)[];
     value?: any;
@@ -8,10 +9,12 @@ export interface FieldData {
 interface CustomizedFormProps {
     onChange: (fields: FieldData[]) => void;
     fields: FieldData[];
+    type: Type;
 }
 const CustomizedForm: React.FC<CustomizedFormProps> = ({
                                                            onChange,
                                                            fields,
+    type
                                                        }) => (
     <Form
         name="global_state"
@@ -42,7 +45,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({
             name="middle_name"
             label="Отчество"
             rules={[
-                { required: true, message: 'Пожалуйста, введите отчество!' },
+                { required: false, message: 'Пожалуйста, введите отчество!' },
             ]}
         >
             <Input placeholder={'Введите отчество'} />
@@ -66,6 +69,37 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({
         >
             <Input placeholder={'Введите номер телефона'} />
         </Form.Item>
+        {
+            type === Type.LEGAL_PERSON &&
+            <Form.Item
+                name="inn"
+                label="ИНН"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Введите ИНН!',
+                    },
+                ]}
+            >
+                <Input placeholder={'Введите ИНН'} />
+            </Form.Item>
+        }
+        {
+            type === Type.LEGAL_PERSON &&
+            <Form.Item
+                name="company_name"
+                label="Компания"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Пожалуйста, введите название компании!',
+                    },
+                ]}
+            >
+                <Input placeholder={'Введите название компании'} />
+            </Form.Item>
+        }
+
     </Form>
 );
 

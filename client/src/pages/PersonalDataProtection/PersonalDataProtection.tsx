@@ -1,9 +1,16 @@
 import Wrapper from '../../components/lib/Wrapper/Wrapper';
+import {useGetAboutCompanyQuery, useGetPersonalDataProtectionQuery} from "../../api/staticInfoApi";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const PersonalDataProtection = () => {
+    const { data: info } = useGetPersonalDataProtectionQuery();
     return (
         <Wrapper>
-            <h2>Защита персональных данных</h2>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {info?.data.attributes.information!}
+            </ReactMarkdown>
+            <br />
         </Wrapper>
     );
 };

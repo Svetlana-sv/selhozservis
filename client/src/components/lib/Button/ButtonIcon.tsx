@@ -28,7 +28,6 @@ const ButtonIcon = (props: ButtonProps) => {
         <button
             onClick={props.onClick}
             className={props.className}
-            style={{ marginRight: '10px' }}
         >
             {props.statusButton ? (
                 <IoHeartSharp size={28} color={'#994C4C'} />

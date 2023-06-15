@@ -1,4 +1,4 @@
-import { ApiObjectResponse } from './apiResponse';
+import {ApiArrayResponse, ApiObjectResponse} from './apiResponse';
 
 export interface IUser {
     username: string;
@@ -23,7 +23,11 @@ export type UserInfo = {
     last_name: string;
     middle_name: string;
     number: string;
+    inn: string;
+    company_name: string;
 };
+
+
 
 export interface IUserInfo {
     name?: string;
@@ -41,7 +45,8 @@ export interface IUserAuth {
 
 export interface RegisterResponse {
     status: string;
-    token: string;
+    jwt: string;
+    error: string;
 }
 
 export interface AuthResponse {

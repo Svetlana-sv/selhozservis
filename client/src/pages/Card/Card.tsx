@@ -15,8 +15,8 @@ import ToCartButton from '../../components/lib/Button/ButtonToCart/ButtonToCart'
 import ButtonToFavourite from '../../components/lib/Button/ButtonToFavourite/ButtonToFavourite';
 import styles from '../Home/Home.module.scss';
 import CardReccomend from '../../components/Card/Card';
+import useMediaQuery from "../../hooks/useMediaQuery";
 
-const { Panel } = Collapse;
 
 const Card = () => {
     const params = useParams();
@@ -25,40 +25,35 @@ const Card = () => {
         isError,
         isFetching,
     } = useGetProductQuery(params.id || '');
-    const dispatch = useAppDispatch();
 
-    // todo выгрузка по тэгам
     const { data: products } = useGetAllProductsQuery();
-
-    function handleClickAddProduct() {
-        dispatch(addProduct(product?.data!));
-    }
+    const isMobile = useMediaQuery('(max-width: 690px)')
 
     const items: TabsProps['items'] = [
         {
             key: '1',
             label: `Сфера применения`,
-            children: `${product?.data.attributes.application}`,
+            children: `${product?.data.attributes.application || 'Нет информации'}`,
         },
         {
             key: '2',
             label: `Состав`,
-            children: `${product?.data.attributes.composition}`,
+            children: `${product?.data.attributes.composition || 'Нет информации'}`,
         },
         {
             key: '3',
             label: `Класс опасности`,
-            children: `${product?.data.attributes.danger_class}`,
+            children: `${product?.data.attributes.danger_class || 'Нет информации'}`,
         },
         {
             key: '4',
             label: `Рекомендации по применению`,
-            children: `${product?.data.attributes.destination}`,
+            children: `${product?.data.attributes.destination || 'Нет информации'}`,
         },
         {
             key: '5',
             label: `Дополнительная информация`,
-            children: `Срок годности: ${product?.data.attributes.period_storage}
+            children: `Срок годности: ${product?.data.attributes.period_storage || 'Нет информации'}
             `,
         },
     ];
@@ -81,8 +76,8 @@ const Card = () => {
 
                         <div className={style.image}>
                             <Image
-                                src={`http://localhost:1337${product?.data.attributes.image.data.attributes.url}`}
-                                height={300}
+                                src={`${product?.data.attributes.image.data.attributes.url}`}
+                                height={isMobile ? 170 : 300}
                             ></Image>
                         </div>
                     </div>
@@ -112,6 +107,7 @@ const Card = () => {
                                 type="button"
                             />
                             <ButtonToFavourite
+                                className={style.heart}
                                 product={product?.data as Product}
                                 type="button"
                             />
@@ -132,7 +128,9 @@ const Card = () => {
                     {isFetching ? (
                         <Skeleton active />
                     ) : (
-                        products?.data.map((product) => (
+                        products?.data
+                            .filter((item)=>item.attributes.guide.data.attributes.title.includes(product?.data.attributes.guide.data.attributes.title || ''))
+                            .map((product) => (
                             <CardReccomend
                                 key={product.id}
                                 product={product}

@@ -22,5 +22,5 @@ export const api = createApi({
         // },
     }),
     endpoints: () => ({}),
-    tagTypes: ['order', 'favourite'],
+    tagTypes: ['order', 'favourite','personalData'],
 });

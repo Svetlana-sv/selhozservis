@@ -14,6 +14,12 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "product_application": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-application.product-application",
+      "inversedBy": "cultures"
     }
   }
 }

@@ -1,13 +1,23 @@
 .blockCarousel {
     margin: 0px 0px 20px 0px;
     //border: 2px solid #d2d2d2;
-    height: 50vh;
-
-    img{
-        width: 100%;
-        height: 50vh;
-        object-fit: cover;
+    max-height: 50vh;
+    //@media (max-width: 500px) {
+    //    height: 20vh;
+    //}
+    .blockSlide{
+        outline: 1px solid rgba(112, 2, 2, 0.8); /* Пунктирная рамка */
+        outline-offset: -1px;
+        img{
+            width: 100%;
+            height: 50vh;
+            object-fit: cover;
+            @media (max-width: 500px) {
+                object-fit: contain;
+            }
+        }
     }
+
 }
 
 .blockRecommendProducts {
@@ -16,7 +26,8 @@
     column-gap: 15px;
     row-gap: 25px;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    //justify-content: space-evenly;
+    justify-content: flex-start;
     margin: 15px 0px 20px 0px;
 
     @media (max-width: 500px) {
