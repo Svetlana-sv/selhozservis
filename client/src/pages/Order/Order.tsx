@@ -16,6 +16,7 @@ import {IUserInfo} from '../../api/types/user';
 import CustomizedForm, {FieldData} from "../../components/Account/PersonalData/CustomizedForm/CustomizedForm";
 import {useGetUserInfoQuery, useUpdateUserInfoMutation} from "../../api/userApi";
 import {Type} from "../../components/Account/PersonalData/PersonalData";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const {Column} = Table;
 
@@ -67,14 +68,11 @@ const Order = () => {
     ]);
 
     const [type, setType] = useState(
-        (userInfo?.type || '') === 'Юридическое лицо'
+        (userInfo?.type) === 'Юридическое лицо'
             ? Type.LEGAL_PERSON
             : Type.INDIVIDUAL
     );
-    const [newUserInfo] = useUpdateUserInfoMutation();
-
     let dataset: DataType[] = [];
-
     Array.from(countMap).map((product) => {
         const [id, countMapItem] = product;
         dataset.push({
@@ -94,10 +92,17 @@ const Order = () => {
         });
     });
 
+    const [newUserInfo] = useUpdateUserInfoMutation();
+
+
+
     useEffect(() => {
         setDeliveryMethod('');
         setPaymentMethod('')
     }, [type])
+
+    const isMobile = useMediaQuery('(max-width: 890px)');
+    console.log(isMobile)
 
     const columns = [
         {
@@ -133,8 +138,8 @@ const Order = () => {
                         ? 'Физическое лицо'
                         : 'Юридическое лицо',
                 last_name: fields[0].value,
-                email: fields[3].value,
                 middle_name: fields[2].value,
+                email: fields[3].value,
                 number: fields[4].value,
                 inn: fields[5].value,
                 company_name: fields[6].value,
@@ -202,11 +207,53 @@ const Order = () => {
                                 message({text: `Ошибка!`, type: 'error'});
                             }
                         });
-                } else {
-                    message({
-                        text: `Укажите адрес доставки`,
-                        type: 'info',
-                    });
+                }
+                if (deliveryMethod === 'Самовывоз') {
+                    updateUserInfo();
+                    postOrder({
+                        data: {
+                            status: 'Обрабатывается',
+                            payment: paymentMethod,
+                            delivery: deliveryMethod,
+                            total: price,
+                            order_products: [],
+                            user: [userId],
+                            address: address
+                        },
+                    })
+                        .unwrap()
+                        .then((response) => {
+                            if (response.data.id) {
+                                countMap.forEach((order) => {
+                                    postOrderProducts({
+                                        data: {
+                                            sum_price: order.price * order.count,
+                                            count: order.count,
+                                            price: order.price,
+                                            product: [order.product.id],
+                                            order: [response.data.id],
+                                        },
+                                    })
+                                        .unwrap()
+                                        .then((response) => {
+                                            if (response.data.id) {
+                                                message({
+                                                    text: `Заказ успешно оформлен!`,
+                                                    type: 'success',
+                                                });
+                                                navigate('/account/history');
+                                            } else {
+                                                message({
+                                                    text: `Ошибка!`,
+                                                    type: 'error',
+                                                });
+                                            }
+                                        });
+                                });
+                            } else {
+                                message({text: `Ошибка!`, type: 'error'});
+                            }
+                        });
                 }
             } else {
                 message({
@@ -348,7 +395,8 @@ const Order = () => {
                                             <Paragraphy>Окончательную стоимость доставки уточняйте у
                                                 менеджера</Paragraphy>
                                             <Paragraphy margin={'5px 0px'}>Введите адрес доставки:</Paragraphy>
-                                            <Input required={true} placeholder={'Адрес доставки...'} onChange={(e)=> setAddress(e.target.value)}/>
+                                            <Input placeholder={'Адрес доставки...'}
+                                                   onChange={(e) => setAddress(e.target.value)}/>
                                         </div>
                                     }
                                 </div>
@@ -386,14 +434,34 @@ const Order = () => {
                         Состав заказа
                     </Title>
                     <div className={style.table}>
-                        <Table
-                            dataSource={dataset}
-                            pagination={false}
-                            columns={columns}
-                            footer={() =>
-                                `Итоговая сумма заказа: ${price.toFixed(2)} ₽`
-                            }
-                        />
+                        {
+                            isMobile ?
+                                <ol type="1">{
+                                Array.from(countMap).map((product) => {
+                                    const [id, countMapItem] = product;
+                                    console.log(isMobile)
+                                    return (
+
+                                            <li><Image
+                                                loading={'lazy'}
+                                                height={25}
+                                                src={`${countMapItem.product.attributes.image.data.attributes.url}`}
+                                            /> {countMapItem.product.attributes.title + ' x '} {countMapItem.count + ' '} {(countMapItem.count * countMapItem.price).toFixed(2) + ' ₽'}
+                                            </li>
+
+                                    )
+                                })}
+                                </ol>
+                                :
+                                <Table
+                                    dataSource={dataset}
+                                    pagination={false}
+                                    columns={columns}
+                                    footer={() =>
+                                        `Итоговая сумма заказа: ${price.toFixed(2)} ₽`
+                                    }
+                                />
+                        }
                     </div>
                 </div>
 

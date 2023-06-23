@@ -38,14 +38,14 @@ const PersonalData = () => {
     ]);
     const [newUserInfo] = useUpdateUserInfoMutation();
     const [type, setType] = useState(
-        (userInfo?.type) === 'Физическое лицо'
-            ? Type.INDIVIDUAL
-            : Type.LEGAL_PERSON
+        (userInfo?.type) === 'Юридическое лицо'
+            ? Type.LEGAL_PERSON
+            : Type.INDIVIDUAL
     );
     console.log(userInfo?.type)
     console.log(type)
     useEffect(() => {
-        if (type === Type.INDIVIDUAL){
+        if (type === Type.INDIVIDUAL) {
             setFields([
                 {
                     name: ['last_name'],
@@ -61,7 +61,7 @@ const PersonalData = () => {
                 {name: ['inn'], value: ``},
                 {name: ['company_name'], value: ``},
             ]);
-        } else{
+        } else {
             setFields([
                 {
                     name: ['last_name'],
@@ -79,10 +79,11 @@ const PersonalData = () => {
             ]);
         }
 
-    }, [userInfo,type]);
+    }, [userInfo, type]);
 
     const handleUpdateData = () => {
         console.log(fields)
+
         newUserInfo({
             id: userId,
             data: {
@@ -92,8 +93,8 @@ const PersonalData = () => {
                         ? 'Физическое лицо'
                         : 'Юридическое лицо',
                 last_name: fields[0].value,
-                email: fields[3].value,
                 middle_name: fields[2].value,
+                email: fields[3].value,
                 number: fields[4].value,
                 inn: fields[5].value,
                 company_name: fields[6].value,
@@ -109,7 +110,6 @@ const PersonalData = () => {
                 }
             )
     };
-
 
 
     return (

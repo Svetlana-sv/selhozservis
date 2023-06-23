@@ -40,20 +40,19 @@ const Home = () => {
                 <div className={styles.blockSlide}>
                     <h3 style={contentStyle}>
                     <img
-                        loading={'lazy'}
                         // height={40vh}
                         src={`/uploads/Bez_imeni2_f2b78903a3.bmp`}/>
                     </h3>
                 </div>
-                <div>
-                    <h3 style={contentStyle}>2</h3>
-                </div>
-                <div>
-                    <h3 style={contentStyle}>3</h3>
-                </div>
-                <div>
-                    <h3 style={contentStyle}>4</h3>
-                </div>
+                {/*<div>*/}
+                {/*    <h3 style={contentStyle}>2</h3>*/}
+                {/*</div>*/}
+                {/*<div>*/}
+                {/*    <h3 style={contentStyle}>3</h3>*/}
+                {/*</div>*/}
+                {/*<div>*/}
+                {/*    <h3 style={contentStyle}>4</h3>*/}
+                {/*</div>*/}
             </Slider>
                 :
                 <div></div>

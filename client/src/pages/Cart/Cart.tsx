@@ -100,7 +100,7 @@ const Cart = () => {
                     </div>
                 </div>
             </Wrapper>
-            <SubscriptionBlock />
+            {/*<SubscriptionBlock />*/}
         </Container>
     );
 };

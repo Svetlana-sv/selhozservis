@@ -11,6 +11,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useAppSelector from '../../hooks/use-app-selector';
 import { selectUserToken } from '../../store/reducer/authSlice';
 import style from './Account.module.scss'
+import FeedbackBlock from "../../components/FeedbackBlock/FeedbackBlock";
 
 const Account = () => {
     const params = useParams();
@@ -59,7 +60,8 @@ const Account = () => {
                     </Paragraphy>
                 )}
             </Wrapper>
-            {!!authToken ? <SubscriptionBlock /> : <div></div>}
+            {!!authToken ? <FeedbackBlock /> : <div></div>}
+            {/*<br/>*/}
         </Container>
     );
 };

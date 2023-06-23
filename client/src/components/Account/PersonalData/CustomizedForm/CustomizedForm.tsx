@@ -2,19 +2,22 @@ import React from "react";
 import {Form, Input} from "antd";
 import style from './CustomizedForm.module.scss'
 import {Type} from "../PersonalData";
+
 export interface FieldData {
     name: string | number | (string | number)[];
     value?: any;
 }
+
 interface CustomizedFormProps {
     onChange: (fields: FieldData[]) => void;
     fields: FieldData[];
     type: Type;
 }
+
 const CustomizedForm: React.FC<CustomizedFormProps> = ({
                                                            onChange,
                                                            fields,
-    type
+                                                           type
                                                        }) => (
     <Form
         name="global_state"
@@ -29,33 +32,33 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({
             name="last_name"
             label="Фамилия"
             rules={[
-                { required: true, message: 'Пожалуйста, введите фамилию!' },
+                {required: true, message: 'Пожалуйста, введите фамилию!'},
             ]}
         >
-            <Input placeholder={'Введите фамилию'} />
+            <Input placeholder={'Введите фамилию'}/>
         </Form.Item>
         <Form.Item
             name="name"
             label="Имя"
-            rules={[{ required: true, message: 'Пожалуйста, введите имя!' }]}
+            rules={[{required: true, message: 'Пожалуйста, введите имя!'}]}
         >
-            <Input placeholder={'Введите имя'} />
+            <Input placeholder={'Введите имя'}/>
         </Form.Item>
         <Form.Item
             name="middle_name"
             label="Отчество"
             rules={[
-                { required: false, message: 'Пожалуйста, введите отчество!' },
+                {required: false, message: 'Пожалуйста, введите отчество!'},
             ]}
         >
-            <Input placeholder={'Введите отчество'} />
+            <Input placeholder={'Введите отчество'}/>
         </Form.Item>
         <Form.Item
             name="email"
             label="Email"
-            rules={[{ required: true, message: 'Пожалуйста, введите email!' }]}
+            rules={[{required: true, message: 'Пожалуйста, введите email!'}]}
         >
-            <Input placeholder={'Введите email'} />
+            <Input placeholder={'Введите email'}/>
         </Form.Item>
         <Form.Item
             name="number"
@@ -67,7 +70,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({
                 },
             ]}
         >
-            <Input placeholder={'Введите номер телефона'} />
+            <Input placeholder={'Введите номер телефона'}/>
         </Form.Item>
         {
             type === Type.LEGAL_PERSON &&
@@ -81,7 +84,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({
                     },
                 ]}
             >
-                <Input placeholder={'Введите ИНН'} />
+                <Input placeholder={'Введите ИНН'}/>
             </Form.Item>
         }
         {
@@ -96,7 +99,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({
                     },
                 ]}
             >
-                <Input placeholder={'Введите название компании'} />
+                <Input placeholder={'Введите название компании'}/>
             </Form.Item>
         }
 

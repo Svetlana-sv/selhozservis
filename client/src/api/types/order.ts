@@ -34,7 +34,7 @@ export type OrderAttributes = {
     payment: string;
     delivery: string;
     total: number;
-    address: string;
+    address?: string;
 };
 
 export type PostOrderAttributes = OrderAttributes & {
