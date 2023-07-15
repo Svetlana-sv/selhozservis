@@ -34,10 +34,10 @@
 
 ## Скриншоты
 
-![image](../selhozservis/client/src/assets/static/UI1.png)
-![image](../selhozservis/client/src/assets/static/UI2.png)
-![image](../selhozservis/client/src/assets/static/adminPanel.png)
+![image](https://github.com/Svetlana-sv/selhozservis/blob/master/client/src/assets/static/UI1.png)
+![image](https://github.com/Svetlana-sv/selhozservis/blob/master/client/src/assets/static/UI2.png)
+![image](https://github.com/Svetlana-sv/selhozservis/blob/master/client/src/assets/static/adminPanel.png)
 
 ## Демонстрация
 
-[![Watch the video](../selhozservis/client/src/assets/static/youtube.png)](https://youtu.be/TZ1XYyToaw8)
+[![Watch the video](https://github.com/Svetlana-sv/selhozservis/blob/master/client/src/assets/static/youtube.png)](https://youtu.be/TZ1XYyToaw8)
