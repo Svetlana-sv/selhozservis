@@ -35,7 +35,6 @@
 ## Скриншоты
 
 ![image](https://github.com/Svetlana-sv/selhozservis/blob/master/client/src/assets/static/UI1.png)
-![image](https://github.com/Svetlana-sv/selhozservis/blob/master/client/src/assets/static/UI2.png)
 ![image](https://github.com/Svetlana-sv/selhozservis/blob/master/client/src/assets/static/adminPanel.png)
 
 ## Демонстрация
