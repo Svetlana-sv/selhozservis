@@ -22,10 +22,9 @@
 
 - Фронтенд:
   - HTML, SCSS, TypeScript
-  - Фреймворк: React.js
-  - Библиотеки: Redux, React Router, Antd
+  - Библиотеки: React, Redux, React Router, Antd
 - Бэкенд: 
-  - CMS Strapi (TypeScript)
+  - CMS Strapi
   - База данных: PostgreSQL
 - Другие инструменты:
   - Git
@@ -33,3 +32,12 @@
   - Postman
   - Vite
 
+## Скриншоты
+
+![image](../selhozservis/client/src/assets/static/UI1.png)
+![image](../selhozservis/client/src/assets/static/UI2.png)
+![image](../selhozservis/client/src/assets/static/adminPanel.png)
+
+## Демонстрация
+
+[![Watch the video](../selhozservis/client/src/assets/static/youtube.png)](https://youtu.be/TZ1XYyToaw8)
